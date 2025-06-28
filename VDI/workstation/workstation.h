@@ -1,0 +1,93 @@
+#ifndef WORKSTATION_H
+#define WORKSTATION_H
+
+#include <QImage>
+#include <QObject>
+
+#include "properties.h"
+#include "transport.h"
+
+/*****************************************************************************\
+|* Forward declarations
+\*****************************************************************************/
+
+/*****************************************************************************\
+|* Class declaration. This class holds the state of the workstation - it's
+|*                    effectively a graphics context. You get one by opening
+|*                    the physical or virtual workstation for a device.
+\*****************************************************************************/
+class Workstation : public QObject
+	{
+	Q_OBJECT
+
+	/*************************************************************************\
+	|* Properties
+	\*************************************************************************/
+
+	// current line type
+	GETSET(int16_t, lineType, LineType);
+
+	// current line colour index
+	GETSET(int16_t, lineColourIndex, LineColourIndex);
+
+	// current marker type
+	GETSET(int16_t, markerType, MarkerType);
+
+	// Default marker colour
+	GETSET(int16_t, markerColourIndex, MarkerColourIndex);
+
+	// Default font id
+	GETSET(int16_t, fontId, FontId);
+
+	// current text colour index
+	GETSET(int16_t, textColourIndex, TextColourIndex);
+
+	// Default fill interior style
+	GETSET(int16_t, interiorFillStyle, InteriorFillStyle);
+
+	// Cursors or graphics
+	GET(bool, alphaMode);
+
+	// Current alpha cursor X
+	GET(int, alphaX);
+
+	// Current alpha cursor Y
+	GET(int, alphaY);
+
+	// Draw in reverse video ?
+	GETSET(bool, reverseVideo, ReverseVideo);
+
+	// Transport for data to and from clients. Can be nil
+	GETSETP(Transport *, io, Io);
+
+	/*************************************************************************\
+	|* constructor
+	\*************************************************************************/
+	public:
+		explicit Workstation(QObject *parent = nullptr);
+		explicit Workstation(Transport *io, QObject *parent = nullptr);
+
+
+	/*************************************************************************\
+	|* Method: Fetch the backing store for this workstation, if there is one
+	\*************************************************************************/
+	virtual QImage * backingImage(void);
+
+	/*************************************************************************\
+	|* Method: open a workstation, returning success or failure, and taking in
+	|*         the standard arrays/handle pointer. The data in work_out will
+	|*		   be filled out, and the handle set to >0 on success.
+	\*************************************************************************/
+	virtual bool open(int16_t *workIn, int16_t *handle, int16_t *workOut);
+
+	/*************************************************************************\
+	|* Method: tell the workstation it needs to update within a given area, or
+	|*         even the entire area
+	\*************************************************************************/
+	virtual void update(void);
+	virtual void update(QRect& r);
+	virtual void update(int x, int y, int w, int h);
+
+	};
+
+#endif // WORKSTATION_H
