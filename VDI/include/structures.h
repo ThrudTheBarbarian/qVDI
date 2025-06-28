@@ -2,8 +2,8 @@
 //  structures.h
 //  dbio
 //
-//  Created by Simon Gornall on 7/18/20.
-//  Copyright © 2020 Simon Gornall. All rights reserved.
+//  Created by ThrudTheBarbarian on 7/18/20.
+//  Copyright © 2020 ThrudTheBarbarian. All rights reserved.
 //
 
 #ifndef structures_h
