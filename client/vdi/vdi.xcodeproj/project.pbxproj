@@ -1,0 +1,900 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F43E0B952E10E5D0001830BF /* gemio.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0B922E10E5D0001830BF /* gemio.c */; };
+		F43E0B962E10E5D0001830BF /* gemmsg.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0B942E10E5D0001830BF /* gemmsg.c */; };
+		F43E0B972E10E5D0001830BF /* gemmsg.h in Headers */ = {isa = PBXBuildFile; fileRef = F43E0B932E10E5D0001830BF /* gemmsg.h */; };
+		F43E0B982E10E5D0001830BF /* gemio.h in Headers */ = {isa = PBXBuildFile; fileRef = F43E0B912E10E5D0001830BF /* gemio.h */; };
+		F43E0BA62E10E674001830BF /* vec.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BA42E10E674001830BF /* vec.c */; };
+		F43E0BA72E10E674001830BF /* stringUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BA22E10E674001830BF /* stringUtils.c */; };
+		F43E0BA82E10E674001830BF /* geometry.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0B9E2E10E674001830BF /* geometry.c */; };
+		F43E0BA92E10E674001830BF /* map.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BA02E10E674001830BF /* map.c */; };
+		F43E0BAA2E10E674001830BF /* args.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0B9B2E10E674001830BF /* args.c */; };
+		F43E0BAB2E10E674001830BF /* vec.h in Headers */ = {isa = PBXBuildFile; fileRef = F43E0BA32E10E674001830BF /* vec.h */; };
+		F43E0BAC2E10E674001830BF /* stringUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = F43E0BA12E10E674001830BF /* stringUtils.h */; };
+		F43E0BAD2E10E674001830BF /* map.h in Headers */ = {isa = PBXBuildFile; fileRef = F43E0B9F2E10E674001830BF /* map.h */; };
+		F43E0BAE2E10E674001830BF /* args.h in Headers */ = {isa = PBXBuildFile; fileRef = F43E0B9A2E10E674001830BF /* args.h */; };
+		F43E0BAF2E10E674001830BF /* geometry.h in Headers */ = {isa = PBXBuildFile; fileRef = F43E0B9D2E10E674001830BF /* geometry.h */; };
+		F43E0C142E10F060001830BF /* vsm_type.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0C082E10F060001830BF /* vsm_type.c */; };
+		F43E0C152E10F060001830BF /* vsl_ends.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0C022E10F060001830BF /* vsl_ends.c */; };
+		F43E0C162E10F060001830BF /* vst_font.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0C0C2E10F060001830BF /* vst_font.c */; };
+		F43E0C172E10F060001830BF /* vsin_mode.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0C002E10F060001830BF /* vsin_mode.c */; };
+		F43E0C182E10F060001830BF /* v_ellipse.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BC22E10F060001830BF /* v_ellipse.c */; };
+		F43E0C192E10F060001830BF /* vsf_udsty.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BFF2E10F060001830BF /* vsf_udsty.c */; };
+		F43E0C1A2E10F060001830BF /* v_opnvwk.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BCC2E10F060001830BF /* v_opnvwk.c */; };
+		F43E0C1B2E10F060001830BF /* v_enter_cur.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BC42E10F060001830BF /* v_enter_cur.c */; };
+		F43E0C1C2E10F060001830BF /* v_pie.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BCE2E10F060001830BF /* v_pie.c */; };
+		F43E0C1D2E10F060001830BF /* vqm_attributes.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BEB2E10F060001830BF /* vqm_attributes.c */; };
+		F43E0C1E2E10F060001830BF /* v_fillarea.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BC62E10F060001830BF /* v_fillarea.c */; };
+		F43E0C1F2E10F060001830BF /* vq_tabstatus.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BE72E10F060001830BF /* vq_tabstatus.c */; };
+		F43E0C202E10F060001830BF /* vs_clip.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BF52E10F060001830BF /* vs_clip.c */; };
+		F43E0C212E10F060001830BF /* v_circle.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BB32E10F060001830BF /* v_circle.c */; };
+		F43E0C222E10F060001830BF /* vq_color.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BDF2E10F060001830BF /* vq_color.c */; };
+		F43E0C232E10F060001830BF /* vqt_attributes.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BEC2E10F060001830BF /* vqt_attributes.c */; };
+		F43E0C242E10F060001830BF /* v_curup.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BBD2E10F060001830BF /* v_curup.c */; };
+		F43E0C252E10F060001830BF /* v_clrwk.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BB52E10F060001830BF /* v_clrwk.c */; };
+		F43E0C262E10F060001830BF /* vst_rotation.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0C102E10F060001830BF /* vst_rotation.c */; };
+		F43E0C272E10F060001830BF /* vq_key_s.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BE42E10F060001830BF /* vq_key_s.c */; };
+		F43E0C282E10F060001830BF /* vex_butv.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BDA2E10F060001830BF /* vex_butv.c */; };
+		F43E0C292E10F060001830BF /* v_bit_image.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BB22E10F060001830BF /* v_bit_image.c */; };
+		F43E0C2A2E10F060001830BF /* v_clsvwk.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BB62E10F060001830BF /* v_clsvwk.c */; };
+		F43E0C2B2E10F060001830BF /* vsf_interior.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BFB2E10F060001830BF /* vsf_interior.c */; };
+		F43E0C2C2E10F060001830BF /* vq_curaddress.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BE12E10F060001830BF /* vq_curaddress.c */; };
+		F43E0C2D2E10F060001830BF /* vsf_style.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BFD2E10F060001830BF /* vsf_style.c */; };
+		F43E0C2E2E10F060001830BF /* v_ellpie.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BC32E10F060001830BF /* v_ellpie.c */; };
+		F43E0C2F2E10F060001830BF /* vqt_width.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BEF2E10F060001830BF /* vqt_width.c */; };
+		F43E0C302E10F060001830BF /* vrq_locator.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BF22E10F060001830BF /* vrq_locator.c */; };
+		F43E0C312E10F060001830BF /* vst_color.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0C0A2E10F060001830BF /* vst_color.c */; };
+		F43E0C322E10F060001830BF /* v_bar.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BB12E10F060001830BF /* v_bar.c */; };
+		F43E0C332E10F060001830BF /* v_rfbox.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BD32E10F060001830BF /* v_rfbox.c */; };
+		F43E0C342E10F060001830BF /* vq_pixrgb.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BE62E10F060001830BF /* vq_pixrgb.c */; };
+		F43E0C352E10F060001830BF /* vex_curv.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BDB2E10F060001830BF /* vex_curv.c */; };
+		F43E0C362E10F060001830BF /* vsl_color.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0C012E10F060001830BF /* vsl_color.c */; };
+		F43E0C372E10F060001830BF /* v_arc.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BB02E10F060001830BF /* v_arc.c */; };
+		F43E0C382E10F060001830BF /* vex_timv.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BDD2E10F060001830BF /* vex_timv.c */; };
+		F43E0C392E10F060001830BF /* v_rmcur.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BD42E10F060001830BF /* v_rmcur.c */; };
+		F43E0C3A2E10F060001830BF /* vsm_color.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0C052E10F060001830BF /* vsm_color.c */; };
+		F43E0C3B2E10F060001830BF /* vrq_string.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BF32E10F060001830BF /* vrq_string.c */; };
+		F43E0C3C2E10F060001830BF /* vs_pixrgb.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BF82E10F060001830BF /* vs_pixrgb.c */; };
+		F43E0C3D2E10F060001830BF /* v_pline.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BCF2E10F060001830BF /* v_pline.c */; };
+		F43E0C3E2E10F060001830BF /* vrt_cpyfm.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BF42E10F060001830BF /* vrt_cpyfm.c */; };
+		F43E0C3F2E10F060001830BF /* vst_height.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0C0D2E10F060001830BF /* vst_height.c */; };
+		F43E0C402E10F060001830BF /* v_gtext.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BC92E10F060001830BF /* v_gtext.c */; };
+		F43E0C412E10F060001830BF /* vsf_perimeter.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BFC2E10F060001830BF /* vsf_perimeter.c */; };
+		F43E0C422E10F060001830BF /* vsf_color.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BFA2E10F060001830BF /* vsf_color.c */; };
+		F43E0C432E10F060001830BF /* vqin_mode.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BE92E10F060001830BF /* vqin_mode.c */; };
+		F43E0C442E10F060001830BF /* vsc_form.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BF92E10F060001830BF /* vsc_form.c */; };
+		F43E0C452E10F060001830BF /* vsl_type.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0C032E10F060001830BF /* vsl_type.c */; };
+		F43E0C462E10F060001830BF /* vq_hardcopy.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BE32E10F060001830BF /* vq_hardcopy.c */; };
+		F43E0C472E10F060001830BF /* v_ellarc.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BC12E10F060001830BF /* v_ellarc.c */; };
+		F43E0C482E10F060001830BF /* vex_motv.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BDC2E10F060001830BF /* vex_motv.c */; };
+		F43E0C492E10F060001830BF /* v_hide_c.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BCA2E10F060001830BF /* v_hide_c.c */; };
+		F43E0C4A2E10F060001830BF /* v_justified.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BCB2E10F060001830BF /* v_justified.c */; };
+		F43E0C4B2E10F060001830BF /* v_contourfill.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BB72E10F060001830BF /* v_contourfill.c */; };
+		F43E0C4C2E10F060001830BF /* vs_color.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BF62E10F060001830BF /* vs_color.c */; };
+		F43E0C4D2E10F060001830BF /* v_pmarker.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BD02E10F060001830BF /* v_pmarker.c */; };
+		F43E0C4E2E10F060001830BF /* v_output_window.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BCD2E10F060001830BF /* v_output_window.c */; };
+		F43E0C4F2E10F060001830BF /* v_clear_disp_list.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BB42E10F060001830BF /* v_clear_disp_list.c */; };
+		F43E0C502E10F060001830BF /* vqt_extent.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BED2E10F060001830BF /* vqt_extent.c */; };
+		F43E0C512E10F060001830BF /* vsl_width.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0C042E10F060001830BF /* vsl_width.c */; };
+		F43E0C522E10F060001830BF /* v_curleft.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BBA2E10F060001830BF /* v_curleft.c */; };
+		F43E0C532E10F060001830BF /* v_rvon.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BD62E10F060001830BF /* v_rvon.c */; };
+		F43E0C542E10F060001830BF /* vq_extnd.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BE22E10F060001830BF /* vq_extnd.c */; };
+		F43E0C552E10F060001830BF /* v_curtext.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BBC2E10F060001830BF /* v_curtext.c */; };
+		F43E0C562E10F060001830BF /* vqf_attributes.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BE82E10F060001830BF /* vqf_attributes.c */; };
+		F43E0C572E10F060001830BF /* vq_chcells.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BDE2E10F060001830BF /* vq_chcells.c */; };
+		F43E0C582E10F060001830BF /* vr_trnfm.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BF02E10F060001830BF /* vr_trnfm.c */; };
+		F43E0C592E10F060001830BF /* v_eeos.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BC02E10F060001830BF /* v_eeos.c */; };
+		F43E0C5A2E10F060001830BF /* vro_cpyfm.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BF12E10F060001830BF /* vro_cpyfm.c */; };
+		F43E0C5B2E10F060001830BF /* v_form_adv.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BC72E10F060001830BF /* v_form_adv.c */; };
+		F43E0C5C2E10F060001830BF /* v_curhome.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BB92E10F060001830BF /* v_curhome.c */; };
+		F43E0C5D2E10F060001830BF /* vst_unload_fonts.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0C112E10F060001830BF /* vst_unload_fonts.c */; };
+		F43E0C5E2E10F060001830BF /* vsm_locator.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0C072E10F060001830BF /* vsm_locator.c */; };
+		F43E0C5F2E10F060001830BF /* vswr_mode.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0C122E10F060001830BF /* vswr_mode.c */; };
+		F43E0C602E10F060001830BF /* vsm_height.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0C062E10F060001830BF /* vsm_height.c */; };
+		F43E0C612E10F060001830BF /* v_get_pixel.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BC82E10F060001830BF /* v_get_pixel.c */; };
+		F43E0C622E10F060001830BF /* vq_colours.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BE02E10F060001830BF /* vq_colours.c */; };
+		F43E0C632E10F060001830BF /* vst_effects.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0C0B2E10F060001830BF /* vst_effects.c */; };
+		F43E0C642E10F060001830BF /* vq_mouse.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BE52E10F060001830BF /* vq_mouse.c */; };
+		F43E0C652E10F060001830BF /* v_exit_cur.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BC52E10F060001830BF /* v_exit_cur.c */; };
+		F43E0C662E10F060001830BF /* v_updwk.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BD82E10F060001830BF /* v_updwk.c */; };
+		F43E0C672E10F060001830BF /* v_recfl.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BD22E10F060001830BF /* v_recfl.c */; };
+		F43E0C682E10F060001830BF /* vsf_udpat.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BFE2E10F060001830BF /* vsf_udpat.c */; };
+		F43E0C692E10F060001830BF /* v_curright.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BBB2E10F060001830BF /* v_curright.c */; };
+		F43E0C6A2E10F060001830BF /* vs_curaddress.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BF72E10F060001830BF /* vs_curaddress.c */; };
+		F43E0C6B2E10F060001830BF /* vst_load_fonts.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0C0E2E10F060001830BF /* vst_load_fonts.c */; };
+		F43E0C6C2E10F060001830BF /* v_dspcur.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BBE2E10F060001830BF /* v_dspcur.c */; };
+		F43E0C6D2E10F060001830BF /* v_rbox.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BD12E10F060001830BF /* v_rbox.c */; };
+		F43E0C6E2E10F060001830BF /* v_show_c.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BD72E10F060001830BF /* v_show_c.c */; };
+		F43E0C6F2E10F060001830BF /* v_rvoff.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BD52E10F060001830BF /* v_rvoff.c */; };
+		F43E0C702E10F060001830BF /* vql_attributes.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BEA2E10F060001830BF /* vql_attributes.c */; };
+		F43E0C712E10F060001830BF /* vqt_name.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BEE2E10F060001830BF /* vqt_name.c */; };
+		F43E0C722E10F060001830BF /* v_curdown.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BB82E10F060001830BF /* v_curdown.c */; };
+		F43E0C732E10F060001830BF /* vst_alignment.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0C092E10F060001830BF /* vst_alignment.c */; };
+		F43E0C742E10F060001830BF /* v_eeol.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0BBF2E10F060001830BF /* v_eeol.c */; };
+		F43E0C752E10F060001830BF /* vst_point.c in Sources */ = {isa = PBXBuildFile; fileRef = F43E0C0F2E10F060001830BF /* vst_point.c */; };
+		F43E0C852E10F43C001830BF /* libvdi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F43E0B892E10E16F001830BF /* libvdi.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F43E0C822E10F433001830BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F43E0B812E10E16F001830BF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F43E0B882E10E16F001830BF;
+			remoteInfo = vdi;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F43E0C792E10F41F001830BF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F43E0B892E10E16F001830BF /* libvdi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvdi.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F43E0B902E10E190001830BF /* vdi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vdi.h; sourceTree = "<group>"; };
+		F43E0B912E10E5D0001830BF /* gemio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gemio.h; sourceTree = "<group>"; };
+		F43E0B922E10E5D0001830BF /* gemio.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = gemio.c; sourceTree = "<group>"; };
+		F43E0B932E10E5D0001830BF /* gemmsg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gemmsg.h; sourceTree = "<group>"; };
+		F43E0B942E10E5D0001830BF /* gemmsg.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = gemmsg.c; sourceTree = "<group>"; };
+		F43E0B9A2E10E674001830BF /* args.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = args.h; sourceTree = "<group>"; };
+		F43E0B9B2E10E674001830BF /* args.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = args.c; sourceTree = "<group>"; };
+		F43E0B9C2E10E674001830BF /* args.license */ = {isa = PBXFileReference; lastKnownFileType = text; path = args.license; sourceTree = "<group>"; };
+		F43E0B9D2E10E674001830BF /* geometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = geometry.h; sourceTree = "<group>"; };
+		F43E0B9E2E10E674001830BF /* geometry.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = geometry.c; sourceTree = "<group>"; };
+		F43E0B9F2E10E674001830BF /* map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = map.h; sourceTree = "<group>"; };
+		F43E0BA02E10E674001830BF /* map.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = map.c; sourceTree = "<group>"; };
+		F43E0BA12E10E674001830BF /* stringUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stringUtils.h; sourceTree = "<group>"; };
+		F43E0BA22E10E674001830BF /* stringUtils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = stringUtils.c; sourceTree = "<group>"; };
+		F43E0BA32E10E674001830BF /* vec.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vec.h; sourceTree = "<group>"; };
+		F43E0BA42E10E674001830BF /* vec.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vec.c; sourceTree = "<group>"; };
+		F43E0BB02E10F060001830BF /* v_arc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_arc.c; sourceTree = "<group>"; };
+		F43E0BB12E10F060001830BF /* v_bar.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_bar.c; sourceTree = "<group>"; };
+		F43E0BB22E10F060001830BF /* v_bit_image.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_bit_image.c; sourceTree = "<group>"; };
+		F43E0BB32E10F060001830BF /* v_circle.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_circle.c; sourceTree = "<group>"; };
+		F43E0BB42E10F060001830BF /* v_clear_disp_list.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_clear_disp_list.c; sourceTree = "<group>"; };
+		F43E0BB52E10F060001830BF /* v_clrwk.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_clrwk.c; sourceTree = "<group>"; };
+		F43E0BB62E10F060001830BF /* v_clsvwk.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_clsvwk.c; sourceTree = "<group>"; };
+		F43E0BB72E10F060001830BF /* v_contourfill.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_contourfill.c; sourceTree = "<group>"; };
+		F43E0BB82E10F060001830BF /* v_curdown.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_curdown.c; sourceTree = "<group>"; };
+		F43E0BB92E10F060001830BF /* v_curhome.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_curhome.c; sourceTree = "<group>"; };
+		F43E0BBA2E10F060001830BF /* v_curleft.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_curleft.c; sourceTree = "<group>"; };
+		F43E0BBB2E10F060001830BF /* v_curright.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_curright.c; sourceTree = "<group>"; };
+		F43E0BBC2E10F060001830BF /* v_curtext.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_curtext.c; sourceTree = "<group>"; };
+		F43E0BBD2E10F060001830BF /* v_curup.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_curup.c; sourceTree = "<group>"; };
+		F43E0BBE2E10F060001830BF /* v_dspcur.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_dspcur.c; sourceTree = "<group>"; };
+		F43E0BBF2E10F060001830BF /* v_eeol.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_eeol.c; sourceTree = "<group>"; };
+		F43E0BC02E10F060001830BF /* v_eeos.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_eeos.c; sourceTree = "<group>"; };
+		F43E0BC12E10F060001830BF /* v_ellarc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_ellarc.c; sourceTree = "<group>"; };
+		F43E0BC22E10F060001830BF /* v_ellipse.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_ellipse.c; sourceTree = "<group>"; };
+		F43E0BC32E10F060001830BF /* v_ellpie.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_ellpie.c; sourceTree = "<group>"; };
+		F43E0BC42E10F060001830BF /* v_enter_cur.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_enter_cur.c; sourceTree = "<group>"; };
+		F43E0BC52E10F060001830BF /* v_exit_cur.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_exit_cur.c; sourceTree = "<group>"; };
+		F43E0BC62E10F060001830BF /* v_fillarea.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_fillarea.c; sourceTree = "<group>"; };
+		F43E0BC72E10F060001830BF /* v_form_adv.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_form_adv.c; sourceTree = "<group>"; };
+		F43E0BC82E10F060001830BF /* v_get_pixel.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_get_pixel.c; sourceTree = "<group>"; };
+		F43E0BC92E10F060001830BF /* v_gtext.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_gtext.c; sourceTree = "<group>"; };
+		F43E0BCA2E10F060001830BF /* v_hide_c.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_hide_c.c; sourceTree = "<group>"; };
+		F43E0BCB2E10F060001830BF /* v_justified.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_justified.c; sourceTree = "<group>"; };
+		F43E0BCC2E10F060001830BF /* v_opnvwk.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_opnvwk.c; sourceTree = "<group>"; };
+		F43E0BCD2E10F060001830BF /* v_output_window.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_output_window.c; sourceTree = "<group>"; };
+		F43E0BCE2E10F060001830BF /* v_pie.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_pie.c; sourceTree = "<group>"; };
+		F43E0BCF2E10F060001830BF /* v_pline.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_pline.c; sourceTree = "<group>"; };
+		F43E0BD02E10F060001830BF /* v_pmarker.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_pmarker.c; sourceTree = "<group>"; };
+		F43E0BD12E10F060001830BF /* v_rbox.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_rbox.c; sourceTree = "<group>"; };
+		F43E0BD22E10F060001830BF /* v_recfl.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_recfl.c; sourceTree = "<group>"; };
+		F43E0BD32E10F060001830BF /* v_rfbox.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_rfbox.c; sourceTree = "<group>"; };
+		F43E0BD42E10F060001830BF /* v_rmcur.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_rmcur.c; sourceTree = "<group>"; };
+		F43E0BD52E10F060001830BF /* v_rvoff.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_rvoff.c; sourceTree = "<group>"; };
+		F43E0BD62E10F060001830BF /* v_rvon.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_rvon.c; sourceTree = "<group>"; };
+		F43E0BD72E10F060001830BF /* v_show_c.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_show_c.c; sourceTree = "<group>"; };
+		F43E0BD82E10F060001830BF /* v_updwk.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v_updwk.c; sourceTree = "<group>"; };
+		F43E0BDA2E10F060001830BF /* vex_butv.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vex_butv.c; sourceTree = "<group>"; };
+		F43E0BDB2E10F060001830BF /* vex_curv.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vex_curv.c; sourceTree = "<group>"; };
+		F43E0BDC2E10F060001830BF /* vex_motv.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vex_motv.c; sourceTree = "<group>"; };
+		F43E0BDD2E10F060001830BF /* vex_timv.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vex_timv.c; sourceTree = "<group>"; };
+		F43E0BDE2E10F060001830BF /* vq_chcells.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vq_chcells.c; sourceTree = "<group>"; };
+		F43E0BDF2E10F060001830BF /* vq_color.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vq_color.c; sourceTree = "<group>"; };
+		F43E0BE02E10F060001830BF /* vq_colours.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vq_colours.c; sourceTree = "<group>"; };
+		F43E0BE12E10F060001830BF /* vq_curaddress.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vq_curaddress.c; sourceTree = "<group>"; };
+		F43E0BE22E10F060001830BF /* vq_extnd.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vq_extnd.c; sourceTree = "<group>"; };
+		F43E0BE32E10F060001830BF /* vq_hardcopy.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vq_hardcopy.c; sourceTree = "<group>"; };
+		F43E0BE42E10F060001830BF /* vq_key_s.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vq_key_s.c; sourceTree = "<group>"; };
+		F43E0BE52E10F060001830BF /* vq_mouse.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vq_mouse.c; sourceTree = "<group>"; };
+		F43E0BE62E10F060001830BF /* vq_pixrgb.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vq_pixrgb.c; sourceTree = "<group>"; };
+		F43E0BE72E10F060001830BF /* vq_tabstatus.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vq_tabstatus.c; sourceTree = "<group>"; };
+		F43E0BE82E10F060001830BF /* vqf_attributes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vqf_attributes.c; sourceTree = "<group>"; };
+		F43E0BE92E10F060001830BF /* vqin_mode.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vqin_mode.c; sourceTree = "<group>"; };
+		F43E0BEA2E10F060001830BF /* vql_attributes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vql_attributes.c; sourceTree = "<group>"; };
+		F43E0BEB2E10F060001830BF /* vqm_attributes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vqm_attributes.c; sourceTree = "<group>"; };
+		F43E0BEC2E10F060001830BF /* vqt_attributes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vqt_attributes.c; sourceTree = "<group>"; };
+		F43E0BED2E10F060001830BF /* vqt_extent.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vqt_extent.c; sourceTree = "<group>"; };
+		F43E0BEE2E10F060001830BF /* vqt_name.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vqt_name.c; sourceTree = "<group>"; };
+		F43E0BEF2E10F060001830BF /* vqt_width.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vqt_width.c; sourceTree = "<group>"; };
+		F43E0BF02E10F060001830BF /* vr_trnfm.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vr_trnfm.c; sourceTree = "<group>"; };
+		F43E0BF12E10F060001830BF /* vro_cpyfm.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vro_cpyfm.c; sourceTree = "<group>"; };
+		F43E0BF22E10F060001830BF /* vrq_locator.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vrq_locator.c; sourceTree = "<group>"; };
+		F43E0BF32E10F060001830BF /* vrq_string.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vrq_string.c; sourceTree = "<group>"; };
+		F43E0BF42E10F060001830BF /* vrt_cpyfm.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vrt_cpyfm.c; sourceTree = "<group>"; };
+		F43E0BF52E10F060001830BF /* vs_clip.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vs_clip.c; sourceTree = "<group>"; };
+		F43E0BF62E10F060001830BF /* vs_color.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vs_color.c; sourceTree = "<group>"; };
+		F43E0BF72E10F060001830BF /* vs_curaddress.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vs_curaddress.c; sourceTree = "<group>"; };
+		F43E0BF82E10F060001830BF /* vs_pixrgb.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vs_pixrgb.c; sourceTree = "<group>"; };
+		F43E0BF92E10F060001830BF /* vsc_form.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vsc_form.c; sourceTree = "<group>"; };
+		F43E0BFA2E10F060001830BF /* vsf_color.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vsf_color.c; sourceTree = "<group>"; };
+		F43E0BFB2E10F060001830BF /* vsf_interior.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vsf_interior.c; sourceTree = "<group>"; };
+		F43E0BFC2E10F060001830BF /* vsf_perimeter.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vsf_perimeter.c; sourceTree = "<group>"; };
+		F43E0BFD2E10F060001830BF /* vsf_style.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vsf_style.c; sourceTree = "<group>"; };
+		F43E0BFE2E10F060001830BF /* vsf_udpat.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vsf_udpat.c; sourceTree = "<group>"; };
+		F43E0BFF2E10F060001830BF /* vsf_udsty.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vsf_udsty.c; sourceTree = "<group>"; };
+		F43E0C002E10F060001830BF /* vsin_mode.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vsin_mode.c; sourceTree = "<group>"; };
+		F43E0C012E10F060001830BF /* vsl_color.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vsl_color.c; sourceTree = "<group>"; };
+		F43E0C022E10F060001830BF /* vsl_ends.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vsl_ends.c; sourceTree = "<group>"; };
+		F43E0C032E10F060001830BF /* vsl_type.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vsl_type.c; sourceTree = "<group>"; };
+		F43E0C042E10F060001830BF /* vsl_width.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vsl_width.c; sourceTree = "<group>"; };
+		F43E0C052E10F060001830BF /* vsm_color.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vsm_color.c; sourceTree = "<group>"; };
+		F43E0C062E10F060001830BF /* vsm_height.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vsm_height.c; sourceTree = "<group>"; };
+		F43E0C072E10F060001830BF /* vsm_locator.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vsm_locator.c; sourceTree = "<group>"; };
+		F43E0C082E10F060001830BF /* vsm_type.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vsm_type.c; sourceTree = "<group>"; };
+		F43E0C092E10F060001830BF /* vst_alignment.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vst_alignment.c; sourceTree = "<group>"; };
+		F43E0C0A2E10F060001830BF /* vst_color.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vst_color.c; sourceTree = "<group>"; };
+		F43E0C0B2E10F060001830BF /* vst_effects.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vst_effects.c; sourceTree = "<group>"; };
+		F43E0C0C2E10F060001830BF /* vst_font.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vst_font.c; sourceTree = "<group>"; };
+		F43E0C0D2E10F060001830BF /* vst_height.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vst_height.c; sourceTree = "<group>"; };
+		F43E0C0E2E10F060001830BF /* vst_load_fonts.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vst_load_fonts.c; sourceTree = "<group>"; };
+		F43E0C0F2E10F060001830BF /* vst_point.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vst_point.c; sourceTree = "<group>"; };
+		F43E0C102E10F060001830BF /* vst_rotation.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vst_rotation.c; sourceTree = "<group>"; };
+		F43E0C112E10F060001830BF /* vst_unload_fonts.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vst_unload_fonts.c; sourceTree = "<group>"; };
+		F43E0C122E10F060001830BF /* vswr_mode.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vswr_mode.c; sourceTree = "<group>"; };
+		F43E0C7B2E10F41F001830BF /* testvdi */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = testvdi; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F43E0C7C2E10F41F001830BF /* testvdi */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = testvdi;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F43E0B872E10E16F001830BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F43E0C782E10F41F001830BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F43E0C852E10F43C001830BF /* libvdi.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F43E0B802E10E16F001830BF = {
+			isa = PBXGroup;
+			children = (
+				F43E0C872E10F474001830BF /* tests */,
+				F43E0C862E10F468001830BF /* library */,
+				F43E0C842E10F43C001830BF /* Frameworks */,
+				F43E0B8A2E10E16F001830BF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F43E0B8A2E10E16F001830BF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F43E0B892E10E16F001830BF /* libvdi.a */,
+				F43E0C7B2E10F41F001830BF /* testvdi */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F43E0B992E10E5E5001830BF /* io */ = {
+			isa = PBXGroup;
+			children = (
+				F43E0B912E10E5D0001830BF /* gemio.h */,
+				F43E0B922E10E5D0001830BF /* gemio.c */,
+				F43E0B932E10E5D0001830BF /* gemmsg.h */,
+				F43E0B942E10E5D0001830BF /* gemmsg.c */,
+			);
+			path = io;
+			sourceTree = "<group>";
+		};
+		F43E0BA52E10E674001830BF /* util */ = {
+			isa = PBXGroup;
+			children = (
+				F43E0B9A2E10E674001830BF /* args.h */,
+				F43E0B9B2E10E674001830BF /* args.c */,
+				F43E0B9C2E10E674001830BF /* args.license */,
+				F43E0B9D2E10E674001830BF /* geometry.h */,
+				F43E0B9E2E10E674001830BF /* geometry.c */,
+				F43E0B9F2E10E674001830BF /* map.h */,
+				F43E0BA02E10E674001830BF /* map.c */,
+				F43E0BA12E10E674001830BF /* stringUtils.h */,
+				F43E0BA22E10E674001830BF /* stringUtils.c */,
+				F43E0BA32E10E674001830BF /* vec.h */,
+				F43E0BA42E10E674001830BF /* vec.c */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		F43E0C132E10F060001830BF /* vdi */ = {
+			isa = PBXGroup;
+			children = (
+				F43E0BB02E10F060001830BF /* v_arc.c */,
+				F43E0BB12E10F060001830BF /* v_bar.c */,
+				F43E0BB22E10F060001830BF /* v_bit_image.c */,
+				F43E0BB32E10F060001830BF /* v_circle.c */,
+				F43E0BB42E10F060001830BF /* v_clear_disp_list.c */,
+				F43E0BB52E10F060001830BF /* v_clrwk.c */,
+				F43E0BB62E10F060001830BF /* v_clsvwk.c */,
+				F43E0BB72E10F060001830BF /* v_contourfill.c */,
+				F43E0BB82E10F060001830BF /* v_curdown.c */,
+				F43E0BB92E10F060001830BF /* v_curhome.c */,
+				F43E0BBA2E10F060001830BF /* v_curleft.c */,
+				F43E0BBB2E10F060001830BF /* v_curright.c */,
+				F43E0BBC2E10F060001830BF /* v_curtext.c */,
+				F43E0BBD2E10F060001830BF /* v_curup.c */,
+				F43E0BBE2E10F060001830BF /* v_dspcur.c */,
+				F43E0BBF2E10F060001830BF /* v_eeol.c */,
+				F43E0BC02E10F060001830BF /* v_eeos.c */,
+				F43E0BC12E10F060001830BF /* v_ellarc.c */,
+				F43E0BC22E10F060001830BF /* v_ellipse.c */,
+				F43E0BC32E10F060001830BF /* v_ellpie.c */,
+				F43E0BC42E10F060001830BF /* v_enter_cur.c */,
+				F43E0BC52E10F060001830BF /* v_exit_cur.c */,
+				F43E0BC62E10F060001830BF /* v_fillarea.c */,
+				F43E0BC72E10F060001830BF /* v_form_adv.c */,
+				F43E0BC82E10F060001830BF /* v_get_pixel.c */,
+				F43E0BC92E10F060001830BF /* v_gtext.c */,
+				F43E0BCA2E10F060001830BF /* v_hide_c.c */,
+				F43E0BCB2E10F060001830BF /* v_justified.c */,
+				F43E0BCC2E10F060001830BF /* v_opnvwk.c */,
+				F43E0BCD2E10F060001830BF /* v_output_window.c */,
+				F43E0BCE2E10F060001830BF /* v_pie.c */,
+				F43E0BCF2E10F060001830BF /* v_pline.c */,
+				F43E0BD02E10F060001830BF /* v_pmarker.c */,
+				F43E0BD12E10F060001830BF /* v_rbox.c */,
+				F43E0BD22E10F060001830BF /* v_recfl.c */,
+				F43E0BD32E10F060001830BF /* v_rfbox.c */,
+				F43E0BD42E10F060001830BF /* v_rmcur.c */,
+				F43E0BD52E10F060001830BF /* v_rvoff.c */,
+				F43E0BD62E10F060001830BF /* v_rvon.c */,
+				F43E0BD72E10F060001830BF /* v_show_c.c */,
+				F43E0BD82E10F060001830BF /* v_updwk.c */,
+				F43E0BDA2E10F060001830BF /* vex_butv.c */,
+				F43E0BDB2E10F060001830BF /* vex_curv.c */,
+				F43E0BDC2E10F060001830BF /* vex_motv.c */,
+				F43E0BDD2E10F060001830BF /* vex_timv.c */,
+				F43E0BDE2E10F060001830BF /* vq_chcells.c */,
+				F43E0BDF2E10F060001830BF /* vq_color.c */,
+				F43E0BE02E10F060001830BF /* vq_colours.c */,
+				F43E0BE12E10F060001830BF /* vq_curaddress.c */,
+				F43E0BE22E10F060001830BF /* vq_extnd.c */,
+				F43E0BE32E10F060001830BF /* vq_hardcopy.c */,
+				F43E0BE42E10F060001830BF /* vq_key_s.c */,
+				F43E0BE52E10F060001830BF /* vq_mouse.c */,
+				F43E0BE62E10F060001830BF /* vq_pixrgb.c */,
+				F43E0BE72E10F060001830BF /* vq_tabstatus.c */,
+				F43E0BE82E10F060001830BF /* vqf_attributes.c */,
+				F43E0BE92E10F060001830BF /* vqin_mode.c */,
+				F43E0BEA2E10F060001830BF /* vql_attributes.c */,
+				F43E0BEB2E10F060001830BF /* vqm_attributes.c */,
+				F43E0BEC2E10F060001830BF /* vqt_attributes.c */,
+				F43E0BED2E10F060001830BF /* vqt_extent.c */,
+				F43E0BEE2E10F060001830BF /* vqt_name.c */,
+				F43E0BEF2E10F060001830BF /* vqt_width.c */,
+				F43E0BF02E10F060001830BF /* vr_trnfm.c */,
+				F43E0BF12E10F060001830BF /* vro_cpyfm.c */,
+				F43E0BF22E10F060001830BF /* vrq_locator.c */,
+				F43E0BF32E10F060001830BF /* vrq_string.c */,
+				F43E0BF42E10F060001830BF /* vrt_cpyfm.c */,
+				F43E0BF52E10F060001830BF /* vs_clip.c */,
+				F43E0BF62E10F060001830BF /* vs_color.c */,
+				F43E0BF72E10F060001830BF /* vs_curaddress.c */,
+				F43E0BF82E10F060001830BF /* vs_pixrgb.c */,
+				F43E0BF92E10F060001830BF /* vsc_form.c */,
+				F43E0BFA2E10F060001830BF /* vsf_color.c */,
+				F43E0BFB2E10F060001830BF /* vsf_interior.c */,
+				F43E0BFC2E10F060001830BF /* vsf_perimeter.c */,
+				F43E0BFD2E10F060001830BF /* vsf_style.c */,
+				F43E0BFE2E10F060001830BF /* vsf_udpat.c */,
+				F43E0BFF2E10F060001830BF /* vsf_udsty.c */,
+				F43E0C002E10F060001830BF /* vsin_mode.c */,
+				F43E0C012E10F060001830BF /* vsl_color.c */,
+				F43E0C022E10F060001830BF /* vsl_ends.c */,
+				F43E0C032E10F060001830BF /* vsl_type.c */,
+				F43E0C042E10F060001830BF /* vsl_width.c */,
+				F43E0C052E10F060001830BF /* vsm_color.c */,
+				F43E0C062E10F060001830BF /* vsm_height.c */,
+				F43E0C072E10F060001830BF /* vsm_locator.c */,
+				F43E0C082E10F060001830BF /* vsm_type.c */,
+				F43E0C092E10F060001830BF /* vst_alignment.c */,
+				F43E0C0A2E10F060001830BF /* vst_color.c */,
+				F43E0C0B2E10F060001830BF /* vst_effects.c */,
+				F43E0C0C2E10F060001830BF /* vst_font.c */,
+				F43E0C0D2E10F060001830BF /* vst_height.c */,
+				F43E0C0E2E10F060001830BF /* vst_load_fonts.c */,
+				F43E0C0F2E10F060001830BF /* vst_point.c */,
+				F43E0C102E10F060001830BF /* vst_rotation.c */,
+				F43E0C112E10F060001830BF /* vst_unload_fonts.c */,
+				F43E0C122E10F060001830BF /* vswr_mode.c */,
+			);
+			path = vdi;
+			sourceTree = "<group>";
+		};
+		F43E0C842E10F43C001830BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F43E0C862E10F468001830BF /* library */ = {
+			isa = PBXGroup;
+			children = (
+				F43E0C132E10F060001830BF /* vdi */,
+				F43E0BA52E10E674001830BF /* util */,
+				F43E0B992E10E5E5001830BF /* io */,
+				F43E0B902E10E190001830BF /* vdi.h */,
+			);
+			path = library;
+			sourceTree = "<group>";
+		};
+		F43E0C872E10F474001830BF /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				F43E0C7C2E10F41F001830BF /* testvdi */,
+			);
+			path = tests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		F43E0B852E10E16F001830BF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F43E0B972E10E5D0001830BF /* gemmsg.h in Headers */,
+				F43E0BAB2E10E674001830BF /* vec.h in Headers */,
+				F43E0BAC2E10E674001830BF /* stringUtils.h in Headers */,
+				F43E0BAD2E10E674001830BF /* map.h in Headers */,
+				F43E0BAE2E10E674001830BF /* args.h in Headers */,
+				F43E0BAF2E10E674001830BF /* geometry.h in Headers */,
+				F43E0B982E10E5D0001830BF /* gemio.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		F43E0B882E10E16F001830BF /* vdi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F43E0B8D2E10E16F001830BF /* Build configuration list for PBXNativeTarget "vdi" */;
+			buildPhases = (
+				F43E0B852E10E16F001830BF /* Headers */,
+				F43E0B862E10E16F001830BF /* Sources */,
+				F43E0B872E10E16F001830BF /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = vdi;
+			packageProductDependencies = (
+			);
+			productName = vdi;
+			productReference = F43E0B892E10E16F001830BF /* libvdi.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		F43E0C7A2E10F41F001830BF /* testvdi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F43E0C7F2E10F41F001830BF /* Build configuration list for PBXNativeTarget "testvdi" */;
+			buildPhases = (
+				F43E0C772E10F41F001830BF /* Sources */,
+				F43E0C782E10F41F001830BF /* Frameworks */,
+				F43E0C792E10F41F001830BF /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F43E0C832E10F433001830BF /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				F43E0C7C2E10F41F001830BF /* testvdi */,
+			);
+			name = testvdi;
+			packageProductDependencies = (
+			);
+			productName = testvdi;
+			productReference = F43E0C7B2E10F41F001830BF /* testvdi */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F43E0B812E10E16F001830BF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					F43E0B882E10E16F001830BF = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					F43E0C7A2E10F41F001830BF = {
+						CreatedOnToolsVersion = 16.4;
+					};
+				};
+			};
+			buildConfigurationList = F43E0B842E10E16F001830BF /* Build configuration list for PBXProject "vdi" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F43E0B802E10E16F001830BF;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = F43E0B8A2E10E16F001830BF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F43E0B882E10E16F001830BF /* vdi */,
+				F43E0C7A2E10F41F001830BF /* testvdi */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F43E0B862E10E16F001830BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F43E0B952E10E5D0001830BF /* gemio.c in Sources */,
+				F43E0B962E10E5D0001830BF /* gemmsg.c in Sources */,
+				F43E0C142E10F060001830BF /* vsm_type.c in Sources */,
+				F43E0C152E10F060001830BF /* vsl_ends.c in Sources */,
+				F43E0C162E10F060001830BF /* vst_font.c in Sources */,
+				F43E0C172E10F060001830BF /* vsin_mode.c in Sources */,
+				F43E0C182E10F060001830BF /* v_ellipse.c in Sources */,
+				F43E0C192E10F060001830BF /* vsf_udsty.c in Sources */,
+				F43E0C1A2E10F060001830BF /* v_opnvwk.c in Sources */,
+				F43E0C1B2E10F060001830BF /* v_enter_cur.c in Sources */,
+				F43E0C1C2E10F060001830BF /* v_pie.c in Sources */,
+				F43E0C1D2E10F060001830BF /* vqm_attributes.c in Sources */,
+				F43E0C1E2E10F060001830BF /* v_fillarea.c in Sources */,
+				F43E0C1F2E10F060001830BF /* vq_tabstatus.c in Sources */,
+				F43E0C202E10F060001830BF /* vs_clip.c in Sources */,
+				F43E0C212E10F060001830BF /* v_circle.c in Sources */,
+				F43E0C222E10F060001830BF /* vq_color.c in Sources */,
+				F43E0C232E10F060001830BF /* vqt_attributes.c in Sources */,
+				F43E0C242E10F060001830BF /* v_curup.c in Sources */,
+				F43E0C252E10F060001830BF /* v_clrwk.c in Sources */,
+				F43E0C262E10F060001830BF /* vst_rotation.c in Sources */,
+				F43E0C272E10F060001830BF /* vq_key_s.c in Sources */,
+				F43E0C282E10F060001830BF /* vex_butv.c in Sources */,
+				F43E0C292E10F060001830BF /* v_bit_image.c in Sources */,
+				F43E0C2A2E10F060001830BF /* v_clsvwk.c in Sources */,
+				F43E0C2B2E10F060001830BF /* vsf_interior.c in Sources */,
+				F43E0C2C2E10F060001830BF /* vq_curaddress.c in Sources */,
+				F43E0C2D2E10F060001830BF /* vsf_style.c in Sources */,
+				F43E0C2E2E10F060001830BF /* v_ellpie.c in Sources */,
+				F43E0C2F2E10F060001830BF /* vqt_width.c in Sources */,
+				F43E0C302E10F060001830BF /* vrq_locator.c in Sources */,
+				F43E0C312E10F060001830BF /* vst_color.c in Sources */,
+				F43E0C322E10F060001830BF /* v_bar.c in Sources */,
+				F43E0C332E10F060001830BF /* v_rfbox.c in Sources */,
+				F43E0C342E10F060001830BF /* vq_pixrgb.c in Sources */,
+				F43E0C352E10F060001830BF /* vex_curv.c in Sources */,
+				F43E0C362E10F060001830BF /* vsl_color.c in Sources */,
+				F43E0C372E10F060001830BF /* v_arc.c in Sources */,
+				F43E0C382E10F060001830BF /* vex_timv.c in Sources */,
+				F43E0C392E10F060001830BF /* v_rmcur.c in Sources */,
+				F43E0C3A2E10F060001830BF /* vsm_color.c in Sources */,
+				F43E0C3B2E10F060001830BF /* vrq_string.c in Sources */,
+				F43E0C3C2E10F060001830BF /* vs_pixrgb.c in Sources */,
+				F43E0C3D2E10F060001830BF /* v_pline.c in Sources */,
+				F43E0C3E2E10F060001830BF /* vrt_cpyfm.c in Sources */,
+				F43E0C3F2E10F060001830BF /* vst_height.c in Sources */,
+				F43E0C402E10F060001830BF /* v_gtext.c in Sources */,
+				F43E0C412E10F060001830BF /* vsf_perimeter.c in Sources */,
+				F43E0C422E10F060001830BF /* vsf_color.c in Sources */,
+				F43E0C432E10F060001830BF /* vqin_mode.c in Sources */,
+				F43E0C442E10F060001830BF /* vsc_form.c in Sources */,
+				F43E0C452E10F060001830BF /* vsl_type.c in Sources */,
+				F43E0C462E10F060001830BF /* vq_hardcopy.c in Sources */,
+				F43E0C472E10F060001830BF /* v_ellarc.c in Sources */,
+				F43E0C482E10F060001830BF /* vex_motv.c in Sources */,
+				F43E0C492E10F060001830BF /* v_hide_c.c in Sources */,
+				F43E0C4A2E10F060001830BF /* v_justified.c in Sources */,
+				F43E0C4B2E10F060001830BF /* v_contourfill.c in Sources */,
+				F43E0C4C2E10F060001830BF /* vs_color.c in Sources */,
+				F43E0C4D2E10F060001830BF /* v_pmarker.c in Sources */,
+				F43E0C4E2E10F060001830BF /* v_output_window.c in Sources */,
+				F43E0C4F2E10F060001830BF /* v_clear_disp_list.c in Sources */,
+				F43E0C502E10F060001830BF /* vqt_extent.c in Sources */,
+				F43E0C512E10F060001830BF /* vsl_width.c in Sources */,
+				F43E0C522E10F060001830BF /* v_curleft.c in Sources */,
+				F43E0C532E10F060001830BF /* v_rvon.c in Sources */,
+				F43E0C542E10F060001830BF /* vq_extnd.c in Sources */,
+				F43E0C552E10F060001830BF /* v_curtext.c in Sources */,
+				F43E0C562E10F060001830BF /* vqf_attributes.c in Sources */,
+				F43E0C572E10F060001830BF /* vq_chcells.c in Sources */,
+				F43E0C582E10F060001830BF /* vr_trnfm.c in Sources */,
+				F43E0C592E10F060001830BF /* v_eeos.c in Sources */,
+				F43E0C5A2E10F060001830BF /* vro_cpyfm.c in Sources */,
+				F43E0C5B2E10F060001830BF /* v_form_adv.c in Sources */,
+				F43E0C5C2E10F060001830BF /* v_curhome.c in Sources */,
+				F43E0C5D2E10F060001830BF /* vst_unload_fonts.c in Sources */,
+				F43E0C5E2E10F060001830BF /* vsm_locator.c in Sources */,
+				F43E0C5F2E10F060001830BF /* vswr_mode.c in Sources */,
+				F43E0C602E10F060001830BF /* vsm_height.c in Sources */,
+				F43E0C612E10F060001830BF /* v_get_pixel.c in Sources */,
+				F43E0C622E10F060001830BF /* vq_colours.c in Sources */,
+				F43E0C632E10F060001830BF /* vst_effects.c in Sources */,
+				F43E0C642E10F060001830BF /* vq_mouse.c in Sources */,
+				F43E0C652E10F060001830BF /* v_exit_cur.c in Sources */,
+				F43E0C662E10F060001830BF /* v_updwk.c in Sources */,
+				F43E0C672E10F060001830BF /* v_recfl.c in Sources */,
+				F43E0C682E10F060001830BF /* vsf_udpat.c in Sources */,
+				F43E0C692E10F060001830BF /* v_curright.c in Sources */,
+				F43E0C6A2E10F060001830BF /* vs_curaddress.c in Sources */,
+				F43E0C6B2E10F060001830BF /* vst_load_fonts.c in Sources */,
+				F43E0C6C2E10F060001830BF /* v_dspcur.c in Sources */,
+				F43E0C6D2E10F060001830BF /* v_rbox.c in Sources */,
+				F43E0C6E2E10F060001830BF /* v_show_c.c in Sources */,
+				F43E0C6F2E10F060001830BF /* v_rvoff.c in Sources */,
+				F43E0C702E10F060001830BF /* vql_attributes.c in Sources */,
+				F43E0C712E10F060001830BF /* vqt_name.c in Sources */,
+				F43E0C722E10F060001830BF /* v_curdown.c in Sources */,
+				F43E0C732E10F060001830BF /* vst_alignment.c in Sources */,
+				F43E0C742E10F060001830BF /* v_eeol.c in Sources */,
+				F43E0C752E10F060001830BF /* vst_point.c in Sources */,
+				F43E0BA62E10E674001830BF /* vec.c in Sources */,
+				F43E0BA72E10E674001830BF /* stringUtils.c in Sources */,
+				F43E0BA82E10E674001830BF /* geometry.c in Sources */,
+				F43E0BA92E10E674001830BF /* map.c in Sources */,
+				F43E0BAA2E10E674001830BF /* args.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F43E0C772E10F41F001830BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F43E0C832E10F433001830BF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F43E0B882E10E16F001830BF /* vdi */;
+			targetProxy = F43E0C822E10F433001830BF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F43E0B8B2E10E16F001830BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F43E0B8C2E10E16F001830BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F43E0B8E2E10E16F001830BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../common/";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		F43E0B8F2E10E16F001830BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../common/";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		F43E0C802E10F41F001830BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/library/io",
+					"$(PROJECT_DIR)/library/util",
+					"$(PROJECT_DIR)/library/",
+					"$(PROJECT_DIR)/../../common",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F43E0C812E10F41F001830BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/library/io",
+					"$(PROJECT_DIR)/library/util",
+					"$(PROJECT_DIR)/library/",
+					"$(PROJECT_DIR)/../../common",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F43E0B842E10E16F001830BF /* Build configuration list for PBXProject "vdi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F43E0B8B2E10E16F001830BF /* Debug */,
+				F43E0B8C2E10E16F001830BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F43E0B8D2E10E16F001830BF /* Build configuration list for PBXNativeTarget "vdi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F43E0B8E2E10E16F001830BF /* Debug */,
+				F43E0B8F2E10E16F001830BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F43E0C7F2E10F41F001830BF /* Build configuration list for PBXNativeTarget "testvdi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F43E0C802E10F41F001830BF /* Debug */,
+				F43E0C812E10F41F001830BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F43E0B812E10E16F001830BF /* Project object */;
+}
