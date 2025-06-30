@@ -8,6 +8,7 @@
 
 #include "gemTypes.h"
 #include "properties.h"
+#include "transport.h"
 
 /*****************************************************************************\
 |* Forward declarations
@@ -56,6 +57,13 @@ class VDI : public QObject
 		explicit VDI(QObject *parent = nullptr);
 
 
+	public slots:
+		/*********************************************************************\
+		|* A frame has been drawn
+		\*********************************************************************/
+		void frameRendered(void);
+
+
 	public:
 		/*********************************************************************\
 		|* Get a reference to the VDI
@@ -73,11 +81,11 @@ class VDI : public QObject
 		void update(int x, int y, int w, int h);
 		void update(void);
 
-	public slots:
+
 		/*********************************************************************\
-		|* A frame has been drawn
+		|* Operation:   1   : Open a physical workstation
 		\*********************************************************************/
-		void frameRendered(void);
+		void v_opnwk(Transport *io, ClientMsg &msg);
 
 	};
 

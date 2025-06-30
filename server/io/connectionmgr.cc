@@ -172,14 +172,19 @@ void ConnectionMgr::_incomingData(void)
 	Transport *io			= _conns[socket->socketDescriptor()];
 
 	ClientMsg cm;
-	while (io->read(cm))
+	while (socket->bytesAvailable()>0)
 		{
+		io->read(cm);
 		fprintf(stderr, "Despatch message of type: %d\n", cm.type());
 		switch (cm.type())
 			{
-		// 	case ClientMsg::V_CLRWK:				// 3
-		// 		VDI::sharedInstance().v_clrwk(ws);
-		// 		break;
+			case ClientMsg::V_OPNWK:				// 1
+				VDI::sharedInstance().v_opnwk(io, cm);
+				break;
+
+		// case ClientMsg::V_CLRWK:				// 3
+		// 	VDI::sharedInstance().v_clrwk(ws);
+		// 	break;
 
 		// 	case ClientMsg::VQ_CHCELLS:				// 5.1
 		// 		VDI::sharedInstance().vq_chcells(ws, &cm);

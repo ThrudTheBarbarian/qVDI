@@ -2,7 +2,7 @@
 //  main.c
 //  testvdi
 //
-//  Created by Simon Gornall on 6/28/25.
+//  Created by ThrudTheBarbarian on 6/28/25.
 //
 #include "vdi.h"
 

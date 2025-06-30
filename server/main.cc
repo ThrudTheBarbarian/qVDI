@@ -13,8 +13,8 @@ int main(int argc, char *argv[])
 	/*************************************************************************\
 	|* Create the main window
 	\*************************************************************************/
-	Screen &screen = Screen::sharedInstance();
-	screen.show();
+	Screen *screen = Screen::sharedInstance();
+	screen->show();
 
 	/*************************************************************************\
 	|* Initialise components

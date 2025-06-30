@@ -24,6 +24,15 @@ class Workstation : public QObject
 	|* Properties
 	\*************************************************************************/
 
+	// The current device-type (1=same-res, 2+n = forced res, >10 = device
+	GET(int, deviceId);
+
+	// The handle as passed to the client
+	GET(int16_t, handle);
+
+	// Whether this is a workstation opened by v_opnvwk()
+	GETSET(bool, isVirtual, IsVirtual);
+
 	// current line type
 	GETSET(int16_t, lineType, LineType);
 
@@ -45,6 +54,19 @@ class Workstation : public QObject
 	// Default fill interior style
 	GETSET(int16_t, interiorFillStyle, InteriorFillStyle);
 
+	// Default fill index (which hatch or pattern to use, if interiorStyle
+	// says we fill in one of those two methods)
+	GETSET(int16_t, fillIndex, FillIndex);
+
+	// current fill colour index
+	GETSET(int16_t, fillColourIndex, FillColourIndex);
+
+	// Which co-ordinate system to use
+	GETSET(int16_t, coordType, CoordType);
+
+	// Which page size to use
+	GETSET(int16_t, pageSize, PageSize);
+
 	// Cursors or graphics
 	GET(bool, alphaMode);
 
@@ -64,8 +86,8 @@ class Workstation : public QObject
 	|* constructor
 	\*************************************************************************/
 	public:
-		explicit Workstation(QObject *parent = nullptr);
-		explicit Workstation(Transport *io, QObject *parent = nullptr);
+	explicit Workstation(QObject *parent = nullptr);
+	explicit Workstation(Transport *io, QObject *parent = nullptr);
 
 
 	/*************************************************************************\
@@ -79,6 +101,17 @@ class Workstation : public QObject
 	|*		   be filled out, and the handle set to >0 on success.
 	\*************************************************************************/
 	virtual bool open(int16_t *workIn, int16_t *handle, int16_t *workOut);
+
+	/*************************************************************************\
+	|* Method: Set the device type for the workstation, this can be overridden
+	|*         in subclasses
+	\*************************************************************************/
+	virtual void setDeviceId(int deviceId);
+
+	/*************************************************************************\
+	|* Method: Claim the next available handle
+	\*************************************************************************/
+	void claimNextHandle(void);
 
 	/*************************************************************************\
 	|* Method: tell the workstation it needs to update within a given area, or

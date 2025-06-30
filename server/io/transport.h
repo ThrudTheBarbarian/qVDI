@@ -30,11 +30,15 @@ class Transport : public QObject
 		\*********************************************************************/
 		explicit Transport(QLocalSocket *socket, QObject *parent = nullptr);
 
-
 		/*********************************************************************\
 		|* Read a message into the message buffer
 		\*********************************************************************/
 		bool read(ClientMsg &msg);
+
+		/*********************************************************************\
+		|* Write a message to the socket
+		\*********************************************************************/
+		bool write(ClientMsg &msg, bool log=false);
 
 	};
 

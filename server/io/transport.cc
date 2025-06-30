@@ -24,16 +24,18 @@ Transport::Transport(QLocalSocket *socket, QObject *parent)
 bool Transport::read(ClientMsg &msg)
 	{
 	bool ok			= false;
+	int loops		= 0;
 
 	/*************************************************************************\
 	|* If we don't even have space for the length parameter, call read()
 	\*************************************************************************/
-	while (_buffer.size() < 2)
+	while ((_buffer.size() < 2) && (loops < 5))
 		{
-		fprintf(stderr, "Bytes available: %lld", _socket->bytesAvailable());
+		fprintf(stderr, "Bytes available: %lld\n", _socket->bytesAvailable());
 		QByteArray moreData = _socket->readAll();
 		if (moreData.length() > 0)
 			_buffer.append(moreData);
+		loops ++;
 		}
 
 	/*************************************************************************\
@@ -51,12 +53,14 @@ bool Transport::read(ClientMsg &msg)
 		/*********************************************************************\
 		|* Read the msg len, if we haven't the size for the rest, call read()
 		\*********************************************************************/
+		loops = 0;
 		int16_t length = ntohs(*words++);
-		if (_buffer.size() < 2 + 2*length)
+		while ((_buffer.size() < 2 + 2*length) && (loops < 5))
 			{
 			QByteArray moreData = _socket->readAll();
 			if (moreData.length() > 0)
 				_buffer.append(moreData);
+			loops ++;
 			}
 
 		/*********************************************************************\
@@ -83,3 +87,22 @@ bool Transport::read(ClientMsg &msg)
 
 	return ok;
 	}
+/*****************************************************************************\
+|* Write a message to the socket
+\*****************************************************************************/
+bool Transport::write(ClientMsg &msg, bool log)
+	{
+	QByteArray ba = msg.encode();
+	if (log)
+		fprintf(stderr, "Writing %d bytes to socket handle %d\n",
+				(int)ba.size(),
+				(int)(_socket->socketDescriptor()));
+
+	bool ok = (_socket->write(ba) == ba.length());
+	if (!ok)
+		fprintf(stderr, "Failed to write %d bytes to socket handle %d",
+				(int)ba.size(),
+				(int)(_socket->socketDescriptor()));
+	return ok;
+	}
+

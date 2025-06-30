@@ -22,6 +22,8 @@ class ClientMsg
 		{
 		MSG_REPLY_OFFSET			= 32768,
 		INVALID						= -1,
+		V_OPNWK						= 1,
+		V_CLSWK						= 2,
 		V_CLRWK						= 3,
 		VQ_CHCELLS					= 5001,		// Really 5.1
 		V_EXIT_CUR					= 5002,

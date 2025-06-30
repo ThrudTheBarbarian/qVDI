@@ -259,7 +259,7 @@ typedef struct
 #define FIS_ERROR		5
 
 /*****************************************************************************\
-|* Patern indexes : These are valid for fill-type == pattern 
+|* Pattern indexes : These are valid for fill-type == pattern
 \*****************************************************************************/
 #define PT_DOTS1		1	/**< diagonally offset dots */
 #define PT_DOTS2		2	/**< black grid of dots on white */
@@ -287,7 +287,7 @@ typedef struct
 #define PT_CHEVRON		24	/**< horizontal <<< pattern */
 
 /*****************************************************************************\
-|* Patern indexes : These are valid for fill-type == hatch 
+|* Pattern indexes : These are valid for fill-type == hatch
 \*****************************************************************************/
 #define PT_DIAG1		1	/**< diagonal lines */
 #define PT_DIAG2		2	/**< diagonal lines, closer together */

@@ -42,6 +42,13 @@ class ScreenWS : public PhysicalWS
 	virtual void update(void) override;
 	virtual void update(QRect& r) override;
 	virtual void update(int x, int y, int w, int h) override;
+
+	/*************************************************************************\
+	|* Method: Override the device-id set procedure to manage the different
+	|*         resolutions that might be requested. Note we always use a
+	|*         truecolour display, but the size is honoured
+	\*************************************************************************/
+	virtual void setDeviceId(int deviceId) override ;
 	};
 
 #endif // SCREENWS_H

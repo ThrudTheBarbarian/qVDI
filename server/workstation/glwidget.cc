@@ -35,7 +35,7 @@ void GLWidget::paintEvent(QPaintEvent *e)
 	QPainter painter;
 	painter.begin(this);
 
-	QImage *bg = Screen::sharedInstance().bg();
+	QImage *bg = Screen::sharedInstance()->bg();
 	if (bg != nullptr)
 		{
 		QPointF at = e->rect().topLeft();
@@ -71,5 +71,5 @@ void GLWidget::paintEvent(QPaintEvent *e)
 \*****************************************************************************/
 void GLWidget::resizeGL(int w, int h)
 	{
-	Screen::sharedInstance().resizeBackingPixmap(w, h);
+	Screen::sharedInstance()->resizeBackingPixmap(w, h);
 	}

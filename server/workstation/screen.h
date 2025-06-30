@@ -178,9 +178,9 @@ class Screen : public QMainWindow
 	/*************************************************************************\
 	|* Get a reference to the Screen
 	\*************************************************************************/
-	static Screen& sharedInstance(void)
+	static Screen* sharedInstance(void)
 		{
-		static Screen _instance;               // The actual shared instance
+		static Screen *_instance = new Screen();	// The actual instance
 		return _instance;
 		}
 
