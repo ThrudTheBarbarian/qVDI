@@ -19,6 +19,7 @@ SOURCES += \
 	io/clientmsg.cc \
 	io/connectionmgr.cc \
 	io/transport.cc \
+	ops/v_clrwk.cc \
 	ops/v_opnwk.cc \
 	vdi/vdi.cc \
     workstation/glwidget.cc \

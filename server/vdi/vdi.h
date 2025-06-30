@@ -1,6 +1,8 @@
 #ifndef VDI_H
 #define VDI_H
 
+#include <string>
+
 #include <QFont>
 #include <QFontMetrics>
 #include <QImage>
@@ -9,6 +11,8 @@
 #include "gemTypes.h"
 #include "properties.h"
 #include "transport.h"
+
+#define GEM_ROOT_DIR "/usr/local/atari"
 
 /*****************************************************************************\
 |* Forward declarations
@@ -29,6 +33,12 @@ class VDI : public QObject
 	Q_OBJECT
 	NON_COPYABLE_NOR_MOVEABLE(VDI)
 
+	/*************************************************************************\
+	|* Properties
+	\*************************************************************************/
+	GETSET(std::string, rootDir, RootDir);		// "System" disk root-dir
+	GETSETP(Workstation*, top, Top);			// Current workstation
+
 	public:
 		/*********************************************************************\
 		|* Typedefs and enums
@@ -44,11 +54,6 @@ class VDI : public QObject
 			ROUNDED_RECT	= 9
 			} FillType;
 
-		/*********************************************************************\
-		|* Properties
-		\*********************************************************************/
-		GETSETP(Workstation*, top, Top);			// Current workstation
-
 	private:
 
 		/*********************************************************************\
@@ -62,7 +67,6 @@ class VDI : public QObject
 		|* A frame has been drawn
 		\*********************************************************************/
 		void frameRendered(void);
-
 
 	public:
 		/*********************************************************************\
@@ -85,8 +89,12 @@ class VDI : public QObject
 		/*********************************************************************\
 		|* Operation:   1   : Open a physical workstation
 		\*********************************************************************/
-		void v_opnwk(Transport *io, ClientMsg &msg);
+		Workstation * v_opnwk(Transport *io, ClientMsg &msg);
 
+		/*********************************************************************\
+		|* Operation:   3   : Clear a workstation
+		\*********************************************************************/
+		void v_clrwk(Transport *io, Workstation *ws);
 	};
 
 #endif // VDI_H

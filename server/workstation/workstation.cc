@@ -1,7 +1,14 @@
+
+#include <QFile>
+
 #include "screen.h"
+#include "vdi.h"
 #include "workstation.h"
 
 static int16_t _nextHandle = 100;
+
+#define PALETTE_OFFSET			"/System/Palettes/"
+#define SYSTEM_PALETTE_NAME		"system.pal"
 
 /*****************************************************************************\
 |* Constructors
@@ -19,12 +26,14 @@ Workstation::Workstation(QObject *parent )
 			,_interiorFillStyle(FIS_SOLID)
 			,_fillIndex(PT_DOTS1)
 			,_fillColourIndex(G_BLACK)
+			,_backgroundColourIndex(G_GREEN)
 			,_alphaMode(false)
 			,_alphaX(0)
 			,_alphaY(0)
 			,_reverseVideo(false)
 			,_io(nullptr)
 	{
+	_initialise();
 	}
 
 Workstation::Workstation(Transport *io, QObject *parent )
@@ -40,12 +49,14 @@ Workstation::Workstation(Transport *io, QObject *parent )
 			,_interiorFillStyle(FIS_SOLID)
 			,_fillIndex(PT_DOTS1)
 			,_fillColourIndex(G_BLACK)
+			,_backgroundColourIndex(G_GREEN)
 			,_alphaMode(false)
 			,_alphaX(0)
 			,_alphaY(0)
 			,_reverseVideo(false)
 			,_io(io)
 	{
+	_initialise();
 	}
 
 /*****************************************************************************\
@@ -104,4 +115,49 @@ void Workstation::setDeviceId(int deviceId)
 void Workstation::claimNextHandle(void)
 	{
 	_handle = _nextHandle ++;
+	}
+
+
+#pragma mark - Private methods
+
+/*****************************************************************************\
+|* Private Method: Initialise the workstation state
+\*****************************************************************************/
+void Workstation::_initialise(void)
+	{
+	/*************************************************************************\
+	|* Read the palette file
+	\*************************************************************************/
+	std::string pPath = VDI::sharedInstance().rootDir() + PALETTE_OFFSET
+						+ SYSTEM_PALETTE_NAME;
+
+	QFile file(QString(pPath.c_str()));
+	int size	= (int)file.size();
+
+	if (file.open(QIODeviceBase::ReadOnly))
+		{
+		uint8_t *data = (uint8_t *) calloc(1, size);
+		if (file.read((char *)data, size) != size)
+			{
+			WARN("Cannot read palette at %s", pPath.c_str());
+			FREE(data);
+			return;
+			}
+
+		uint16_t * rgb	= (strncmp((char *)data, "PA01", 4) == 0)
+							? (uint16_t *)(data + 4)
+							: (uint16_t *)data;
+
+
+		for (int i=0; i<256; i++)
+			{
+			uint8_t r = ((int)(ntohs(*rgb)) * 255) / 1000; rgb ++;
+			uint8_t g = ((int)(ntohs(*rgb)) * 255) / 1000; rgb ++;
+			uint8_t b = ((int)(ntohs(*rgb)) * 255) / 1000; rgb ++;
+			setColour(i, r, g, b);
+			}
+		FREE(data);
+		}
+	else
+		WARN("Cannot open palette file %s", pPath.c_str());
 	}

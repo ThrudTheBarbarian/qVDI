@@ -2,6 +2,7 @@
 #define SCREEN_H
 
 #include <QMainWindow>
+#include <QTimer>
 
 #include "connectionmgr.h"
 #include "gemTypes.h"
@@ -162,12 +163,12 @@ class Screen : public QMainWindow
 		\*********************************************************************/
 		Ui::Screen *ui;							// Form for the screen
 		ConnectionMgr *	_conmgr;				// Connection manager
+		QTimer *		_refreshTimer;			// Used to update the screen
 
 		/*********************************************************************\
 		|* Private constructor
 		\*********************************************************************/
 		Screen(QWidget *parent = nullptr);
-
 
 	/*************************************************************************\
 	|* constructor and destructor

@@ -61,6 +61,9 @@ class Workstation : public QObject
 	// current fill colour index
 	GETSET(int16_t, fillColourIndex, FillColourIndex);
 
+	// current background fill colour index
+	GETSET(int16_t, backgroundColourIndex, BackgroundColourIndex);
+
 	// Which co-ordinate system to use
 	GETSET(int16_t, coordType, CoordType);
 
@@ -83,44 +86,81 @@ class Workstation : public QObject
 	GETSETP(Transport *, io, Io);
 
 	/*************************************************************************\
+	|* Private methods
+	\*************************************************************************/
+	void _initialise(void);				// Set up the initial state
+
+	/*************************************************************************\
+	|* Protected state
+	\*************************************************************************/
+	protected:
+		QColor _palette[256];			// First 256 colours
+
+	/*************************************************************************\
 	|* constructor
 	\*************************************************************************/
 	public:
-	explicit Workstation(QObject *parent = nullptr);
-	explicit Workstation(Transport *io, QObject *parent = nullptr);
+		explicit Workstation(QObject *parent = nullptr);
+		explicit Workstation(Transport *io, QObject *parent = nullptr);
 
 
-	/*************************************************************************\
-	|* Method: Fetch the backing store for this workstation, if there is one
-	\*************************************************************************/
-	virtual QImage * backingImage(void);
+		/*********************************************************************\
+		|* Method: Fetch the backing store for this workstation, if avaialble
+		\*********************************************************************/
+		virtual QImage * backingImage(void);
 
-	/*************************************************************************\
-	|* Method: open a workstation, returning success or failure, and taking in
-	|*         the standard arrays/handle pointer. The data in work_out will
-	|*		   be filled out, and the handle set to >0 on success.
-	\*************************************************************************/
-	virtual bool open(int16_t *workIn, int16_t *handle, int16_t *workOut);
+		/*********************************************************************\
+		|* Method: open a workstation, returning success or failure, and
+		|*         taking in the standard arrays/handle pointer. The data in
+		|*		   work_out will be filled out, and the handle set to >0 on
+		|*         success.
+		\*********************************************************************/
+		virtual bool open(int16_t *workIn, int16_t *handle, int16_t *workOut);
 
-	/*************************************************************************\
-	|* Method: Set the device type for the workstation, this can be overridden
-	|*         in subclasses
-	\*************************************************************************/
-	virtual void setDeviceId(int deviceId);
+		/*********************************************************************\
+		|* Method: Set the device type for the workstation, this can be
+		|*         overridden in subclasses
+		\*********************************************************************/
+		virtual void setDeviceId(int deviceId);
 
-	/*************************************************************************\
-	|* Method: Claim the next available handle
-	\*************************************************************************/
-	void claimNextHandle(void);
+		/*********************************************************************\
+		|* Method: Claim the next available handle
+		\*********************************************************************/
+		void claimNextHandle(void);
 
-	/*************************************************************************\
-	|* Method: tell the workstation it needs to update within a given area, or
-	|*         even the entire area
-	\*************************************************************************/
-	virtual void update(void);
-	virtual void update(QRect& r);
-	virtual void update(int x, int y, int w, int h);
+		/*********************************************************************\
+		|* Method: tell the workstation it needs to update within a given area,
+		|*         or even the entire area
+		\*********************************************************************/
+		virtual void update(void);
+		virtual void update(QRect& r);
+		virtual void update(int x, int y, int w, int h);
 
+		/*********************************************************************\
+		|* Get/Set colours in the palette
+		\*********************************************************************/
+		inline void setColour(uint32_t idx,
+							  uint8_t r,
+							  uint8_t g,
+							  uint8_t b,
+							  uint8_t a = 255)
+			{
+			if (idx < 256)
+				_palette[idx] = QColor(r,g,b,a);
+			}
+
+		inline void setColour(uint32_t idx, QColor c)
+			{
+			if (idx < 256)
+				_palette[idx] = c;
+			}
+
+		inline QColor colour(int idx)
+			{
+			if (idx < 256)
+				return _palette[idx];
+			return QColor(0,0,0,255);
+			}
 	};
 
 #endif // WORKSTATION_H

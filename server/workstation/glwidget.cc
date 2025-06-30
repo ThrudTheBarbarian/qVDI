@@ -10,7 +10,7 @@
 |* Class constructor
 \*****************************************************************************/
 GLWidget::GLWidget(QWidget *parent)
-		 :QOpenGLWidget(parent)
+		 :QWidget(parent)
 	{
 	/**************************************************************************\
 	|* Set up so we can notify the VDI when a frame is rendered
@@ -28,7 +28,6 @@ GLWidget::GLWidget(QWidget *parent)
 void GLWidget::paintEvent(QPaintEvent *e)
 	{
 	static int frames = 0;
-
 	/**************************************************************************\
 	|* Paint a single frame to the widget
 	\**************************************************************************/
@@ -69,7 +68,9 @@ void GLWidget::paintEvent(QPaintEvent *e)
 /*****************************************************************************\
 |* We were resized, inform the screen it needs to be resized too
 \*****************************************************************************/
-void GLWidget::resizeGL(int w, int h)
+void GLWidget::resizeEvent(QResizeEvent *e)
 	{
+	int w = e->size().width();
+	int h = e->size().height();
 	Screen::sharedInstance()->resizeBackingPixmap(w, h);
 	}

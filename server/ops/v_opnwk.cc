@@ -73,7 +73,7 @@ static int16_t _defaultValues[] =
 /*****************************************************************************\
 |*   1   : Open a physical workstation
 \*****************************************************************************/
-void VDI::v_opnwk(Transport *io, ClientMsg &msg)
+Workstation * VDI::v_opnwk(Transport *io, ClientMsg &msg)
 	{
 	/*************************************************************************\
 	|* Set any defaults that were sent through (<0 == ignore)
@@ -210,5 +210,8 @@ void VDI::v_opnwk(Transport *io, ClientMsg &msg)
 	|* Send the message down the wire
 	\**************************************************************************/
 	io->write(msg, true);
+
+
+	return ws;
 	}
 

@@ -6,6 +6,7 @@
 VDI::VDI(
 	QObject *parent)
 	:QObject{parent}
+	,_rootDir(GEM_ROOT_DIR)
 	,_top(nullptr)
 	{
 	}

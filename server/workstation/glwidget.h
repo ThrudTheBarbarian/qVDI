@@ -9,7 +9,7 @@
 
 #include "properties.h"
 
-class GLWidget : public QOpenGLWidget
+class GLWidget : public QWidget
 	{
 	Q_OBJECT	
 
@@ -34,7 +34,7 @@ class GLWidget : public QOpenGLWidget
 		/*********************************************************************\
 		|* Resize the screen
 		\*********************************************************************/
-		void resizeGL(int w, int h) override;
+		virtual void resizeEvent(QResizeEvent *e) override;
 
 	signals:
 		/*********************************************************************\

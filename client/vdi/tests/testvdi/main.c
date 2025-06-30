@@ -32,5 +32,9 @@ int main(int argc, const char * argv[])
 	printf("Test connection to the service\n");
 	v_opnwk(workIn, &handle, workOut);
 	printf("  : handle is %d\n", handle);
+
+	printf("Clear the workstation\n");
+	v_clrwk(handle);
+	
 	return 0;
 	}

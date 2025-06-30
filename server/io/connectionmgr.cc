@@ -123,7 +123,7 @@ void ConnectionMgr::_disconnection(void)
 	\*************************************************************************/
 	_conns.remove(handle);
 
-	fprintf(stderr, "Disconnection! %d left\n", (int) _conns.size()-1);
+	fprintf(stderr, "Disconnection! %d left\n", (int) _conns.size());
 	}
 
 /*****************************************************************************\
@@ -170,6 +170,7 @@ void ConnectionMgr::_incomingData(void)
 	{
 	QLocalSocket *socket	= (QLocalSocket *) QObject::sender();
 	Transport *io			= _conns[socket->socketDescriptor()];
+	Workstation *ws			= _wsList[io];
 
 	ClientMsg cm;
 	while (socket->bytesAvailable()>0)
@@ -179,12 +180,16 @@ void ConnectionMgr::_incomingData(void)
 		switch (cm.type())
 			{
 			case ClientMsg::V_OPNWK:				// 1
-				VDI::sharedInstance().v_opnwk(io, cm);
+				{
+				ws = VDI::sharedInstance().v_opnwk(io, cm);
+				if (ws != nullptr)
+					_wsList[io] = ws;
 				break;
+				}
 
-		// case ClientMsg::V_CLRWK:				// 3
-		// 	VDI::sharedInstance().v_clrwk(ws);
-		// 	break;
+			case ClientMsg::V_CLRWK:				// 3
+				VDI::sharedInstance().v_clrwk(io, ws);
+				break;
 
 		// 	case ClientMsg::VQ_CHCELLS:				// 5.1
 		// 		VDI::sharedInstance().vq_chcells(ws, &cm);
