@@ -4,15 +4,12 @@
 //
 //  Created by ThrudTheBarbarian on 6/28/25.
 //
+#include <stdio.h>
+#include <unistd.h>
+
 #include "vdi.h"
 
-#include <stdio.h>
 
-/*****************************************************************************\
-|* For debugging
-\*****************************************************************************/
-int debugLevel(void)
-	{ return 10; }
 
 /*****************************************************************************\
 |* Program entry point
@@ -31,14 +28,28 @@ int main(int argc, const char * argv[])
 	
 	printf("Test connection to the service\n");
 	v_opnwk(workIn, &handle, workOut);
-	printf("  : handle is %d\n", handle);
+	printf("  : handle is %d\n\n", handle);
 
-	printf("Clear the workstation\n");
-	v_clrwk(handle);
 
 	printf("Get the columns and rows on the display...\n");
 	int16_t rows, cols;
 	vq_chcells(handle, &rows, &cols);
-	printf(" rows:%d cols:%d\n", rows, cols);
+	printf("  : rows:%d cols:%d\n\n", rows, cols);
+
+	printf("Test enter alpha mode (should clear screen white)\n");
+	v_enter_cur(handle);
+
+	sleep(1);
+	printf("Move cursor down\n");
+	v_curdown(handle);
+
+	sleep(5);
+	printf("Move cursor up\n");
+	v_curup(handle);
+	sleep(5);
+
+	printf("Test exit alpha mode (should clear screen to normal)\n");
+	v_exit_cur(handle);
+
 	return 0;
 	}

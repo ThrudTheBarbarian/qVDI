@@ -36,8 +36,30 @@ class VDI : public QObject
 	/*************************************************************************\
 	|* Properties
 	\*************************************************************************/
-	GETSET(std::string, rootDir, RootDir);		// "System" disk root-dir
-	GETSETP(Workstation*, top, Top);			// Current workstation
+
+	// "System" disk root-dir
+	GETSET(std::string, rootDir, RootDir);
+
+	// Current workstation
+	GETSETP(Workstation*, top, Top);
+
+	// Cursors or graphics
+	GET(bool, alphaMode);
+
+	// Height of a character in the system font
+	GETSET(int, alphaHeight, AlphaHeight);
+
+	// Width of a character in the system font
+	GETSET(int, alphaWidth, AlphaWidth);
+
+	// Current alpha cursor X
+	GETSET(int, alphaX, AlphaX);
+
+	// Current alpha cursor Y
+	GETSET(int, alphaY, AlphaY);
+
+	// Draw in reverse video ?
+	GETSET(bool, reverseVideo, ReverseVideo);
 
 	public:
 		/*********************************************************************\
@@ -57,16 +79,30 @@ class VDI : public QObject
 	private:
 
 		/*********************************************************************\
+		|* Private state
+		\*********************************************************************/
+		bool _alphaCursorShown;			// Cursor is actually drawn
+		QImage _cursorBacking;			// What was underneath the cursor
+		QTimer * _cron;					// Used for periodic update
+
+		/*********************************************************************\
 		|* Private constructor
 		\*********************************************************************/
 		explicit VDI(QObject *parent = nullptr);
 
+		/*********************************************************************\
+		|* Private methods: manipulate the alpha cursor if it's on display
+		\*********************************************************************/
+		bool _eraseAlphaCursor(void);
+		void _drawAlphaCursor(void);
+
 
 	public slots:
 		/*********************************************************************\
-		|* A frame has been drawn
+		|* A frame should be drawn
 		\*********************************************************************/
-		void frameRendered(void);
+		void newFrame(void);
+
 
 	public:
 		/*********************************************************************\
@@ -85,6 +121,11 @@ class VDI : public QObject
 		void update(int x, int y, int w, int h);
 		void update(void);
 
+		/*********************************************************************\
+		|* Set the alpha mode and manipulate the background colour
+		\*********************************************************************/
+		void setAlphaMode(bool yn);
+
 
 		/*********************************************************************\
 		|* Operation:   1   : Open a physical workstation
@@ -99,9 +140,32 @@ class VDI : public QObject
 		/*********************************************************************\
 		|* Opcode 5.1: Query the number of character cells on the alpha display
 		\*********************************************************************/
-		void vq_chcells(qintptr handle, int16_t& rows, int16_t& columns);
+		void vq_chcells(int socket, int16_t& rows, int16_t& columns);
 		void vq_chcells(Transport *io, Workstation *ws, ClientMsg &cm);
 
-		};
+		/*********************************************************************\
+		|* Opcode 5.2: Exit alpha mode. This clears the screen and disables the
+		|*             alpha cursor
+		\*********************************************************************/
+		void v_exit_cur(Transport *io, Workstation *ws);
+
+		/*********************************************************************\
+		|* Opcode 5.3: Enter alpha mode. This clears the screen and enables the
+		|*             alpha cursor
+		\*********************************************************************/
+		void v_enter_cur(Transport *io, Workstation *ws);
+
+		/*********************************************************************\
+		|* Opcode 5.4: Move the cursor up if possible.
+		\*********************************************************************/
+		void v_curup(int socket);
+		void v_curup(Transport *io);
+
+		/*********************************************************************\
+		|* Opcode 5.5: Move the cursor down if possible.
+		\*********************************************************************/
+		void v_curdown(int socket);
+		void v_curdown(Transport *io);
+	};
 
 #endif // VDI_H

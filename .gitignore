@@ -52,3 +52,5 @@ compile_commands.json
 *creator.user*
 
 *_qmlcache.qrc
+client/vdi/vdi.xcodeproj/project.xcworkspace/xcuserdata
+client/vdi/vdi.xcodeproj/xcuserdata

@@ -75,7 +75,6 @@ static void _opn(int16_t *workIn, int16_t *handle, int16_t *workOut, int msgId)
 	if (workOut != NULL)
 		{
 		int words = MIN(57, msg.vec.length);
-		fprintf(stderr, "Got %d words\n", words);
 		memcpy(workOut, msg.vec.data, words * sizeof(int16_t));
 		for (int i=0; i<words; i++)
 			workOut[i] = ntohs(workOut[i]);
@@ -99,13 +98,7 @@ static void _opn(int16_t *workIn, int16_t *handle, int16_t *workOut, int msgId)
 	\*************************************************************************/
 	memcpy(_wsParam, msg.vec.data, msg.vec.length * sizeof(int16_t));
 	for (int i=0; i<msg.vec.length; i++)
-		{
 		_wsParam[i] = ntohs(_wsParam[i]);
-		fprintf(stderr, "rtrn %3d : %02x %02x\n",
-			i,
-			(_wsParam[i] >> 8) & 0xFF,
-			_wsParam[i] & 0xFF);
-		}
 
 	/*************************************************************************\
 	|* Clear the message allocations

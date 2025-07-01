@@ -20,6 +20,10 @@ SOURCES += \
 	io/connectionmgr.cc \
 	io/transport.cc \
 	ops/v_clrwk.cc \
+	ops/v_curdown.cc \
+	ops/v_curup.cc \
+	ops/v_enter_cur.cc \
+	ops/v_exit_cur.cc \
 	ops/v_opnwk.cc \
 	ops/vq_chcells.cc \
 	vdi/vdi.cc \

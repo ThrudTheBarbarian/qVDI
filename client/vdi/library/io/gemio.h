@@ -5,11 +5,32 @@
 //  Created by ThrudTheBarbarian on 9/7/23.
 //
 
+#undef DEBUG
+
 #ifndef gemio_h
 #define gemio_h
 
 #include <stdio.h>
+#include <string.h>
+
 #include "gemmsg.h"
+
+#ifdef DEBUG
+#	define __FILENAME__ 												\
+	(strrchr(__FILE__, '/') 											\
+		? strrchr(__FILE__, '/') + 1 									\
+		: __FILE__)
+
+#	define WARN(...) 													\
+	do 																	\
+		{ 																\
+			fprintf(stderr, "%s:%d ", __FILENAME__, __LINE__);			\
+			fprintf(stderr,  __VA_ARGS__);								\
+			fprintf(stderr, "\n");										\
+		} while (0)
+#else
+#	define WARN(...)
+#endif
 
 #define MSG_REPLY(x) ((int16_t)((x) + MSG_REPLY_OFFSET))
 

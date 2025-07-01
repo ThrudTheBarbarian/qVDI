@@ -211,6 +211,7 @@ Workstation * VDI::v_opnwk(Transport *io, ClientMsg &msg)
 	\**************************************************************************/
 	io->write(msg, true);
 
+	_top = ws;	// FIXME: Should be in a LIFO queue
 	return ws;
 	}
 

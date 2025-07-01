@@ -12,14 +12,6 @@
 GLWidget::GLWidget(QWidget *parent)
 		 :QWidget(parent)
 	{
-	/**************************************************************************\
-	|* Set up so we can notify the VDI when a frame is rendered
-	\**************************************************************************/
-	connect(this, &GLWidget::frameRendered,
-			&(VDI::sharedInstance()),
-			QOverload<>::of(&VDI::frameRendered));
-
-	_cron.restart();
 	}
 
 /*****************************************************************************\
@@ -42,27 +34,6 @@ void GLWidget::paintEvent(QPaintEvent *e)
 		}
 
 	painter.end();
-
-	/**************************************************************************\
-	|* Say we've painted the frame
-	\**************************************************************************/
-	emit frameRendered();
-
-	/**************************************************************************\
-	|* Calculate our FPS etc every 100 frames
-	\**************************************************************************/
-	frames ++;
-	if (frames == 100)
-		{
-		qint64 nsecs = _cron.nsecsElapsed();
-		int usecs = nsecs / 1000 / 100;
-
-		fprintf(stderr, "usecs/frame = %d fps=%5.3f\n",
-				(int)(usecs),
-				1000000.0f / usecs);
-		frames = 0;
-		_cron.restart();
-		}
 	}
 
 /*****************************************************************************\

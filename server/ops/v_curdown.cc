@@ -1,0 +1,42 @@
+
+#include "debug.h"
+#include "screen.h"
+#include "vdi.h"
+#include "workstation.h"
+
+/*****************************************************************************\
+|* Opcode 5.5: Move the cursor down if possible.
+|*
+|* Original signature is: v_curdown(int16_t handle);
+|*
+\*****************************************************************************/
+void VDI::v_curdown(int socket)
+	{
+	Screen *screen			= Screen::sharedInstance();
+	ConnectionMgr *cmgr		= screen->cmgr();
+	Workstation *ws			= cmgr->findWorkstationForHandle(socket);
+	if (ws != nullptr)
+		{
+		int lastRow = screen->height() / _alphaHeight;
+		if (_alphaY < lastRow - 1)
+			{
+			bool erased = _eraseAlphaCursor();
+			_alphaY ++;
+			if (erased)
+				_drawAlphaCursor();
+			}
+		}
+	else
+		{
+		WARN("Non-screen devices currently unsupported");
+		}
+	}
+
+/*****************************************************************************\
+|* And from the socket interface...
+\*****************************************************************************/
+void VDI::v_curdown(Transport *io)
+	{
+	int fd = io->socket()->socketDescriptor();
+	v_curdown(fd);
+	}

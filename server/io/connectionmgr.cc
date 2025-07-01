@@ -156,14 +156,6 @@ void ConnectionMgr::updateTimerInterest(qintptr handle, int16_t enable)
 	}
 
 /*****************************************************************************\
-|* Set the physical workstation as handle 0
-\*****************************************************************************/
-// void ConnectionMgr::setPhysicalWorkstation(Workstation *ws)
-// 	{
-// 	_conns[0] = ws;
-// 	}
-
-/*****************************************************************************\
 |* We got incoming...
 \*****************************************************************************/
 void ConnectionMgr::_incomingData(void)
@@ -206,21 +198,29 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().vq_chcells(io, ws, cm);
 				break;
 
-		// 	case ClientMsg::V_EXIT_CUR:			// 5.3
-		// 		VDI::sharedInstance().v_exit_cur(ws);
-		// 		break;
+			// 5.2
+			// ---------------------------------------------------------------
+			case ClientMsg::V_EXIT_CUR:
+				VDI::sharedInstance().v_exit_cur(io, ws);
+				break;
 
-		// 	case ClientMsg::V_ENTER_CUR:			// 5.3
-		// 		VDI::sharedInstance().v_enter_cur(ws);
-		// 		break;
+			// 5.3
+			// ---------------------------------------------------------------
+			case ClientMsg::V_ENTER_CUR:
+				VDI::sharedInstance().v_enter_cur(io, ws);
+				break;
 
-		// 	case ClientMsg::V_CURUP:				// 5.4
-		// 		VDI::sharedInstance().v_curup(ws);
-		// 		break;
+			// 5.4
+			// ---------------------------------------------------------------
+			case ClientMsg::V_CURUP:
+				VDI::sharedInstance().v_curup(io);
+				break;
 
-		// 	case ClientMsg::V_CURDOWN:				// 5.5
-		// 		VDI::sharedInstance().v_curdown(ws);
-		// 		break;
+			// 5.5
+			// ---------------------------------------------------------------
+			case ClientMsg::V_CURDOWN:
+				VDI::sharedInstance().v_curdown(io);
+				break;
 
 		// 	case ClientMsg::V_CURRIGHT:				// 5.6
 		// 		VDI::sharedInstance().v_curright(ws);

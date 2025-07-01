@@ -28,10 +28,6 @@ Workstation::Workstation(QObject *parent )
 			,_fillIndex(PT_DOTS1)
 			,_fillColourIndex(G_BLACK)
 			,_backgroundColourIndex(G_GREEN)
-			,_alphaMode(false)
-			,_alphaX(0)
-			,_alphaY(0)
-			,_reverseVideo(false)
 			,_io(nullptr)
 			,_fm(nullptr)
 	{
@@ -52,10 +48,6 @@ Workstation::Workstation(Transport *io, QObject *parent )
 			,_fillIndex(PT_DOTS1)
 			,_fillColourIndex(G_BLACK)
 			,_backgroundColourIndex(G_GREEN)
-			,_alphaMode(false)
-			,_alphaX(0)
-			,_alphaY(0)
-			,_reverseVideo(false)
 			,_io(io)
 			,_fm(nullptr)
 	{
@@ -119,7 +111,6 @@ void Workstation::claimNextHandle(void)
 	{
 	_handle = _nextHandle ++;
 	}
-
 
 #pragma mark - Private methods
 

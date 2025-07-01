@@ -74,24 +74,6 @@ class Workstation : public QObject
 	// Which page size to use
 	GETSET(int16_t, pageSize, PageSize);
 
-	// Cursors or graphics
-	GET(bool, alphaMode);
-
-	// Height of a character in the system font
-	GETSET(bool, alphaHeight, AlphaHeight);
-
-	// Width of a character in the system font
-	GETSET(bool, alphaWidth, AlphaWidth);
-
-	// Current alpha cursor X
-	GET(int, alphaX);
-
-	// Current alpha cursor Y
-	GET(int, alphaY);
-
-	// Draw in reverse video ?
-	GETSET(bool, reverseVideo, ReverseVideo);
-
 	// Transport for data to and from clients. Can be nil
 	GETSETP(Transport *, io, Io);
 

@@ -15,7 +15,7 @@
 |*  vq_chcells(int16_t handle, int16_t& rows, int16_t& columns);
 |*
 \*****************************************************************************/
-void VDI::vq_chcells(qintptr handle, int16_t& rows, int16_t& columns)
+void VDI::vq_chcells(int handle, int16_t& rows, int16_t& columns)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen->cmgr();
@@ -24,10 +24,10 @@ void VDI::vq_chcells(qintptr handle, int16_t& rows, int16_t& columns)
 		{
 		QFontMetrics *fm	= ws->fm();
 		QRect bounds		= fm->boundingRect("W");
-		ws->setAlphaHeight(bounds.height());
-		ws->setAlphaWidth(bounds.width());
-		rows				= screen->height() / bounds.height();
-		columns				= screen->width() / bounds.width();
+		_alphaHeight		= bounds.height();
+		_alphaWidth			= bounds.width();
+		rows				= screen->height() / _alphaHeight;
+		columns				= screen->width() / _alphaWidth;
 		fprintf(stderr, "ch: %d, %d    scrn: %d, %d",
 			bounds.width(), bounds.height(),
 				screen->width(), screen->height());
@@ -37,7 +37,7 @@ void VDI::vq_chcells(qintptr handle, int16_t& rows, int16_t& columns)
 /*****************************************************************************\
 |* And from the socket interface...
 \*****************************************************************************/
-void VDI::vq_chcells(Transport *io, Workstation *ws, ClientMsg &cm)
+void VDI::vq_chcells(Transport *io, Workstation *, ClientMsg &cm)
 	{
 	int16_t rows	= 0;
 	int16_t cols	= 0;
