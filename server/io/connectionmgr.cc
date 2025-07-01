@@ -172,14 +172,21 @@ void ConnectionMgr::_incomingData(void)
 	Transport *io			= _conns[socket->socketDescriptor()];
 	Workstation *ws			= _wsList[io];
 
+	fprintf(stderr, " .. data available: %lld bytes\n", socket->bytesAvailable());
+
 	ClientMsg cm;
-	while (socket->bytesAvailable()>0)
+
+	bool bytesAvailable = socket->bytesAvailable() > 0;
+	bool bufferNotEmpty = io->buffer().length() > 0;
+	while (bytesAvailable || bufferNotEmpty)
 		{
 		io->read(cm);
-		fprintf(stderr, "Despatch message of type: %d\n", cm.type());
+		fprintf(stderr, " .. despatch message of type: %d\n", cm.type());
 		switch (cm.type())
 			{
-			case ClientMsg::V_OPNWK:				// 1
+			// 1
+			// ---------------------------------------------------------------
+			case ClientMsg::V_OPNWK:
 				{
 				ws = VDI::sharedInstance().v_opnwk(io, cm);
 				if (ws != nullptr)
@@ -187,13 +194,17 @@ void ConnectionMgr::_incomingData(void)
 				break;
 				}
 
-			case ClientMsg::V_CLRWK:				// 3
+			// 3
+			// ---------------------------------------------------------------
+			case ClientMsg::V_CLRWK:
 				VDI::sharedInstance().v_clrwk(io, ws);
 				break;
 
-		// 	case ClientMsg::VQ_CHCELLS:				// 5.1
-		// 		VDI::sharedInstance().vq_chcells(ws, &cm);
-		// 		break;
+			// 5.1
+			// ---------------------------------------------------------------
+			case ClientMsg::VQ_CHCELLS:
+				VDI::sharedInstance().vq_chcells(io, ws, cm);
+				break;
 
 		// 	case ClientMsg::V_EXIT_CUR:			// 5.3
 		// 		VDI::sharedInstance().v_exit_cur(ws);
@@ -558,5 +569,8 @@ void ConnectionMgr::_incomingData(void)
 				fprintf(stderr, "\n** Unknown message type %d", cm.type());
 				break;
 			}
+
+		bytesAvailable = socket->bytesAvailable() > 0;
+		bufferNotEmpty = io->buffer().length() > 0;
 		}
 	}

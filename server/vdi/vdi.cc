@@ -1,5 +1,6 @@
 #include <QPainter>
 
+#include "fontmgr.h"
 #include "vdi.h"
 #include "workstation.h"
 
@@ -9,6 +10,9 @@ VDI::VDI(
 	,_rootDir(GEM_ROOT_DIR)
 	,_top(nullptr)
 	{
+	FontMgr&fm = FontMgr::sharedInstance();
+	fm.setRootDir(_rootDir);
+	fm.initialise();
 	}
 
 /*****************************************************************************\

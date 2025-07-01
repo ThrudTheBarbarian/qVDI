@@ -1,6 +1,7 @@
 #ifndef WORKSTATION_H
 #define WORKSTATION_H
 
+#include <QFont>
 #include <QImage>
 #include <QObject>
 
@@ -39,6 +40,9 @@ class Workstation : public QObject
 	// current line colour index
 	GETSET(int16_t, lineColourIndex, LineColourIndex);
 
+	// User defined line
+	GETSET(LineStyle, userLineType, UserLineType);
+
 	// current marker type
 	GETSET(int16_t, markerType, MarkerType);
 
@@ -46,7 +50,7 @@ class Workstation : public QObject
 	GETSET(int16_t, markerColourIndex, MarkerColourIndex);
 
 	// Default font id
-	GETSET(int16_t, fontId, FontId);
+	GET(int16_t, fontId);
 
 	// current text colour index
 	GETSET(int16_t, textColourIndex, TextColourIndex);
@@ -73,6 +77,12 @@ class Workstation : public QObject
 	// Cursors or graphics
 	GET(bool, alphaMode);
 
+	// Height of a character in the system font
+	GETSET(bool, alphaHeight, AlphaHeight);
+
+	// Width of a character in the system font
+	GETSET(bool, alphaWidth, AlphaWidth);
+
 	// Current alpha cursor X
 	GET(int, alphaX);
 
@@ -84,6 +94,12 @@ class Workstation : public QObject
 
 	// Transport for data to and from clients. Can be nil
 	GETSETP(Transport *, io, Io);
+
+	// Font-metrics for this WS
+	GETP(QFontMetrics*, fm);
+
+	// Current font
+	GET(QFont, currentFont);
 
 	/*************************************************************************\
 	|* Private methods
@@ -161,6 +177,11 @@ class Workstation : public QObject
 				return _palette[idx];
 			return QColor(0,0,0,255);
 			}
+
+		/*********************************************************************\
+		|* Create a font by font-id
+		\*********************************************************************/
+		bool setFontId(int fontId);
 	};
 
 #endif // WORKSTATION_H

@@ -203,14 +203,13 @@ Workstation * VDI::v_opnwk(Transport *io, ClientMsg &msg)
 	/*********************************************************************\
 	|* Fetch the character width, height and screen rows/cols
 	\*********************************************************************/
-	//int16_t rows, cols;
-	//vq_chcells(*handle, rows, cols);
+	int16_t rows, cols;
+	vq_chcells(ws->handle(), rows, cols);
 
 	/**************************************************************************\
 	|* Send the message down the wire
 	\**************************************************************************/
 	io->write(msg, true);
-
 
 	return ws;
 	}

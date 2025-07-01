@@ -1,6 +1,7 @@
 
 #include <QFile>
 
+#include "fontmgr.h"
 #include "screen.h"
 #include "vdi.h"
 #include "workstation.h"
@@ -32,6 +33,7 @@ Workstation::Workstation(QObject *parent )
 			,_alphaY(0)
 			,_reverseVideo(false)
 			,_io(nullptr)
+			,_fm(nullptr)
 	{
 	_initialise();
 	}
@@ -55,6 +57,7 @@ Workstation::Workstation(Transport *io, QObject *parent )
 			,_alphaY(0)
 			,_reverseVideo(false)
 			,_io(io)
+			,_fm(nullptr)
 	{
 	_initialise();
 	}
@@ -160,4 +163,36 @@ void Workstation::_initialise(void)
 		}
 	else
 		WARN("Cannot open palette file %s", pPath.c_str());
+
+	/*************************************************************************\
+	|* Set the font to be the system font, whatever that may be
+	\*************************************************************************/
+	setFontId(-1);
+
+	/*************************************************************************\
+	|* Define a default user line style
+	\*************************************************************************/
+	_userLineType << 3 << 1;
+	}
+
+/*****************************************************************************\
+|* Set up the font and query the font metrics for it
+\*****************************************************************************/
+bool Workstation::setFontId(int fontId)
+	{
+	bool ok = false;
+
+	QFont *font = FontMgr::sharedInstance().fetch(fontId);
+	if (font != nullptr)
+		{
+		ok = true;
+		_currentFont = *font;
+		if (_fm)
+			DELETE(_fm);
+		_fm = new QFontMetrics(_currentFont);
+		_fontId = fontId;
+		}
+	else
+		WARN("Cannot find system font. We're probably going to crash...");
+	return ok;
 	}

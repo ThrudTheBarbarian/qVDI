@@ -35,6 +35,10 @@ int main(int argc, const char * argv[])
 
 	printf("Clear the workstation\n");
 	v_clrwk(handle);
-	
+
+	printf("Get the columns and rows on the display...\n");
+	int16_t rows, cols;
+	vq_chcells(handle, &rows, &cols);
+	printf(" rows:%d cols:%d\n", rows, cols);
 	return 0;
 	}

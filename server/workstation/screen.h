@@ -156,13 +156,13 @@ class Screen : public QMainWindow
 	\*************************************************************************/
 	GETSETP(QImage*, bg, Bg);					// Backing store for this WS
 	GET(ScreenCapabilities, props);				// Fundamentals of this screen
+	GETSETP(ConnectionMgr*, cmgr, Cmgr);		// Connection manager
 
 	private:
 		/*********************************************************************\
 		|* Private state
 		\*********************************************************************/
 		Ui::Screen *ui;							// Form for the screen
-		ConnectionMgr *	_conmgr;				// Connection manager
 		QTimer *		_refreshTimer;			// Used to update the screen
 
 		/*********************************************************************\

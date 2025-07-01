@@ -15,13 +15,13 @@ Screen::Screen(QWidget *parent)
 	/*************************************************************************\
 	|* Start the connection manager to listen for clients
 	\*************************************************************************/
-	_conmgr = new ConnectionMgr();
-	_conmgr->start(this);
+	_cmgr = new ConnectionMgr();
+	_cmgr->start(this);
 
 	/*************************************************************************\
 	|* We want to know when the connection manager got a hit
 	\*************************************************************************/
-	connect(_conmgr, &ConnectionMgr::transportConnected,
+	connect(_cmgr, &ConnectionMgr::transportConnected,
 			this, &Screen::connectedTo);
 	}
 

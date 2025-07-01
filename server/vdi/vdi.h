@@ -95,6 +95,13 @@ class VDI : public QObject
 		|* Operation:   3   : Clear a workstation
 		\*********************************************************************/
 		void v_clrwk(Transport *io, Workstation *ws);
-	};
+
+		/*********************************************************************\
+		|* Opcode 5.1: Query the number of character cells on the alpha display
+		\*********************************************************************/
+		void vq_chcells(qintptr handle, int16_t& rows, int16_t& columns);
+		void vq_chcells(Transport *io, Workstation *ws, ClientMsg &cm);
+
+		};
 
 #endif // VDI_H

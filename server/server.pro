@@ -21,7 +21,9 @@ SOURCES += \
 	io/transport.cc \
 	ops/v_clrwk.cc \
 	ops/v_opnwk.cc \
+	ops/vq_chcells.cc \
 	vdi/vdi.cc \
+	workstation/fontmgr.cc \
     workstation/glwidget.cc \
     workstation/physicalws.cc \
     workstation/screenws.cc \
@@ -42,6 +44,7 @@ HEADERS += \
 	io/connectionmgr.h \
 	io/transport.h \
 	vdi/vdi.h \
+	workstation/fontmgr.h \
     workstation/glwidget.h \
     workstation/physicalws.h \
     workstation/screenws.h \

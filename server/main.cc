@@ -16,11 +16,6 @@ int main(int argc, char *argv[])
 	Screen *screen = Screen::sharedInstance();
 	screen->show();
 
-	/*************************************************************************\
-	|* Initialise components
-	\*************************************************************************/
-	// VDI& vdi		= VDI::sharedInstance();
-	// vdi.
 	return a.exec();
 	}
 

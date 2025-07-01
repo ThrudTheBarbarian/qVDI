@@ -31,7 +31,6 @@ bool Transport::read(ClientMsg &msg)
 	\*************************************************************************/
 	while ((_buffer.size() < 2) && (loops < 5))
 		{
-		fprintf(stderr, "Bytes available: %lld\n", _socket->bytesAvailable());
 		QByteArray moreData = _socket->readAll();
 		if (moreData.length() > 0)
 			_buffer.append(moreData);
