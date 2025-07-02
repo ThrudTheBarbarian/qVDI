@@ -21,7 +21,7 @@
 		? strrchr(__FILE__, '/') + 1 									\
 		: __FILE__)
 
-#	define WARN(...) 													\
+#	define LOGWARN(...) 													\
 	do 																	\
 		{ 																\
 			fprintf(stderr, "%s:%d ", __FILENAME__, __LINE__);			\
@@ -29,7 +29,7 @@
 			fprintf(stderr, "\n");										\
 		} while (0)
 #else
-#	define WARN(...)
+#	define LOGWARN(...)
 #endif
 
 #define MSG_REPLY(x) ((int16_t)((x) + MSG_REPLY_OFFSET))

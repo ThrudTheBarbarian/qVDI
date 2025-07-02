@@ -38,15 +38,27 @@ int main(int argc, const char * argv[])
 
 	printf("Test enter alpha mode (should clear screen white)\n");
 	v_enter_cur(handle);
-
 	sleep(1);
-	printf("Move cursor down\n");
-	v_curdown(handle);
 
-	sleep(5);
-	printf("Move cursor up\n");
+	printf("Move cursor down/right\n");
+	v_curdown(handle);
+	v_curright(handle);
+	sleep(2);
+
+	printf("Move cursor up/left\n");
 	v_curup(handle);
-	sleep(5);
+	v_curleft(handle);
+	sleep(2);
+
+	printf("Move cursor down/right and print\n");
+	v_curdown(handle);
+	v_curright(handle);
+	v_curtext(handle, "This is the text"); 
+	sleep(1);
+	
+	printf("Move cursor home\n");
+	v_curhome(handle);
+	sleep(2);
 
 	printf("Test exit alpha mode (should clear screen to normal)\n");
 	v_exit_cur(handle);

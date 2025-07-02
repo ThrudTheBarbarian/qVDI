@@ -138,34 +138,59 @@ class VDI : public QObject
 		void v_clrwk(Transport *io, Workstation *ws);
 
 		/*********************************************************************\
-		|* Opcode 5.1: Query the number of character cells on the alpha display
+		|* Opcode 5.1 : Query the number of character cells on the alpha display
 		\*********************************************************************/
 		void vq_chcells(int socket, int16_t& rows, int16_t& columns);
 		void vq_chcells(Transport *io, Workstation *ws, ClientMsg &cm);
 
 		/*********************************************************************\
-		|* Opcode 5.2: Exit alpha mode. This clears the screen and disables the
-		|*             alpha cursor
+		|* Opcode 5.2 : Exit alpha mode. This clears the screen and disables the
+		|*              alpha cursor
 		\*********************************************************************/
 		void v_exit_cur(Transport *io, Workstation *ws);
 
 		/*********************************************************************\
-		|* Opcode 5.3: Enter alpha mode. This clears the screen and enables the
-		|*             alpha cursor
+		|* Opcode 5.3 : Enter alpha mode. This clears the screen and enables the
+		|*              alpha cursor
 		\*********************************************************************/
 		void v_enter_cur(Transport *io, Workstation *ws);
 
 		/*********************************************************************\
-		|* Opcode 5.4: Move the cursor up if possible.
+		|* Opcode 5.4 : Move the cursor up if possible.
 		\*********************************************************************/
 		void v_curup(int socket);
 		void v_curup(Transport *io);
 
 		/*********************************************************************\
-		|* Opcode 5.5: Move the cursor down if possible.
+		|* Opcode 5.5 : Move the cursor down if possible.
 		\*********************************************************************/
 		void v_curdown(int socket);
 		void v_curdown(Transport *io);
+
+		/*********************************************************************\
+		|* Opcode 5.6 : Move the cursor right if possible.
+		\*********************************************************************/
+		void v_curright(int socket);
+		void v_curright(Transport *io);
+
+		/*********************************************************************\
+		|* Opcode 5.7 : Move the cursor left if possible.
+		\*********************************************************************/
+		void v_curleft(int socket);
+		void v_curleft(Transport *io);
+
+		/*********************************************************************\
+		|* Opcode 5.8 : Move the cursor home.
+		\*********************************************************************/
+		void v_curhome(int socket);
+		void v_curhome(Transport *io);
+
+		/*********************************************************************\
+		|* Opcode 5.12: Draw text at cursor.
+		\*********************************************************************/
+		void v_curtext(int socket, const char *str);
+		void v_curtext(Transport *io, Workstation *ws, ClientMsg &cm);
+
 	};
 
 #endif // VDI_H

@@ -330,7 +330,7 @@ int _gemIoWrite(GemMsg *msg)
 		*ptr ++ = (uint16_t)(*(msg->vec.data + i));
 
 	for (int i=0; i<bufferLen; i+=2)
-		WARN("word %3d : %02x %02x", i/2, buf[i], buf[i+1]);
+		LOGWARN("word %3d : %02x %02x", i/2, buf[i], buf[i+1]);
 
 	/*************************************************************************\
 	|* Write to the socket
@@ -339,7 +339,7 @@ int _gemIoWrite(GemMsg *msg)
 	while (numSent < bufferLen)
 		numSent += write(_gemfd, buf + numSent, bufferLen - numSent);
 
-	WARN("wrote %d bytes", numSent);
+	LOGWARN("wrote %d bytes", numSent);
 	
 	/*************************************************************************\
 	|* Destroy the message, now that it has been sent

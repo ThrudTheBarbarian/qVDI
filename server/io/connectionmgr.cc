@@ -222,17 +222,23 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().v_curdown(io);
 				break;
 
-		// 	case ClientMsg::V_CURRIGHT:				// 5.6
-		// 		VDI::sharedInstance().v_curright(ws);
-		// 		break;
+			// 5.6
+			// ---------------------------------------------------------------
+			case ClientMsg::V_CURRIGHT:
+				VDI::sharedInstance().v_curright(io);
+				break;
 
-		// 	case ClientMsg::V_CURLEFT:				// 5.7
-		// 		VDI::sharedInstance().v_curleft(ws);
-		// 		break;
+			// 5.7
+			// ---------------------------------------------------------------
+			case ClientMsg::V_CURLEFT:
+				VDI::sharedInstance().v_curleft(io);
+				break;
 
-		// 	case ClientMsg::V_CURHOME:				// 5.8
-		// 		VDI::sharedInstance().v_curhome(ws);
-		// 		break;
+			// 5.8
+			// ---------------------------------------------------------------
+			case ClientMsg::V_CURHOME:
+				VDI::sharedInstance().v_curhome(io);
+				break;
 
 		// 	case ClientMsg::V_EEOS:					// 5.9
 		// 		VDI::sharedInstance().v_eeos(ws);
@@ -246,9 +252,9 @@ void ConnectionMgr::_incomingData(void)
 		// 		VDI::sharedInstance().vs_curaddress(ws, &cm);
 		// 		break;
 
-		// 	case ClientMsg::V_CURTEXT:				// 5.12
-		// 		VDI::sharedInstance().v_curtext(ws, &cm);
-		// 		break;
+			case ClientMsg::V_CURTEXT:				// 5.12
+				VDI::sharedInstance().v_curtext(io, ws, cm);
+				break;
 
 		// 	case ClientMsg::V_RVON	:				// 5.13
 		// 		VDI::sharedInstance().v_rvon(ws);

@@ -19,8 +19,12 @@ SOURCES += \
 	io/clientmsg.cc \
 	io/connectionmgr.cc \
 	io/transport.cc \
+	io/v_curhome.cc \
 	ops/v_clrwk.cc \
 	ops/v_curdown.cc \
+	ops/v_curleft.cc \
+	ops/v_curright.cc \
+	ops/v_curtext.cc \
 	ops/v_curup.cc \
 	ops/v_enter_cur.cc \
 	ops/v_exit_cur.cc \
