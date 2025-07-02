@@ -1,3 +1,4 @@
+#include <QPainter>
 
 #include "debug.h"
 #include "screen.h"
@@ -5,26 +6,19 @@
 #include "workstation.h"
 
 /*****************************************************************************\
-|* Opcode 5.5: Move the cursor down if possible.
+|* Opcode 5.13: Enable reverse-video.
 |*
-|* Original signature is: v_curdown(int16_t handle);
+|* Original signature is: v_rvon(int16_t handle);
 |*
 \*****************************************************************************/
-void VDI::v_curdown(int socket)
+void VDI::v_rvon(int socket)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen->cmgr();
 	Workstation *ws			= cmgr->findWorkstationForHandle(socket);
 	if (ws != nullptr)
 		{
-		int lastRow = screen->height() / _alphaHeight;
-		if (_alphaY < lastRow - 1)
-			{
-			bool erased = _eraseAlphaCursor();
-			_alphaY ++;
-			if (erased)
-				_drawAlphaCursor();
-			}
+		_reverseVideo = true;
 		}
 	else
 		{
@@ -35,8 +29,8 @@ void VDI::v_curdown(int socket)
 /*****************************************************************************\
 |* And from the socket interface...
 \*****************************************************************************/
-void VDI::v_curdown(Transport *io)
+void VDI::v_rvon(Transport *io)
 	{
 	int fd = io->socket()->socketDescriptor();
-	v_curdown(fd);
+	v_rvon(fd);
 	}

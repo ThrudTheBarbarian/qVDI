@@ -15,11 +15,11 @@
 |*  vq_chcells(int16_t handle, int16_t& rows, int16_t& columns);
 |*
 \*****************************************************************************/
-void VDI::vq_chcells(int handle, int16_t& rows, int16_t& columns)
+void VDI::vq_chcells(int socket, int16_t& rows, int16_t& columns)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen->cmgr();
-	Workstation *ws			= cmgr->findWorkstationForHandle(handle);
+	Workstation *ws			= cmgr->findWorkstationForHandle(socket);
 	if (ws != nullptr)
 		{
 		QFontMetrics *fm	= ws->fm();
@@ -32,6 +32,8 @@ void VDI::vq_chcells(int handle, int16_t& rows, int16_t& columns)
 			bounds.width(), bounds.height(),
 				screen->width(), screen->height());
 		}
+	else
+		WARN("Cannot find workstation for socket connection %d", socket);
 	}
 
 /*****************************************************************************\

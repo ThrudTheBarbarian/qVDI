@@ -25,4 +25,7 @@ void VDI::v_clrwk(Transport *, Workstation *ws)
 		p.fillRect(0, 0, img->width(), img->height(), colour);
 		ws->update();
 		}
+	else
+		WARN("Cannot find workstation to clear");
+
 	}

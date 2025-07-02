@@ -26,10 +26,18 @@ SOURCES += \
 	ops/v_curright.cc \
 	ops/v_curtext.cc \
 	ops/v_curup.cc \
+	ops/v_dspcur.cc \
+	ops/v_eeol.cc \
+	ops/v_eeos.cc \
 	ops/v_enter_cur.cc \
 	ops/v_exit_cur.cc \
 	ops/v_opnwk.cc \
+	ops/v_rmcur.cc \
+	ops/v_rvoff.cc \
+	ops/v_rvon.cc \
 	ops/vq_chcells.cc \
+	ops/vq_curaddress.cc \
+	ops/vs_curaddress.cc \
 	vdi/vdi.cc \
 	workstation/fontmgr.cc \
     workstation/glwidget.cc \

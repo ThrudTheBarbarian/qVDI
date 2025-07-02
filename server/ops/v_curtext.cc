@@ -6,9 +6,9 @@
 #include "workstation.h"
 
 /*****************************************************************************\
-|* Opcode 5.6: Move the cursor right if possible.
+|* Opcode 5.6: Draw text at the cursor position.
 |*
-|* Original signature is: v_curright(int16_t handle);
+|* Original signature is: v_curtext(int16_t handle, int8_t *string);
 |*
 \*****************************************************************************/
 void VDI::v_curtext(int socket, const char *str)
@@ -49,14 +49,14 @@ void VDI::v_curtext(int socket, const char *str)
 		}
 	else
 		{
-		WARN("Non-screen devices currently unsupported");
+		WARN("Cannot find workstation for socket connection %d", socket);
 		}
 	}
 
 /*****************************************************************************\
 |* And from the socket interface...
 \*****************************************************************************/
-void VDI::v_curtext(Transport *io, Workstation *ws, ClientMsg &cm)
+void VDI::v_curtext(Transport *io, ClientMsg &cm)
 	{
 	QByteArray ba;
 	cm.fetchData(0, ba);

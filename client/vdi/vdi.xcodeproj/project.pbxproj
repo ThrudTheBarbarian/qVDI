@@ -260,13 +260,13 @@
 		F43E0C102E10F060001830BF /* vst_rotation.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vst_rotation.c; sourceTree = "<group>"; };
 		F43E0C112E10F060001830BF /* vst_unload_fonts.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vst_unload_fonts.c; sourceTree = "<group>"; };
 		F43E0C122E10F060001830BF /* vswr_mode.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vswr_mode.c; sourceTree = "<group>"; };
-		F43E0C7B2E10F41F001830BF /* testvdi */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = testvdi; sourceTree = BUILT_PRODUCTS_DIR; };
+		F43E0C7B2E10F41F001830BF /* testvt */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = testvt; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		F43E0C7C2E10F41F001830BF /* testvdi */ = {
+		F43E0C7C2E10F41F001830BF /* testvt */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = testvdi;
+			path = testvt;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -304,7 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				F43E0B892E10E16F001830BF /* libvdi.a */,
-				F43E0C7B2E10F41F001830BF /* testvdi */,
+				F43E0C7B2E10F41F001830BF /* testvt */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -464,7 +464,7 @@
 		F43E0C872E10F474001830BF /* tests */ = {
 			isa = PBXGroup;
 			children = (
-				F43E0C7C2E10F41F001830BF /* testvdi */,
+				F43E0C7C2E10F41F001830BF /* testvt */,
 			);
 			path = tests;
 			sourceTree = "<group>";
@@ -508,9 +508,9 @@
 			productReference = F43E0B892E10E16F001830BF /* libvdi.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		F43E0C7A2E10F41F001830BF /* testvdi */ = {
+		F43E0C7A2E10F41F001830BF /* testvt */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F43E0C7F2E10F41F001830BF /* Build configuration list for PBXNativeTarget "testvdi" */;
+			buildConfigurationList = F43E0C7F2E10F41F001830BF /* Build configuration list for PBXNativeTarget "testvt" */;
 			buildPhases = (
 				F43E0C772E10F41F001830BF /* Sources */,
 				F43E0C782E10F41F001830BF /* Frameworks */,
@@ -522,13 +522,13 @@
 				F43E0C832E10F433001830BF /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				F43E0C7C2E10F41F001830BF /* testvdi */,
+				F43E0C7C2E10F41F001830BF /* testvt */,
 			);
-			name = testvdi;
+			name = testvt;
 			packageProductDependencies = (
 			);
 			productName = testvdi;
-			productReference = F43E0C7B2E10F41F001830BF /* testvdi */;
+			productReference = F43E0C7B2E10F41F001830BF /* testvt */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -563,7 +563,7 @@
 			projectRoot = "";
 			targets = (
 				F43E0B882E10E16F001830BF /* vdi */,
-				F43E0C7A2E10F41F001830BF /* testvdi */,
+				F43E0C7A2E10F41F001830BF /* testvt */,
 			);
 		};
 /* End PBXProject section */
@@ -885,7 +885,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F43E0C7F2E10F41F001830BF /* Build configuration list for PBXNativeTarget "testvdi" */ = {
+		F43E0C7F2E10F41F001830BF /* Build configuration list for PBXNativeTarget "testvt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F43E0C802E10F41F001830BF /* Debug */,

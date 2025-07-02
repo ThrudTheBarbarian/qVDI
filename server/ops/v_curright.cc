@@ -28,7 +28,7 @@ void VDI::v_curright(int socket)
 		}
 	else
 		{
-		WARN("Non-screen devices currently unsupported");
+		WARN("Cannot find workstation for socket connection %d", socket);
 		}
 	}
 

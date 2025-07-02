@@ -240,41 +240,59 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().v_curhome(io);
 				break;
 
-		// 	case ClientMsg::V_EEOS:					// 5.9
-		// 		VDI::sharedInstance().v_eeos(ws);
-		// 		break;
-
-		// 	case ClientMsg::V_EEOL:					// 5.10
-		// 		VDI::sharedInstance().v_eeol(ws);
-		// 		break;
-
-		// 	case ClientMsg::VS_CURADDRESS:			// 5.11
-		// 		VDI::sharedInstance().vs_curaddress(ws, &cm);
-		// 		break;
-
-			case ClientMsg::V_CURTEXT:				// 5.12
-				VDI::sharedInstance().v_curtext(io, ws, cm);
+			// 5.9
+			// ---------------------------------------------------------------
+			case ClientMsg::V_EEOS:
+				VDI::sharedInstance().v_eeos(io);
 				break;
 
-		// 	case ClientMsg::V_RVON	:				// 5.13
-		// 		VDI::sharedInstance().v_rvon(ws);
-		// 		break;
+			// 5.10
+			// ---------------------------------------------------------------
+			case ClientMsg::V_EEOL:
+				VDI::sharedInstance().v_eeol(io);
+				break;
 
-		// 	case ClientMsg::V_RVOFF:				// 5.14
-		// 		VDI::sharedInstance().v_rvoff(ws);
-		// 		break;
+			// // 5.11
+			// ---------------------------------------------------------------
+			case ClientMsg::VS_CURADDRESS:
+				VDI::sharedInstance().vs_curaddress(io, cm);
+				break;
 
-		// 	case ClientMsg::VQ_CURADDRESS:			// 5.15
-		// 		VDI::sharedInstance().vq_curaddress(ws, &cm);
-		// 		break;
+			// 5.12
+			// ---------------------------------------------------------------
+			case ClientMsg::V_CURTEXT:
+				VDI::sharedInstance().v_curtext(io, cm);
+				break;
 
-		// 	case ClientMsg::V_DSPCUR:				// 5.18
-		// 		VDI::sharedInstance().v_dspcur(ws, &cm);
-		// 		break;
+			// 5.13
+			// ---------------------------------------------------------------
+			case ClientMsg::V_RVON	:
+				VDI::sharedInstance().v_rvon(io);
+				break;
 
-		// 	case ClientMsg::V_RMCUR:				// 5.19
-		// 		VDI::sharedInstance().v_rmcur(ws);
-		// 		break;
+			// 5.14
+			// ---------------------------------------------------------------
+			case ClientMsg::V_RVOFF:
+				VDI::sharedInstance().v_rvoff(io);
+				break;
+
+			// 5.15
+			// ---------------------------------------------------------------
+			case ClientMsg::VQ_CURADDRESS:
+				VDI::sharedInstance().vq_curaddress(io, cm);
+				break;
+
+			// 5.18
+			// ---------------------------------------------------------------
+			case ClientMsg::V_DSPCUR:
+				VDI::sharedInstance().v_dspcur(io, cm);
+				break;
+
+			// 5.19
+			// ---------------------------------------------------------------
+			case ClientMsg::V_RMCUR:
+				VDI::sharedInstance().v_rmcur(io);
+				break;
 
 		// 	case ClientMsg::V_PLINE:				// 6
 		// 		VDI::sharedInstance().v_pline(ws, &cm);

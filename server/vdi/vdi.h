@@ -186,10 +186,58 @@ class VDI : public QObject
 		void v_curhome(Transport *io);
 
 		/*********************************************************************\
+		|* Opcode 5.9 : Erase from the cursor to the end of the screen.
+		\*********************************************************************/
+		void v_eeos(int socket);
+		void v_eeos(Transport *io);
+
+		/*********************************************************************\
+		|* Opcode 5.10: Erase from the cursor to the end of the line
+		\*********************************************************************/
+		void v_eeol(int socket);
+		void v_eeol(Transport *io);
+
+		/*********************************************************************\
+		|* Opcode 5.11: Move the cursor to a position (x,y) {1-based}
+		\*********************************************************************/
+		void vs_curaddress(int socket, int row, int col);
+		void vs_curaddress(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
 		|* Opcode 5.12: Draw text at cursor.
 		\*********************************************************************/
 		void v_curtext(int socket, const char *str);
-		void v_curtext(Transport *io, Workstation *ws, ClientMsg &cm);
+		void v_curtext(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 5.13: Enable reverse-video text
+		\*********************************************************************/
+		void v_rvon(int socket);
+		void v_rvon(Transport *io);
+
+		/*********************************************************************\
+		|* Opcode 5.14: Disable reverse-video text
+		\*********************************************************************/
+		void v_rvoff(int socket);
+		void v_rvoff(Transport *io);
+
+		/*********************************************************************\
+		|* Opcode 5.15: Draw text at cursor.
+		\*********************************************************************/
+		void vq_curaddress(int socket, int16_t& row, int16_t& col);
+		void vq_curaddress(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 5.18: Position the graphic cursor.
+		\*********************************************************************/
+		void v_dspcur(int socket, int16_t x, int16_t y);
+		void v_dspcur(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 5.19: Hide the graphic cursor.
+		\*********************************************************************/
+		void v_rmcur(int socket);
+		void v_rmcur(Transport *io);
 
 	};
 
