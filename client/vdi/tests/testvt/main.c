@@ -87,8 +87,6 @@ int main(int argc, const char * argv[])
 
 	printf("Test exit alpha mode (should clear screen to normal)\n");
 	v_exit_cur(handle);
-	sleep(2);
-
 
 	return 0;
 	}

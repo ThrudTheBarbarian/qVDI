@@ -239,6 +239,12 @@ class VDI : public QObject
 		void v_rmcur(int socket);
 		void v_rmcur(Transport *io);
 
+		/*********************************************************************\
+		|* Opcode 6: Draw a poly-line.
+		\*********************************************************************/
+		void v_pline(int socket, int16_t num, int16_t *pxy);
+		void v_pline(Transport *io, ClientMsg &cm);
+
 	};
 
 #endif // VDI_H

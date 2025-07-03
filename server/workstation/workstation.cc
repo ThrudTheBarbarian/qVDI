@@ -1,12 +1,31 @@
 
 #include <QFile>
+#include <QPainter>
 
 #include "fontmgr.h"
 #include "screen.h"
 #include "vdi.h"
 #include "workstation.h"
 
+/*****************************************************************************\
+|* File scoped variables
+\*****************************************************************************/
+
+// The next handle to give out for a workstation of any type
 static int16_t _nextHandle = 100;
+
+// The types of drawing style available
+static Qt::PenStyle _styles[] =
+	{
+	Qt::SolidLine,			// 0 is undefined
+	Qt::SolidLine,			// SOLID
+	Qt::DashLine,			// LDASHED
+	Qt::DotLine,			// DOTTED
+	Qt::DashDotLine,		// DASHDOT
+	Qt::DashLine,			// DASH
+	Qt::DashDotDotLine,		// DASHDOTDOT
+	Qt::CustomDashLine		// USERLINE
+	};
 
 #define PALETTE_OFFSET			"/System/Palettes/"
 #define SYSTEM_PALETTE_NAME		"system.pal"
@@ -20,6 +39,7 @@ Workstation::Workstation(QObject *parent )
 			,_handle(-1)
 			,_isVirtual(false)
 			,_lineType(SOLID)
+			,_lineWidth(3)
 			,_markerType(MRKR_DOT)
 			,_markerColourIndex(G_BLACK)
 			,_fontId(0)
@@ -28,6 +48,11 @@ Workstation::Workstation(QObject *parent )
 			,_fillIndex(PT_DOTS1)
 			,_fillColourIndex(G_BLACK)
 			,_backgroundColourIndex(G_GREEN)
+			,_enableClip(false)
+			,_clip(QRect(0,0,0,0))
+			,_startCap(Qt::FlatCap)
+			,_endCap(Qt::FlatCap)
+			,_writingMode(WR_REPLACE)
 			,_io(nullptr)
 			,_fm(nullptr)
 	{
@@ -40,6 +65,7 @@ Workstation::Workstation(Transport *io, QObject *parent )
 			,_handle(-1)
 			,_isVirtual(false)
 			,_lineType(SOLID)
+			,_lineWidth(3)
 			,_markerType(MRKR_DOT)
 			,_markerColourIndex(G_BLACK)
 			,_fontId(0)
@@ -48,6 +74,11 @@ Workstation::Workstation(Transport *io, QObject *parent )
 			,_fillIndex(PT_DOTS1)
 			,_fillColourIndex(G_BLACK)
 			,_backgroundColourIndex(G_GREEN)
+			,_enableClip(false)
+			,_clip(QRect(0,0,0,0))
+			,_startCap(Qt::FlatCap)
+			,_endCap(Qt::FlatCap)
+			,_writingMode(WR_REPLACE)
 			,_io(io)
 			,_fm(nullptr)
 	{
@@ -186,4 +217,47 @@ bool Workstation::setFontId(int fontId)
 	else
 		WARN("Cannot find system font. We're probably going to crash...");
 	return ok;
+	}
+
+/*****************************************************************************\
+|* Set up the pen for drawing based on the local state
+\*****************************************************************************/
+void Workstation::setupPenForLine(QPen& pen)
+	{
+	if (_lineType == DASH)
+		{
+		QList<qreal> dashes;
+		dashes << 3 << 3;
+		pen.setDashPattern(dashes);
+		}
+	else if (_lineType == USERLINE)
+		pen.setDashPattern(_userLineType);
+	else
+		pen.setStyle(_styles[_lineType]);
+
+	pen.setColor(_palette[_lineColourIndex]);
+	pen.setWidth(_lineWidth);
+	}
+
+
+/*****************************************************************************\
+|* Set up the writing mode
+\*****************************************************************************/
+void Workstation::setWritingMode(QPainter& painter)
+	{
+	switch (_writingMode)
+		{
+		case WR_REPLACE:
+			painter.setCompositionMode(QPainter::CompositionMode_Source);
+			break;
+		case WR_TRANSPARENT:
+			painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
+			break;
+		case WR_XOR:
+			painter.setCompositionMode(QPainter::RasterOp_NotSourceXorDestination);
+			break;
+		case WR_REV_TRANS:	// Life is too short to figure out how this maps...
+			painter.setCompositionMode(QPainter::RasterOp_NotSourceAndDestination);
+			break;
+		}
 	}

@@ -294,9 +294,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().v_rmcur(io);
 				break;
 
-		// 	case ClientMsg::V_PLINE:				// 6
-		// 		VDI::sharedInstance().v_pline(ws, &cm);
-		// 		break;
+			// 6
+			// ---------------------------------------------------------------
+			case ClientMsg::V_PLINE:
+				VDI::sharedInstance().v_pline(io, cm);
+				break;
 
 		// 	case ClientMsg::V_PMARKER:				// 7
 		// 		VDI::sharedInstance().v_pmarker(ws, &cm);

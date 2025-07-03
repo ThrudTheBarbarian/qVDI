@@ -37,6 +37,9 @@ class Workstation : public QObject
 	// current line type
 	GETSET(int16_t, lineType, LineType);
 
+	// current line width
+	GETSET(int16_t, lineWidth, LineWidth);
+
 	// current line colour index
 	GETSET(int16_t, lineColourIndex, LineColourIndex);
 
@@ -73,6 +76,20 @@ class Workstation : public QObject
 
 	// Which page size to use
 	GETSET(int16_t, pageSize, PageSize);
+
+	// Whether we're enabling clip or not
+	GETSET(bool, enableClip, EnableClip);
+
+	// The actual clipping rectangle
+	GETSET(QRect, clip, Clip);
+
+	// How we draw the ends of the line. This specifies start and end
+	// separately, but QT only offers both or none, so we do both
+	GETSET(Qt::PenCapStyle, startCap, StartCap);
+	GETSET(Qt::PenCapStyle, endCap, endCap);
+
+	// How to draw things on-screen
+	GET(int16_t, writingMode);
 
 	// Transport for data to and from clients. Can be nil
 	GETSETP(Transport *, io, Io);
@@ -164,6 +181,16 @@ class Workstation : public QObject
 		|* Create a font by font-id
 		\*********************************************************************/
 		bool setFontId(int fontId);
-	};
+
+		/*********************************************************************\
+		|* Set up the pen for drawing based on the local state
+		\*********************************************************************/
+		void setupPenForLine(QPen& pen);
+
+		/*********************************************************************\
+		|* Set up the writing mode
+		\*********************************************************************/
+		void setWritingMode(QPainter& painter);
+		};
 
 #endif // WORKSTATION_H
