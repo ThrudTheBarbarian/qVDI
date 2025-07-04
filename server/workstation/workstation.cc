@@ -40,8 +40,9 @@ Workstation::Workstation(QObject *parent )
 			,_isVirtual(false)
 			,_lineType(SOLID)
 			,_lineWidth(3)
-			,_markerType(MRKR_DOT)
+			,_markerType(MRKR_ASTERISK)
 			,_markerColourIndex(G_BLACK)
+			,_markerSize(5)
 			,_fontId(0)
 			,_textColourIndex(G_BLACK)
 			,_interiorFillStyle(FIS_SOLID)
@@ -66,8 +67,9 @@ Workstation::Workstation(Transport *io, QObject *parent )
 			,_isVirtual(false)
 			,_lineType(SOLID)
 			,_lineWidth(3)
-			,_markerType(MRKR_DOT)
+			,_markerType(MRKR_ASTERISK)
 			,_markerColourIndex(G_BLACK)
+			,_markerSize(5)
 			,_fontId(0)
 			,_textColourIndex(G_BLACK)
 			,_interiorFillStyle(FIS_SOLID)
@@ -238,6 +240,19 @@ void Workstation::setupPenForLine(QPen& pen)
 	pen.setColor(_palette[_lineColourIndex]);
 	pen.setWidth(_lineWidth);
 	}
+
+/*****************************************************************************\
+|* Set up the pen for drawing based on the local state
+\*****************************************************************************/
+void Workstation::setupPenForMarker(QPen& pen)
+	{
+	pen.setStyle(_styles[SOLID]);
+
+	pen.setColor(_palette[_markerColourIndex]);
+	pen.setBrush(_palette[_markerColourIndex]);
+	pen.setWidth(1);
+	}
+
 
 
 /*****************************************************************************\

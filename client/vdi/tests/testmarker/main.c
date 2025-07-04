@@ -1,9 +1,10 @@
 //
 //  main.c
-//  testline
+//  testmarker
 //
-//  Created by ThrudTheBarbarian on 7/2/25.
+//  Created by ThrudTheBarbarian on 7/3/25.
 //
+
 #include <stdio.h>
 #include <unistd.h>
 
@@ -25,15 +26,16 @@ int main(int argc, const char * argv[])
 		workIn[i] = -1;
 	workIn[0] = 1;
 	workIn[2] = 2;
-	
+	workIn[3] = MRKR_DIAMOND;
+
 	printf("Test connection to the service\n");
 	v_opnwk(workIn, &handle, workOut);
 	printf("  : handle is %d\n\n", handle);
 
 	v_clrwk(handle);
 
-	printf("Test basic polyline");
-	int16_t pxy[] = {50,50, 100,50, 100,100, 50,100, 100,50};
-	v_pline(handle, 5, pxy);
-	
+	printf("Test basic polymarker\n");
+	int16_t pxy[] = {50,50, 100,50, 100,100, 50,100, 200,50};
+	v_pmarker(handle, 5, pxy);
+
 	}

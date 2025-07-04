@@ -245,6 +245,12 @@ class VDI : public QObject
 		void v_pline(int socket, int16_t num, int16_t *pxy);
 		void v_pline(Transport *io, ClientMsg &cm);
 
+		/*********************************************************************\
+		|* Opcode 7: Draw a poly-marker.
+		\*********************************************************************/
+		void v_pmarker(int socket, int16_t num, int16_t *pxy);
+		void v_pmarker(Transport *io, ClientMsg &cm);
+
 	};
 
 #endif // VDI_H

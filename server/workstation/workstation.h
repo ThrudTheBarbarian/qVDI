@@ -52,6 +52,9 @@ class Workstation : public QObject
 	// Default marker colour
 	GETSET(int16_t, markerColourIndex, MarkerColourIndex);
 
+	// Default marker size, top-to-bottom and left-to-right
+	GETSET(int16_t, markerSize, MarkerSize);
+
 	// Default font id
 	GET(int16_t, fontId);
 
@@ -186,6 +189,7 @@ class Workstation : public QObject
 		|* Set up the pen for drawing based on the local state
 		\*********************************************************************/
 		void setupPenForLine(QPen& pen);
+		void setupPenForMarker(QPen& pen);
 
 		/*********************************************************************\
 		|* Set up the writing mode

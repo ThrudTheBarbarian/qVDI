@@ -33,6 +33,7 @@ SOURCES += \
 	ops/v_exit_cur.cc \
 	ops/v_opnwk.cc \
 	ops/v_pline.cc \
+	ops/v_pmarker.cc \
 	ops/v_rmcur.cc \
 	ops/v_rvoff.cc \
 	ops/v_rvon.cc \

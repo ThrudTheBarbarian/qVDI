@@ -300,9 +300,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().v_pline(io, cm);
 				break;
 
-		// 	case ClientMsg::V_PMARKER:				// 7
-		// 		VDI::sharedInstance().v_pmarker(ws, &cm);
-		// 		break;
+			// 7
+			// ---------------------------------------------------------------
+			case ClientMsg::V_PMARKER:
+				VDI::sharedInstance().v_pmarker(io, cm);
+				break;
 
 		// 	case ClientMsg::V_GTEXT:				// 8
 		// 		VDI::sharedInstance().v_gtext(ws, &cm);
