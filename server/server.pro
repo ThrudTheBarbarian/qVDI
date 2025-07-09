@@ -31,6 +31,7 @@ SOURCES += \
 	ops/v_eeos.cc \
 	ops/v_enter_cur.cc \
 	ops/v_exit_cur.cc \
+	ops/v_gtext.cc \
 	ops/v_opnwk.cc \
 	ops/v_pline.cc \
 	ops/v_pmarker.cc \

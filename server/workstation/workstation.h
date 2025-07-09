@@ -74,6 +74,21 @@ class Workstation : public QObject
 	// current background fill colour index
 	GETSET(int16_t, backgroundColourIndex, BackgroundColourIndex);
 
+	// The height of the current text font to draw with
+	GET(int, textHeight);
+
+	// The rotation angle for the text
+	GETSET(int, textRotation, TextRotation);
+
+	// The effect with which to draw the text
+	GETSET(int, textEffect, TextEffect);
+
+	// Horizontal alignment style for text
+	GETSET(int, textHAlign, TextHAlign);
+
+	// Vertical alignment style for text
+	GETSET(int, textVAlign, TextVAlign);
+
 	// Which co-ordinate system to use
 	GETSET(int16_t, coordType, CoordType);
 
@@ -186,10 +201,16 @@ class Workstation : public QObject
 		bool setFontId(int fontId);
 
 		/*********************************************************************\
+		|* Set the current font and font-metrics
+		\*********************************************************************/
+		void setTextHeight(int height);
+
+		/*********************************************************************\
 		|* Set up the pen for drawing based on the local state
 		\*********************************************************************/
 		void setupPenForLine(QPen& pen);
 		void setupPenForMarker(QPen& pen);
+		void setupPenForText(QPen& pen);
 
 		/*********************************************************************\
 		|* Set up the writing mode

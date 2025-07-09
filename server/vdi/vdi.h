@@ -251,6 +251,12 @@ class VDI : public QObject
 		void v_pmarker(int socket, int16_t num, int16_t *pxy);
 		void v_pmarker(Transport *io, ClientMsg &cm);
 
+		/*********************************************************************\
+		|* Opcode 8: Draw graphic text
+		\*********************************************************************/
+		void v_gtext(int socket, int16_t x, int16_t y, int16_t w, char *txt);
+		void v_gtext(Transport *io, ClientMsg &cm);
+
 	};
 
 #endif // VDI_H

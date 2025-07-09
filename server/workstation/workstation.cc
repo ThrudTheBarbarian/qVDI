@@ -49,6 +49,11 @@ Workstation::Workstation(QObject *parent )
 			,_fillIndex(PT_DOTS1)
 			,_fillColourIndex(G_BLACK)
 			,_backgroundColourIndex(G_GREEN)
+			,_textHeight(12)
+			,_textRotation(0)
+			,_textEffect(0)
+			,_textHAlign(TA_LEFT)
+			,_textVAlign(TA_BASE)
 			,_enableClip(false)
 			,_clip(QRect(0,0,0,0))
 			,_startCap(Qt::FlatCap)
@@ -76,6 +81,11 @@ Workstation::Workstation(Transport *io, QObject *parent )
 			,_fillIndex(PT_DOTS1)
 			,_fillColourIndex(G_BLACK)
 			,_backgroundColourIndex(G_GREEN)
+			,_textHeight(12)
+			,_textRotation(0)
+			,_textEffect(0)
+			,_textHAlign(TA_LEFT)
+			,_textVAlign(TA_BASE)
 			,_enableClip(false)
 			,_clip(QRect(0,0,0,0))
 			,_startCap(Qt::FlatCap)
@@ -244,6 +254,22 @@ void Workstation::setupPenForLine(QPen& pen)
 /*****************************************************************************\
 |* Set up the pen for drawing based on the local state
 \*****************************************************************************/
+void Workstation::setupPenForText(QPen& pen)
+	{
+	pen.setStyle(_styles[SOLID]);
+
+	QColor c = _palette[_textColourIndex];
+	if (_textEffect & TXT_LIGHT)
+		c = c.lighter();
+
+	pen.setColor(c);
+	pen.setBrush(c);
+	pen.setWidth(1);
+	}
+
+/*****************************************************************************\
+|* Set up the pen for drawing based on the local state
+\*****************************************************************************/
 void Workstation::setupPenForMarker(QPen& pen)
 	{
 	pen.setStyle(_styles[SOLID]);
@@ -253,6 +279,17 @@ void Workstation::setupPenForMarker(QPen& pen)
 	pen.setWidth(1);
 	}
 
+/*****************************************************************************\
+|* Set the text height and re-create the metrics
+\*****************************************************************************/
+void Workstation::setTextHeight(int height)
+	{
+	_textHeight = height;
+	_currentFont.setPixelSize(height);
+	if (_fm)
+		DELETE(_fm);
+	_fm = new QFontMetrics(_currentFont);
+	}
 
 
 /*****************************************************************************\
