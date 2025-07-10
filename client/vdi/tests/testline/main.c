@@ -35,5 +35,8 @@ int main(int argc, const char * argv[])
 	printf("Test basic polyline");
 	int16_t pxy[] = {50,50, 100,50, 100,100, 50,100, 100,50};
 	v_pline(handle, 5, pxy);
-	
+
+	printf("Test arc line");
+	v_arc(handle, 100, 100, 50, 900, 0);
+
 	}

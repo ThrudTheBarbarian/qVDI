@@ -270,6 +270,13 @@ class VDI : public QObject
 		void v_bar(int socket, int16_t num, int16_t *pxy);
 		void v_bar(Transport *io, ClientMsg &cm);
 
+		/*********************************************************************\
+		|* Opcode 11.2 Draw an arc
+		\*********************************************************************/
+		void v_arc(int socket, int16_t x, int16_t y, int16_t radius,
+				   int16_t start, int16_t end);
+		void v_arc(Transport *io, ClientMsg &cm);
+
 	};
 
 #endif // VDI_H
