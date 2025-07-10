@@ -175,8 +175,8 @@ void v_arc(int16_t handle, int16_t x, int16_t y, int16_t radius,
 /*****************************************************************************\
 |*   11.3: Fill an arc				[type=2] [pxy=x,y,r,begin,end]
 \*****************************************************************************/
-void v_pie(int16_t handle, int16_t x, int16_t y, int16_t radius,
-		   int16_t beginAngle, int16_t endAngle);
+void v_pieslice(int16_t handle, int16_t x, int16_t y, int16_t radius,
+				int16_t beginAngle, int16_t endAngle);
 
 /*****************************************************************************\
 |*   11.4: Fill a circle			[type=4] [pxy=x,y,r]

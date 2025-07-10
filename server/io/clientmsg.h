@@ -50,7 +50,7 @@ class ClientMsg
 		V_FILLAREA					= 9,
 		V_BAR						= 11001,	// Really 11.1
 		V_ARC						= 11002,
-		V_PIE						= 11003,
+		V_PIESLICE					= 11003,
 		V_CIRCLE					= 11004,
 		V_ELLIPSE					= 11005,
 		V_ELLARC					= 11006,

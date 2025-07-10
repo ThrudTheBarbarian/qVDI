@@ -36,6 +36,7 @@ SOURCES += \
 	ops/v_fillarea.cc \
 	ops/v_gtext.cc \
 	ops/v_opnwk.cc \
+	ops/v_pieslice.cc \
 	ops/v_pline.cc \
 	ops/v_pmarker.cc \
 	ops/v_rmcur.cc \

@@ -277,6 +277,13 @@ class VDI : public QObject
 				   int16_t start, int16_t end);
 		void v_arc(Transport *io, ClientMsg &cm);
 
+		/*********************************************************************\
+		|* 11.3: Fill an arc					[type=2] [pxy=x,y,r,begin,end]
+		\*********************************************************************/
+		void v_pieslice(int socket, int16_t x, int16_t y, int16_t radius,
+						int16_t start, int16_t end);
+		void v_pieslice(Transport *io, ClientMsg &cm);
+
 	};
 
 #endif // VDI_H
