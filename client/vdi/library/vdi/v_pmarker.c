@@ -26,10 +26,12 @@ void v_pmarker(int16_t handle, int16_t numPts, int16_t*pts)
 	/*************************************************************************\
 	|* Construct and send the message
 	\*************************************************************************/
+	numPts *= 2;
+
 	GemMsg msg;
 	_gemMsgInit(&msg, MSG_V_PMARKER);
 	_gemMsgAppend(&msg, &numPts, 1);
-	_gemMsgAppend(&msg, pts, numPts*2);
+	_gemMsgAppend(&msg, pts, numPts);
 	_gemIoWrite(&msg);
 			
 	/*************************************************************************\

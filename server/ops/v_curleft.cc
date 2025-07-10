@@ -10,11 +10,11 @@
 |* Original signature is: v_curleft(int16_t handle);
 |*
 \*****************************************************************************/
-void VDI::v_curleft(int socket)
+void VDI::v_curleft(int handle)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
-	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
+	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(handle)
 								   : nullptr;
 	if (ws != nullptr)
 		{
@@ -28,7 +28,7 @@ void VDI::v_curleft(int socket)
 		}
 	else
 		{
-		WARN("Cannot find workstation for socket connection %d", socket);
+		WARN("v_curleft() cannot find workstation for handle %d", handle);
 		}
 	}
 
@@ -37,6 +37,11 @@ void VDI::v_curleft(int socket)
 \*****************************************************************************/
 void VDI::v_curleft(Transport *io)
 	{
-	int fd = io->socket()->socketDescriptor();
-	v_curleft(fd);
+	if (io && io->socket())
+		{
+		int fd = io->socket()->socketDescriptor();
+		v_curleft(fd);
+		}
+	else
+		WARN("v_curleft() cannot find IO transport");
 	}

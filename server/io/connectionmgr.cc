@@ -140,6 +140,14 @@ Workstation * ConnectionMgr::findWorkstationForHandle(qintptr handle)
 	return nullptr;
 	}
 
+/*****************************************************************************\
+|* Map a transport object to a workstation
+\*****************************************************************************/
+void ConnectionMgr::mapTransportToWorkstation(Transport *io, Workstation *ws)
+	{
+	_wsList[io] = ws;
+	}
+
 
 /*****************************************************************************\
 |* Enable (Add) or disable (remove) a timer-interest to the list
@@ -179,12 +187,8 @@ void ConnectionMgr::_incomingData(void)
 			// 1
 			// ---------------------------------------------------------------
 			case ClientMsg::V_OPNWK:
-				{
-				ws = VDI::sharedInstance().v_opnwk(io, cm);
-				if (ws != nullptr)
-					_wsList[io] = ws;
+				VDI::sharedInstance().v_opnwk(this, io, cm);
 				break;
-				}
 
 			// 3
 			// ---------------------------------------------------------------
@@ -342,9 +346,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().v_circle(io, cm);
 				break;
 
-		// 	case ClientMsg::V_ELLIPSE:				// 11.5
-		// 		VDI::sharedInstance().v_ellipse(ws, &cm);
-		// 		break;
+			// 11.5
+			// ---------------------------------------------------------------
+			case ClientMsg::V_ELLIPSE:
+				VDI::sharedInstance().v_ellipse(io, cm);
+				break;
 
 		// 	case ClientMsg::V_ELLARC:				// 11.6
 		// 		VDI::sharedInstance().v_ellarc(ws, &cm);

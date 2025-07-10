@@ -11,11 +11,11 @@
 |* Original signature is: v_eeol(int16_t handle);
 |*
 \*****************************************************************************/
-void VDI::v_eeol(int socket)
+void VDI::v_eeol(int handle)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
-	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
+	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(handle)
 								   : nullptr;
 	if (ws != nullptr)
 		{
@@ -35,7 +35,7 @@ void VDI::v_eeol(int socket)
 		}
 	else
 		{
-		WARN("Cannot find workstation for socket connection %d", socket);
+		WARN("v_eeol() cannot find workstation for handle %d", handle);
 		}
 	}
 
@@ -44,6 +44,12 @@ void VDI::v_eeol(int socket)
 \*****************************************************************************/
 void VDI::v_eeol(Transport *io)
 	{
-	int fd = io->socket()->socketDescriptor();
-	v_eeol(fd);
+	if (io && io->socket())
+		{
+		int fd = io->socket()->socketDescriptor();
+		v_eeol(fd);
+		}
+	else
+		WARN("v_eeol() cannot find IO transport");
+
 	}

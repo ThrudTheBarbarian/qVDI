@@ -1,6 +1,8 @@
 #include <QPainter>
 #include <QPainterPath>
 
+#include <vector>
+
 #include "debug.h"
 #include "screen.h"
 #include "vdi.h"
@@ -14,12 +16,12 @@
 |*						        int16_t begang, int16_t endang);
 |*
 \*****************************************************************************/
-void VDI::v_arc(int socket, int16_t x, int16_t y, int16_t radius,
+void VDI::v_arc(int handle, int16_t x, int16_t y, int16_t radius,
 				int16_t start, int16_t end)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
-	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
+	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(handle)
 								   : nullptr;
 
 	if (ws != nullptr)
@@ -63,7 +65,7 @@ void VDI::v_arc(int socket, int16_t x, int16_t y, int16_t radius,
 		}
 	else
 		{
-		WARN("Cannot find workstation for socket connection %d", socket);
+		WARN("v_arc cannot find workstation for handle %d", handle);
 		}
 	}
 
@@ -73,13 +75,18 @@ void VDI::v_arc(int socket, int16_t x, int16_t y, int16_t radius,
 void VDI::v_arc(Transport *io, ClientMsg &cm)
 	{
 	const Payload &p	= cm.payload();
-	int16_t x			= ntohs(p[0]);
-	int16_t y			= ntohs(p[1]);
-	int16_t radius		= ntohs(p[2]);
-	int16_t start		= ntohs(p[3]);
-	int16_t end			= ntohs(p[4]);
+	if (p.size() == 5)
+		{
+		int16_t x			= ntohs(p[0]);
+		int16_t y			= ntohs(p[1]);
+		int16_t radius		= ntohs(p[2]);
+		int16_t start		= ntohs(p[3]);
+		int16_t end			= ntohs(p[4]);
 
-	int fd = io->socket()->socketDescriptor();
-	v_arc(fd, x, y, radius, start, end);
+		int fd = io->socket()->socketDescriptor();
+		v_arc(fd, x, y, radius, start, end);
+		}
+	else
+		WARN("v_arc only sent %d arguments (need 5)", (int)p.size());
 	}
 

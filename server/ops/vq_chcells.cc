@@ -15,11 +15,11 @@
 |*  vq_chcells(int16_t handle, int16_t& rows, int16_t& columns);
 |*
 \*****************************************************************************/
-void VDI::vq_chcells(int socket, int16_t& rows, int16_t& columns)
+void VDI::vq_chcells(int handle, int16_t& rows, int16_t& columns)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
-	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
+	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(handle)
 								   : nullptr;
 	if (ws != nullptr)
 		{
@@ -29,12 +29,9 @@ void VDI::vq_chcells(int socket, int16_t& rows, int16_t& columns)
 		_alphaWidth			= bounds.width();
 		rows				= screen->height() / _alphaHeight;
 		columns				= screen->width() / _alphaWidth;
-		fprintf(stderr, "ch: %d, %d    scrn: %d, %d",
-			bounds.width(), bounds.height(),
-				screen->width(), screen->height());
 		}
 	else
-		WARN("Cannot find workstation for socket connection %d", socket);
+		WARN("v_chcells() cannot find workstation for handle %d", handle);
 	}
 
 /*****************************************************************************\
@@ -44,20 +41,25 @@ void VDI::vq_chcells(Transport *io, Workstation *, ClientMsg &cm)
 	{
 	int16_t rows	= 0;
 	int16_t cols	= 0;
-	int fd			= io->socket()->socketDescriptor();
+	if (io && io->socket())
+		{
+		int fd = io->socket()->socketDescriptor();
 
-	vq_chcells(fd, rows, cols);
+		vq_chcells(fd, rows, cols);
 
-	/**************************************************************************\
-	|* Construct the message
-	\**************************************************************************/
-	cm.clear();
-	cm.append(rows);
-	cm.append(cols);
-	cm.setType(MSG_REPLY(ClientMsg::VQ_CHCELLS));
+		/*********************************************************************\
+		|* Construct the message
+		\*********************************************************************/
+		cm.clear();
+		cm.append(rows);
+		cm.append(cols);
+		cm.setType(MSG_REPLY(ClientMsg::VQ_CHCELLS));
 
-	/**************************************************************************\
-	|* Send the message down the wire
-	\**************************************************************************/
-	io->write(cm);
+		/*********************************************************************\
+		|* Send the message down the wire
+		\*********************************************************************/
+		io->write(cm);
+		}
+	else
+		WARN("vq_chcells() cannot find IO transport");
 	}

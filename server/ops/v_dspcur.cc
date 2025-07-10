@@ -11,11 +11,11 @@
 |* Original signature is: v_dspcur(int1`6_t handle, int16_t x, int16_t y)
 |*
 \*****************************************************************************/
-void VDI::v_dspcur(int socket, int16_t x, int16_t y)
+void VDI::v_dspcur(int handle, int16_t x, int16_t y)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
-	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
+	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(handle)
 								   : nullptr;
 	if (ws != nullptr)
 		{
@@ -29,7 +29,7 @@ void VDI::v_dspcur(int socket, int16_t x, int16_t y)
 		}
 	else
 		{
-		WARN("Cannot find workstation for socket connection %d", socket);
+		WARN("v_dspcur() annot find workstation for handle %d", handle);
 		}
 	}
 
@@ -39,13 +39,17 @@ void VDI::v_dspcur(int socket, int16_t x, int16_t y)
 void VDI::v_dspcur(Transport *io, ClientMsg &cm)
 	{
 	const Payload &p = cm.payload();
+	if (p.size() == 2)
+		{
+		/*********************************************************************\
+		|* Get the data out of the message
+		\*********************************************************************/
+		int16_t x = ntohs(p[0]);
+		int16_t y = ntohs(p[1]);
 
-	/**************************************************************************\
-	|* Get the data out of the message
-	\**************************************************************************/
-	int16_t x = ntohs(p[0]);
-	int16_t y = ntohs(p[1]);
-
-	int fd = io->socket()->socketDescriptor();
-	v_dspcur(fd, x, y);
+		int fd = io->socket()->socketDescriptor();
+		v_dspcur(fd, x, y);
+		}
+	else
+		WARN("v_dspcur() needs 2 arguments, got %d", (int)p.size());
 	}

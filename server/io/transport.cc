@@ -65,9 +65,11 @@ bool Transport::read(ClientMsg &msg)
 		/*********************************************************************\
 		|* Read the data if we can - note this is not byte-swapped, and flag ok
 		\*********************************************************************/
+		int16_t type = ntohs(*(words++));
+
 		if (_buffer.size() >= 2*length)
 			{
-			msg.setType(ntohs(*(words++)));
+			msg.setType(type);
 			length --;
 
 			for (int i=0; i<length; i++)
@@ -80,7 +82,7 @@ bool Transport::read(ClientMsg &msg)
 			{
 			WARN("Insufficient data for msg type 0x%04X "
 				 "(%d required, %d available)",
-				 _type, length*2, (int)dev->bytesAvailable());
+				 type, length*2, (int)_buffer.size());
 			}
 		}
 

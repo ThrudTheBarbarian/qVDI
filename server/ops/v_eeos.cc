@@ -11,15 +11,15 @@
 |* Original signature is: v_eeos(int16_t handle);
 |*
 \*****************************************************************************/
-void VDI::v_eeos(int socket)
+void VDI::v_eeos(int handle)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
-	Workstation *ws			= cmgr  ? cmgr->findWorkstationForHandle(socket)
+	Workstation *ws			= cmgr  ? cmgr->findWorkstationForHandle(handle)
 									: nullptr;
 	if (ws != nullptr)
 		{
-		v_eeol(socket);
+		v_eeol(handle);
 
 		int H = screen->height();
 		int W = screen->width();
@@ -32,7 +32,7 @@ void VDI::v_eeos(int socket)
 		}
 	else
 		{
-		WARN("Cannot find workstation for socket connection %d", socket);
+		WARN("v_eeos() cannot find workstation for handle %d", handle);
 		}
 	}
 
@@ -41,6 +41,11 @@ void VDI::v_eeos(int socket)
 \*****************************************************************************/
 void VDI::v_eeos(Transport *io)
 	{
-	int fd = io->socket()->socketDescriptor();
-	v_eeos(fd);
+	if (io && io->socket())
+		{
+		int fd = io->socket()->socketDescriptor();
+		v_eeos(fd);
+		}
+	else
+		WARN("v_eeos() cannot find IO transport");
 	}

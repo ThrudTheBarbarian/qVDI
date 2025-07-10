@@ -11,11 +11,11 @@
 |* Original signature is: v_curtext(int16_t handle, int8_t *string);
 |*
 \*****************************************************************************/
-void VDI::v_curtext(int socket, const char *str)
+void VDI::v_curtext(int handle, const char *str)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
-	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
+	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(handle)
 								   : nullptr;
 	if (ws != nullptr)
 		{
@@ -50,7 +50,7 @@ void VDI::v_curtext(int socket, const char *str)
 		}
 	else
 		{
-		WARN("Cannot find workstation for socket connection %d", socket);
+		WARN("v_curtext() annot find workstation for handle %d", handle);
 		}
 	}
 
@@ -62,7 +62,11 @@ void VDI::v_curtext(Transport *io, ClientMsg &cm)
 	QByteArray ba;
 	cm.fetchData(0, ba);
 	const char *str = ba.constData();
-
-	int fd = io->socket()->socketDescriptor();
-	v_curtext(fd, str);
+	if (str && (strlen(str) > 0))
+		{
+		int fd = io->socket()->socketDescriptor();
+		v_curtext(fd, str);
+		}
+	else
+		WARN("v_curtext() cannot find string to draw");
 	}

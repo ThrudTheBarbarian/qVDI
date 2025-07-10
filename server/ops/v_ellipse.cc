@@ -1,3 +1,4 @@
+#include <QPainter>
 
 #include "debug.h"
 #include "screen.h"
@@ -5,44 +6,44 @@
 #include "workstation.h"
 
 /*****************************************************************************\
-|* Opcode 5.6: Move the cursor right if possible.
-|*
-|* Original signature is: v_curright(int16_t handle);
-|*
+|*  11.5: Fill an ellipse			[type=5] [pxy=x,y,rx,ry]
 \*****************************************************************************/
-void VDI::v_curright(int handle)
+void VDI::v_ellipse(int handle, int16_t x, int16_t y, int16_t xr, int16_t yr)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
 	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(handle)
 								   : nullptr;
+
 	if (ws != nullptr)
 		{
-		int lastCol =screen->width() / _alphaWidth;
-		if (_alphaX < lastCol-1)
-			{
-			bool erased = _eraseAlphaCursor();
-			_alphaX ++;
-			if (erased)
-				_drawAlphaCursor();
-			}
+		int16_t pxy[] = {x, y, xr, yr};
+		v_fillarea(handle, ELLIPSE, 4, pxy);
 		}
 	else
 		{
-		WARN("v_curright() cannot find workstation for handle %d", handle);
+		WARN("v_ellipse() cannot find workstation for handle %d", handle);
 		}
 	}
 
 /*****************************************************************************\
 |* And from the socket interface...
 \*****************************************************************************/
-void VDI::v_curright(Transport *io)
+void VDI::v_ellipse(Transport *io, ClientMsg &cm)
 	{
-	if (io && io->socket())
+	const Payload &p	= cm.payload();
+	int16_t num			= ntohs(p[0]);
+	if (num == 4)
 		{
+		int16_t x		= ntohs(p[1]);
+		int16_t y		= ntohs(p[2]);
+		int16_t xr		= ntohs(p[3]);
+		int16_t yr		= ntohs(p[4]);
+
 		int fd = io->socket()->socketDescriptor();
-		v_curright(fd);
+		v_ellipse(fd, x, y, xr, yr);
 		}
 	else
-		WARN("v_curright() cannot find IO transport");
+		WARN("v_ellipse() needs 4 arguments, got %d", num);
 	}
+

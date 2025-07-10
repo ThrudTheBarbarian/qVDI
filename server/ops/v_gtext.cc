@@ -13,11 +13,11 @@
 |* Original signature is: v_gtext(int16_t hndl, int16_t x, int16_t y, char *s);
 |*
 \*****************************************************************************/
-void VDI::v_gtext(int socket, int16_t x, int16_t y, int16_t w, char *txt)
+void VDI::v_gtext(int handle, int16_t x, int16_t y, int16_t w, char *txt)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
-	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
+	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(handle)
 								   : nullptr;
 
 	if (ws != nullptr)
@@ -109,7 +109,7 @@ void VDI::v_gtext(int socket, int16_t x, int16_t y, int16_t w, char *txt)
 		}
 	else
 		{
-		WARN("Cannot find workstation for socket connection %d", socket);
+		WARN("v_gtext() cannot find workstation for handle %d", handle);
 		}
 	}
 
@@ -120,13 +120,18 @@ void VDI::v_gtext(int socket, int16_t x, int16_t y, int16_t w, char *txt)
 void VDI::v_gtext(Transport *io, ClientMsg &cm)
 	{
 	const Payload &p	= cm.payload();
-	int16_t x			= ntohs(p[0]);
-	int16_t y			= ntohs(p[1]);
+	if (io && io->socket() && (p.size() > 2))
+		{
+		int16_t x			= ntohs(p[0]);
+		int16_t y			= ntohs(p[1]);
 
-	QByteArray ba;
-	cm.fetchData(2, ba);
+		QByteArray ba;
+		cm.fetchData(2, ba);
 
-	int fd = io->socket()->socketDescriptor();
-	v_gtext(fd, x, y, 0, ba.data());
+		int fd = io->socket()->socketDescriptor();
+		v_gtext(fd, x, y, 0, ba.data());
+		}
+	else
+		WARN("v_gtext() cannot find IO transport or insufficient args");
 	}
 

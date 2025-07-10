@@ -17,6 +17,7 @@
 /*****************************************************************************\
 |* Forward declarations
 \*****************************************************************************/
+class ConnectionMgr;
 class Screen;
 class Workstation;
 
@@ -131,7 +132,7 @@ class VDI : public QObject
 		/*********************************************************************\
 		|* Operation:   1   : Open a physical workstation
 		\*********************************************************************/
-		Workstation * v_opnwk(Transport *io, ClientMsg &msg);
+		void v_opnwk(ConnectionMgr *cm, Transport *io, ClientMsg &msg);
 
 		/*********************************************************************\
 		|* Operation:   3   : Clear a workstation
@@ -289,6 +290,12 @@ class VDI : public QObject
 		\*********************************************************************/
 		void v_circle(int socket, int16_t x, int16_t y, int16_t radius);
 		void v_circle(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|*  11.5: Fill an ellipse				[type=5] [pxy=x,y,rx,ry]
+		\*********************************************************************/
+		void v_ellipse(int socket, int16_t x, int16_t y, int16_t xr, int16_t yr);
+		void v_ellipse(Transport *io, ClientMsg &cm);
 
 	};
 

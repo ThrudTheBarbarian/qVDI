@@ -73,7 +73,7 @@ static int16_t _defaultValues[] =
 /*****************************************************************************\
 |*   1   : Open a physical workstation
 \*****************************************************************************/
-Workstation * VDI::v_opnwk(Transport *io, ClientMsg &msg)
+void VDI::v_opnwk(ConnectionMgr *cm, Transport *io, ClientMsg &msg)
 	{
 	/*************************************************************************\
 	|* Set any defaults that were sent through (<0 == ignore)
@@ -93,6 +93,8 @@ Workstation * VDI::v_opnwk(Transport *io, ClientMsg &msg)
 		ws = new ScreenWS(this);
 	else
 		ws = new Workstation(this);
+	cm->mapTransportToWorkstation(io, ws);
+
 	ws->setDeviceId(workIn[0]);
 	ws->claimNextHandle();
 
@@ -126,7 +128,7 @@ Workstation * VDI::v_opnwk(Transport *io, ClientMsg &msg)
 	|* workIn[5]:  Font id
 	\*************************************************************************/
 	// FIXME: This should actually look things up
-	ws->setFontId(CHECK_RANGE(workIn[5], 0, 1024));
+	ws->setFontId(CHECK_RANGE(workIn[5], -1, 1024));
 
 	/*************************************************************************\
 	|* workIn[6]:  Default text colour index
@@ -204,7 +206,7 @@ Workstation * VDI::v_opnwk(Transport *io, ClientMsg &msg)
 	|* Fetch the character width, height and screen rows/cols
 	\*********************************************************************/
 	int16_t rows, cols;
-	vq_chcells(ws->handle(), rows, cols);
+	vq_chcells(io->socket()->socketDescriptor(), rows, cols);
 
 	/**************************************************************************\
 	|* Send the message down the wire
@@ -212,6 +214,5 @@ Workstation * VDI::v_opnwk(Transport *io, ClientMsg &msg)
 	io->write(msg, true);
 
 	_top = ws;	// FIXME: Should be in a LIFO queue
-	return ws;
 	}
 

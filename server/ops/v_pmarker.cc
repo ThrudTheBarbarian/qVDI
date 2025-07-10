@@ -12,11 +12,11 @@
 |* Original signature is: v_pmarker(int16_t handle, int16_t numPts, int16_t*pxy);
 |*
 \*****************************************************************************/
-void VDI::v_pmarker(int socket, int16_t num, int16_t*pxy)
+void VDI::v_pmarker(int handle, int16_t num, int16_t*pxy)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
-	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
+	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(handle)
 								   : nullptr;
 	QRectF dirty			= QRect(0,0,0,0);
 
@@ -107,7 +107,7 @@ void VDI::v_pmarker(int socket, int16_t num, int16_t*pxy)
 		}
 	else
 		{
-		WARN("Cannot find workstation for socket connection %d", socket);
+		WARN("v_pmarker() cannot find workstation for handle %d", handle);
 		}
 	}
 
@@ -118,15 +118,20 @@ void VDI::v_pmarker(Transport *io, ClientMsg &cm)
 	{
 	const Payload &p	= cm.payload();
 	int16_t num			= ntohs(p[0]);
-	int16_t *pxy		= (int16_t *)(&(p[1]));
+	if (num == (int16_t)p.size()-1)
+		{
+		int16_t *pxy		= (int16_t *)(&(p[1]));
 
-	/**************************************************************************\
-	|* Get the data out of the message
-	\**************************************************************************/
-	for (int i=0; i<num*2; i++)
-		pxy[i] = ntohs(pxy[i]);
+		/**********************************************************************\
+		|* Get the data out of the message
+		\**********************************************************************/
+		for (int i=0; i<num; i++)
+			pxy[i] = ntohs(pxy[i]);
 
-	int fd = io->socket()->socketDescriptor();
-	v_pmarker(fd, num, pxy);
+		int fd = io->socket()->socketDescriptor();
+		v_pmarker(fd, num/2, pxy);
+		}
+	else
+		WARN("v_pmarker got %d args, expected %d", (int)p.size()-1, num);
 	}
 

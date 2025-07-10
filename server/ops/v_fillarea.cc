@@ -19,11 +19,11 @@
 |* Original signature is: v_fillarea(int16_t handle, int16_t numPts, int16_t*pxy);
 |*
 \*****************************************************************************/
-void VDI::v_fillarea(int socket, FillType type, int16_t num, int16_t*pxy)
+void VDI::v_fillarea(int handle, FillType type, int16_t num, int16_t*pxy)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
-	Workstation *ws			= cmgr	? cmgr->findWorkstationForHandle(socket)
+	Workstation *ws			= cmgr	? cmgr->findWorkstationForHandle(handle)
 									: nullptr;
 
 	if (ws != nullptr)
@@ -174,7 +174,7 @@ void VDI::v_fillarea(int socket, FillType type, int16_t num, int16_t*pxy)
 		}
 	else
 		{
-		WARN("Cannot find workstation for socket connection %d", socket);
+		WARN("v_fillarea() cannot find workstation for handle %d", handle);
 		}
 	}
 
@@ -187,11 +187,16 @@ void VDI::v_fillarea(Transport *io, ClientMsg &cm)
 	{
 	const Payload &p	= cm.payload();
 	int16_t num			= ntohs(p[0]);
-	int16_t *pxy		= (int16_t *)(&(p[1]));
+	if (num == (int16_t)(p.size()-1))
+		{
+		int16_t *pxy		= (int16_t *)(&(p[1]));
 
-	for (int i=0; i<num*2; i++)
-		pxy[i] = ntohs(pxy[i]);
+		for (int i=0; i<num; i++)
+			pxy[i] = ntohs(pxy[i]);
 
-	int fd = io->socket()->socketDescriptor();
-	v_fillarea(fd, POLY, num, pxy);
+		int fd = io->socket()->socketDescriptor();
+		v_fillarea(fd, POLY, num/2, pxy);
+		}
+	else
+		WARN("v_fillarea() got %d args (expect %d)", num, (int)p.size()-1);
 	}

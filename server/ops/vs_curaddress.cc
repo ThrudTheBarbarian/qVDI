@@ -11,11 +11,11 @@
 |* Original signature is: v_curaddress(int16_t handle, int16_t row, int16_t col);
 |*
 \*****************************************************************************/
-void VDI::vs_curaddress(int socket, int row, int col)
+void VDI::vs_curaddress(int handle, int row, int col)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
-	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
+	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(handle)
 								   : nullptr;
 	if (ws != nullptr)
 		{
@@ -38,7 +38,7 @@ void VDI::vs_curaddress(int socket, int row, int col)
 		}
 	else
 		{
-		WARN("Non-screen devices currently unsupported");
+		WARN("vs_curaddress(): Non-screen devices currently unsupported");
 		}
 	}
 
@@ -48,9 +48,19 @@ void VDI::vs_curaddress(int socket, int row, int col)
 void VDI::vs_curaddress(Transport *io, ClientMsg &cm)
 	{
 	const Payload &p = cm.payload();
-	int16_t row = ntohs(p[0]);
-	int16_t col = ntohs(p[1]);
+	if (p.size() == 2)
+		{
+		int16_t row = ntohs(p[0]);
+		int16_t col = ntohs(p[1]);
 
-	int fd = io->socket()->socketDescriptor();
-	vs_curaddress(fd, row, col);
+		if (io && io->socket())
+			{
+			int fd = io->socket()->socketDescriptor();
+			vs_curaddress(fd, row, col);
+			}
+		else
+			WARN("vs_curaddress() cannot find IO transport");
+		}
+	else
+		WARN("vs_curraddress() got %d args, expected 2", (int)p.size());
 	}

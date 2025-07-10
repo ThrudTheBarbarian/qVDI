@@ -10,11 +10,11 @@
 |* Original signature is: v_curdown(int16_t handle);
 |*
 \*****************************************************************************/
-void VDI::v_curdown(int socket)
+void VDI::v_curdown(int handle)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
-	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
+	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(handle)
 								   : nullptr;
 	if (ws != nullptr)
 		{
@@ -29,7 +29,7 @@ void VDI::v_curdown(int socket)
 		}
 	else
 		{
-		WARN("Cannot find workstation for socket connection %d", socket);
+		WARN("v_curdown() cannot find workstation for handle %d", handle);
 		}
 	}
 
@@ -38,6 +38,11 @@ void VDI::v_curdown(int socket)
 \*****************************************************************************/
 void VDI::v_curdown(Transport *io)
 	{
-	int fd = io->socket()->socketDescriptor();
-	v_curdown(fd);
+	if (io && io->socket())
+		{
+		int fd = io->socket()->socketDescriptor();
+		v_curdown(fd);
+		}
+	else
+		WARN("v_curdown() cannot find IO transport");
 	}

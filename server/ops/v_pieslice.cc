@@ -8,22 +8,22 @@
 /*****************************************************************************\
 |*  11.3: Fill an arc				[type=2] [pxy=x,y,r,begin,end]
 \*****************************************************************************/
-void VDI::v_pieslice(int socket, int16_t x, int16_t y, int16_t radius,
+void VDI::v_pieslice(int handle, int16_t x, int16_t y, int16_t radius,
 					 int16_t start, int16_t end)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
-	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
+	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(handle)
 								   : nullptr;
 
 	if (ws != nullptr)
 		{
 		int16_t pxy[] = {x, y, radius, start, end};
-		v_fillarea(socket, PIE, 5, pxy);
+		v_fillarea(handle, PIE, 5, pxy);
 		}
 	else
 		{
-		WARN("Cannot find workstation for socket connection %d", socket);
+		WARN("v_pieslice() cannot find workstation for handle %d", handle);
 		}
 	}
 
@@ -45,5 +45,7 @@ void VDI::v_pieslice(Transport *io, ClientMsg &cm)
 		int fd = io->socket()->socketDescriptor();
 		v_pieslice(fd, x, y, radius, start, end);
 		}
+	else
+		WARN("v_pieslice() got %d args, need 5", num);
 	}
 

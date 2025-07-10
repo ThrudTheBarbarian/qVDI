@@ -31,17 +31,22 @@ void VDI::v_bar(int socket, int16_t num, int16_t*pxy)
 \*****************************************************************************/
 void VDI::v_bar(Transport *io, ClientMsg &cm)
 	{
-	const Payload &p	= cm.payload();
-	int16_t num			= ntohs(p[0]);
-	int16_t *pxy		= (int16_t *)(&(p[1]));
+	const Payload &p		= cm.payload();
+	int16_t num				= ntohs(p[0]);
+	if (num == (int16_t)(p.size()-1))
+		{
+		int16_t *pxy		= (int16_t *)(&(p[1]));
 
-	/**************************************************************************\
-	|* Get the data out of the message
-	\**************************************************************************/
-	for (int i=0; i<num*2; i++)
-		pxy[i] = ntohs(pxy[i]);
+		/**********************************************************************\
+		|* Get the data out of the message
+		\**********************************************************************/
+		for (int i=0; i<num*2; i++)
+			pxy[i] = ntohs(pxy[i]);
 
-	int fd = io->socket()->socketDescriptor();
-	v_bar(fd, num, pxy);
+		int fd = io->socket()->socketDescriptor();
+		v_bar(fd, num, pxy);
+		}
+	else
+		WARN("v_bar sent %d arguments (expect %d)", (int)p.size()-1, num);
 	}
 

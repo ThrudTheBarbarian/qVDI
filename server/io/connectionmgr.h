@@ -65,6 +65,11 @@ class ConnectionMgr : public QObject
 		Workstation * findWorkstationForHandle(qintptr handle);
 
 		/*********************************************************************\
+		|* Map a transport object to a workstation
+		\*********************************************************************/
+		void mapTransportToWorkstation(Transport *io, Workstation *ws);
+
+		/*********************************************************************\
 		|* Add or remove a connection from the list that wants timer events
 		\*********************************************************************/
 		void updateTimerInterest(qintptr handle, int16_t enable);

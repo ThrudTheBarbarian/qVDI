@@ -11,11 +11,11 @@
 |* Original signature is: v_rvon(int16_t handle);
 |*
 \*****************************************************************************/
-void VDI::v_rvon(int socket)
+void VDI::v_rvon(int handle)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
-	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
+	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(handle)
 								   : nullptr;
 	if (ws != nullptr)
 		{
@@ -23,7 +23,7 @@ void VDI::v_rvon(int socket)
 		}
 	else
 		{
-		WARN("Cannot find workstation for socket connection %d", socket);
+		WARN("v_rvon() cannot find workstation for handle %d", handle);
 		}
 	}
 
@@ -32,6 +32,11 @@ void VDI::v_rvon(int socket)
 \*****************************************************************************/
 void VDI::v_rvon(Transport *io)
 	{
-	int fd = io->socket()->socketDescriptor();
-	v_rvon(fd);
+	if (io && io->socket())
+		{
+		int fd = io->socket()->socketDescriptor();
+		v_rvon(fd);
+		}
+	else
+		WARN("v_rvon() cannot find IO transport");
 	}

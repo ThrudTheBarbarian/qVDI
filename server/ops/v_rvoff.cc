@@ -11,11 +11,11 @@
 |* Original signature is: v_rvoff(int16_t handle);
 |*
 \*****************************************************************************/
-void VDI::v_rvoff(int socket)
+void VDI::v_rvoff(int handle)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
-	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
+	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(handle)
 								   : nullptr;
 	if (ws != nullptr)
 		{
@@ -23,7 +23,7 @@ void VDI::v_rvoff(int socket)
 		}
 	else
 		{
-		WARN("Cannot find workstation for socket connection %d", socket);
+		WARN("v_rvoff() cannot find workstation for handle %d", handle);
 		}
 	}
 
@@ -32,6 +32,11 @@ void VDI::v_rvoff(int socket)
 \*****************************************************************************/
 void VDI::v_rvoff(Transport *io)
 	{
-	int fd = io->socket()->socketDescriptor();
-	v_rvoff(fd);
+	if (io && io->socket())
+		{
+		int fd = io->socket()->socketDescriptor();
+		v_rvoff(fd);
+		}
+	else
+		WARN("v_rvoff() cannot find IO transport");
 	}

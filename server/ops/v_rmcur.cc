@@ -11,11 +11,11 @@
 |* Original signature is: v_rmcur(int1`6_t handle)
 |*
 \*****************************************************************************/
-void VDI::v_rmcur(int socket)
+void VDI::v_rmcur(int handle)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
-	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
+	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(handle)
 								   : nullptr;
 	if (ws != nullptr)
 		{
@@ -23,7 +23,7 @@ void VDI::v_rmcur(int socket)
 		}
 	else
 		{
-		WARN("Cannot find workstation for socket connection %d", socket);
+		WARN("v_rmcur() cannot find workstation for handle %d", handle);
 		}
 	}
 
@@ -32,6 +32,11 @@ void VDI::v_rmcur(int socket)
 \*****************************************************************************/
 void VDI::v_rmcur(Transport *io)
 	{
-	int fd = io->socket()->socketDescriptor();
-	v_rmcur(fd);
+	if (io && io->socket())
+		{
+		int fd = io->socket()->socketDescriptor();
+		v_rmcur(fd);
+		}
+	else
+		WARN("v_rmcur() cannot find IO transport");
 	}
