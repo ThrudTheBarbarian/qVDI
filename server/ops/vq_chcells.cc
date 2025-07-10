@@ -18,8 +18,9 @@
 void VDI::vq_chcells(int socket, int16_t& rows, int16_t& columns)
 	{
 	Screen *screen			= Screen::sharedInstance();
-	ConnectionMgr *cmgr		= screen->cmgr();
-	Workstation *ws			= cmgr->findWorkstationForHandle(socket);
+	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
+	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
+								   : nullptr;
 	if (ws != nullptr)
 		{
 		QFontMetrics *fm	= ws->fm();

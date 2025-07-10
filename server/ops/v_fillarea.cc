@@ -22,9 +22,9 @@
 void VDI::v_fillarea(int socket, FillType type, int16_t num, int16_t*pxy)
 	{
 	Screen *screen			= Screen::sharedInstance();
-	ConnectionMgr *cmgr		= screen->cmgr();
-	Workstation *ws			= cmgr->findWorkstationForHandle(socket);
-	QRectF dirty			= QRect(0,0,0,0);
+	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
+	Workstation *ws			= cmgr	? cmgr->findWorkstationForHandle(socket)
+									: nullptr;
 
 	if (ws != nullptr)
 		{

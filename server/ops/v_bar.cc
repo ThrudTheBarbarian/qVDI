@@ -12,8 +12,9 @@
 void VDI::v_bar(int socket, int16_t num, int16_t*pxy)
 	{
 	Screen *screen			= Screen::sharedInstance();
-	ConnectionMgr *cmgr		= screen->cmgr();
-	Workstation *ws			= cmgr->findWorkstationForHandle(socket);
+	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
+	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
+								   : nullptr;
 
 	if (ws != nullptr)
 		{

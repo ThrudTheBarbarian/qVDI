@@ -38,8 +38,13 @@ int main(int argc, const char * argv[])
 	int16_t pxy[] = {50,50, 100,50, 100,100, 50,100, 50,50};
 	v_fillarea(handle, 5, pxy);
 
+	printf("Test rectangle fill");
 	int16_t pxy_v_bar[] = {150, 50, 250, 100};
 	v_bar(handle, pxy_v_bar);
 
+	printf("Test pieslice fill");
 	v_pieslice(handle, 300, 100, 50, 0, 900);
+
+	printf("Test circle fill");
+	v_circle(handle, 400, 75, 25);
 	}

@@ -14,8 +14,9 @@
 void VDI::v_curtext(int socket, const char *str)
 	{
 	Screen *screen			= Screen::sharedInstance();
-	ConnectionMgr *cmgr		= screen->cmgr();
-	Workstation *ws			= cmgr->findWorkstationForHandle(socket);
+	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
+	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
+								   : nullptr;
 	if (ws != nullptr)
 		{
 		bool erased = _eraseAlphaCursor();

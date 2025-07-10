@@ -16,8 +16,9 @@
 void VDI::vq_curaddress(int socket, int16_t& row, int16_t& col)
 	{
 	Screen *screen			= Screen::sharedInstance();
-	ConnectionMgr *cmgr		= screen->cmgr();
-	Workstation *ws			= cmgr->findWorkstationForHandle(socket);
+	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
+	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
+								   : nullptr;
 	if (ws != nullptr)
 		{
 		col = _alphaX;

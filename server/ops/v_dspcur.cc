@@ -14,8 +14,9 @@
 void VDI::v_dspcur(int socket, int16_t x, int16_t y)
 	{
 	Screen *screen			= Screen::sharedInstance();
-	ConnectionMgr *cmgr		= screen->cmgr();
-	Workstation *ws			= cmgr->findWorkstationForHandle(socket);
+	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
+	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
+								   : nullptr;
 	if (ws != nullptr)
 		{
 		if ((x >= 0) && (y >= 0))

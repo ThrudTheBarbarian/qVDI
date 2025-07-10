@@ -22,6 +22,7 @@ SOURCES += \
 	io/v_curhome.cc \
 	ops/v_arc.cc \
 	ops/v_bar.cc \
+	ops/v_circle.cc \
 	ops/v_clrwk.cc \
 	ops/v_curdown.cc \
 	ops/v_curleft.cc \

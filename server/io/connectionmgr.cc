@@ -336,9 +336,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().v_pieslice(io, cm);
 				break;
 
-		// 	case ClientMsg::V_CIRCLE:				// 11.4
-		// 		VDI::sharedInstance().v_circle(ws, &cm);
-		// 		break;
+			// 11.4
+			// ---------------------------------------------------------------
+			case ClientMsg::V_CIRCLE:
+				VDI::sharedInstance().v_circle(io, cm);
+				break;
 
 		// 	case ClientMsg::V_ELLIPSE:				// 11.5
 		// 		VDI::sharedInstance().v_ellipse(ws, &cm);

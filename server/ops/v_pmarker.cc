@@ -15,8 +15,9 @@
 void VDI::v_pmarker(int socket, int16_t num, int16_t*pxy)
 	{
 	Screen *screen			= Screen::sharedInstance();
-	ConnectionMgr *cmgr		= screen->cmgr();
-	Workstation *ws			= cmgr->findWorkstationForHandle(socket);
+	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
+	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
+								   : nullptr;
 	QRectF dirty			= QRect(0,0,0,0);
 
 	if (ws != nullptr)

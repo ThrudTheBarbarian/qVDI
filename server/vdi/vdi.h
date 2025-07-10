@@ -284,6 +284,12 @@ class VDI : public QObject
 						int16_t start, int16_t end);
 		void v_pieslice(Transport *io, ClientMsg &cm);
 
+		/*********************************************************************\
+		|*  11.4: Fill a circle					[type=4] [pxy=x,y,r]
+		\*********************************************************************/
+		void v_circle(int socket, int16_t x, int16_t y, int16_t radius);
+		void v_circle(Transport *io, ClientMsg &cm);
+
 	};
 
 #endif // VDI_H

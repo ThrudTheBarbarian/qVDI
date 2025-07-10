@@ -16,8 +16,9 @@
 void VDI::v_gtext(int socket, int16_t x, int16_t y, int16_t w, char *txt)
 	{
 	Screen *screen			= Screen::sharedInstance();
-	ConnectionMgr *cmgr		= screen->cmgr();
-	Workstation *ws			= cmgr->findWorkstationForHandle(socket);
+	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
+	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
+								   : nullptr;
 
 	if (ws != nullptr)
 		{

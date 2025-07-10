@@ -1,3 +1,4 @@
+#include <QPainter>
 
 #include "debug.h"
 #include "screen.h"
@@ -5,27 +6,19 @@
 #include "workstation.h"
 
 /*****************************************************************************\
-|* Opcode 5.6: Move the cursor right if possible.
-|*
-|* Original signature is: v_curright(int16_t handle);
-|*
+|*  11.4: Fill a circle				[type=4] [pxy=x,y,r]
 \*****************************************************************************/
-void VDI::v_curright(int socket)
+void VDI::v_circle(int socket, int16_t x, int16_t y, int16_t radius)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
 	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(socket)
 								   : nullptr;
+
 	if (ws != nullptr)
 		{
-		int lastCol =screen->width() / _alphaWidth;
-		if (_alphaX < lastCol-1)
-			{
-			bool erased = _eraseAlphaCursor();
-			_alphaX ++;
-			if (erased)
-				_drawAlphaCursor();
-			}
+		int16_t pxy[] = {x, y, radius};
+		v_fillarea(socket, CIRCLE, 3, pxy);
 		}
 	else
 		{
@@ -36,8 +29,18 @@ void VDI::v_curright(int socket)
 /*****************************************************************************\
 |* And from the socket interface...
 \*****************************************************************************/
-void VDI::v_curright(Transport *io)
+void VDI::v_circle(Transport *io, ClientMsg &cm)
 	{
-	int fd = io->socket()->socketDescriptor();
-	v_curright(fd);
+	const Payload &p	= cm.payload();
+	int16_t num			= ntohs(p[0]);
+	if (num == 3)
+		{
+		int16_t x		= ntohs(p[1]);
+		int16_t y		= ntohs(p[2]);
+		int16_t radius	= ntohs(p[3]);
+
+		int fd = io->socket()->socketDescriptor();
+		v_circle(fd, x, y, radius);
+		}
 	}
+
