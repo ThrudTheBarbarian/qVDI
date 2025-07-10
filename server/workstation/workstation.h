@@ -170,6 +170,7 @@ class Workstation : public QObject
 		\*********************************************************************/
 		virtual void update(void);
 		virtual void update(QRect& r);
+		virtual void update(QRectF& r);
 		virtual void update(int x, int y, int w, int h);
 
 		/*********************************************************************\

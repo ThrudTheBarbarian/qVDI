@@ -41,6 +41,7 @@ class ScreenWS : public PhysicalWS
 	\*************************************************************************/
 	virtual void update(void) override;
 	virtual void update(QRect& r) override;
+	virtual void update(QRectF& r) override;
 	virtual void update(int x, int y, int w, int h) override;
 
 	/*************************************************************************\

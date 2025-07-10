@@ -118,6 +118,7 @@ class VDI : public QObject
 		|* tell the widget it needs to be updated within an area
 		\*********************************************************************/
 		void update(QRect& area);
+		void update(QRectF& area);
 		void update(int x, int y, int w, int h);
 		void update(void);
 
@@ -258,10 +259,16 @@ class VDI : public QObject
 		void v_gtext(Transport *io, ClientMsg &cm);
 
 		/*********************************************************************\
-		|*   9	: Fill a polygon			[type=0] [pxy=x0,y0,x1,y1,...]
+		|*   9	: Fill a polygon				[type=0] [pxy=x0,y0,x1,y1,...]
 		\*********************************************************************/
 		void v_fillarea(int socket, FillType type, int16_t num, int16_t *pxy);
 		void v_fillarea(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 11.1	Fill a rectangle		[type=1] [pxy=x0,y0,x1,y1]
+		\*********************************************************************/
+		void v_bar(int socket, int16_t num, int16_t *pxy);
+		void v_bar(Transport *io, ClientMsg &cm);
 
 	};
 

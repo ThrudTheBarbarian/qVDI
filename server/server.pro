@@ -20,6 +20,7 @@ SOURCES += \
 	io/connectionmgr.cc \
 	io/transport.cc \
 	io/v_curhome.cc \
+	ops/v_bar.cc \
 	ops/v_clrwk.cc \
 	ops/v_curdown.cc \
 	ops/v_curleft.cc \

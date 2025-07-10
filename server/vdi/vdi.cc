@@ -45,6 +45,11 @@ void VDI::update(QRect& r)
 	_top->update(r);
 	}
 
+void VDI::update(QRectF& r)
+	{
+	_top->update(r);
+	}
+
 void VDI::update(int x, int y, int w, int h)
 	{
 	_top->update(x, y, w, h);

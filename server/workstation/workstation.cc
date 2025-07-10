@@ -159,6 +159,9 @@ void Workstation::update(void)
 void Workstation::update(QRect &)
 	{}
 
+void Workstation::update(QRectF &)
+	{}
+
 void Workstation::update(int, int, int, int)
 	{}
 

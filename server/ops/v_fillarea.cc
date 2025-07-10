@@ -168,6 +168,9 @@ void VDI::v_fillarea(int socket, FillType type, int16_t num, int16_t*pxy)
 			painter.setPen(pen);
 			painter.drawPath(path);
 			}
+
+		QRectF dirty = path.boundingRect();
+		update(dirty);
 		}
 	else
 		{

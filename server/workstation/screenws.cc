@@ -50,6 +50,12 @@ void ScreenWS::update(QRect &r)
 		_screen->update(r);
 	}
 
+void ScreenWS::update(QRectF &r)
+	{
+	if (_screen != nullptr)
+		_screen->update(r.toRect());
+	}
+
 void ScreenWS::update(int x, int y, int w, int h)
 	{
 	if (_screen != nullptr)

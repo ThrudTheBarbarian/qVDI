@@ -318,9 +318,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().v_fillarea(io, cm);
 				break;
 
-		// 	case ClientMsg::V_BAR:					// 11.1
-		// 		VDI::sharedInstance().v_bar(ws, &cm);
-		// 		break;
+			// 11.1
+			// ---------------------------------------------------------------
+			case ClientMsg::V_BAR:
+				VDI::sharedInstance().v_bar(io, cm);
+				break;
 
 		// 	case ClientMsg::V_ARC:					// 11.2
 		// 		VDI::sharedInstance().v_arc(ws, &cm);

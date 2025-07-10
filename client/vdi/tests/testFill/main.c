@@ -37,4 +37,7 @@ int main(int argc, const char * argv[])
 	printf("Test basic fill");
 	int16_t pxy[] = {50,50, 100,50, 100,100, 50,100, 50,50};
 	v_fillarea(handle, 5, pxy);
+
+	int16_t pxy_v_bar[] = {200, 50, 300, 100};
+	v_bar(handle, pxy_v_bar);
 	}
