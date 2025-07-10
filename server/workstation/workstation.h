@@ -64,15 +64,21 @@ class Workstation : public QObject
 	// Default fill interior style
 	GETSET(int16_t, interiorFillStyle, InteriorFillStyle);
 
-	// Default fill index (which hatch or pattern to use, if interiorStyle
+	// Default fill-type index (which hatch or pattern to use, if interiorStyle
 	// says we fill in one of those two methods)
-	GETSET(int16_t, fillIndex, FillIndex);
+	GETSET(int16_t, fillTypeIndex, FillIndex);
 
 	// current fill colour index
 	GETSET(int16_t, fillColourIndex, FillColourIndex);
 
+	// Draw perimeter or not when filling
+	GETSET(bool, drawPerimeter, DrawPerimeter);
+
 	// current background fill colour index
 	GETSET(int16_t, backgroundColourIndex, BackgroundColourIndex);
+
+	// Composition writing-mode
+	GETSET(int, writingMode, WritingMode);
 
 	// The height of the current text font to draw with
 	GET(int, textHeight);
@@ -105,9 +111,6 @@ class Workstation : public QObject
 	// separately, but QT only offers both or none, so we do both
 	GETSET(Qt::PenCapStyle, startCap, StartCap);
 	GETSET(Qt::PenCapStyle, endCap, endCap);
-
-	// How to draw things on-screen
-	GET(int16_t, writingMode);
 
 	// Transport for data to and from clients. Can be nil
 	GETSETP(Transport *, io, Io);
@@ -208,9 +211,16 @@ class Workstation : public QObject
 		/*********************************************************************\
 		|* Set up the pen for drawing based on the local state
 		\*********************************************************************/
+		void setupPenForFill(QPen& pen);
 		void setupPenForLine(QPen& pen);
 		void setupPenForMarker(QPen& pen);
 		void setupPenForText(QPen& pen);
+
+		/*********************************************************************\
+		|* Return the current 256-entry palette
+		\*********************************************************************/
+		bool colourPalette(int16_t *rgb);
+		bool colourTable(QList<QRgb>& palette);
 
 		/*********************************************************************\
 		|* Set up the writing mode

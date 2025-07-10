@@ -2,6 +2,7 @@
 #include <QFile>
 #include <QPainter>
 
+#include "fillfactory.h"
 #include "fontmgr.h"
 #include "screen.h"
 #include "vdi.h"
@@ -27,6 +28,26 @@ static Qt::PenStyle _styles[] =
 	Qt::CustomDashLine		// USERLINE
 	};
 
+static const short _devtovdi8[256] =
+	{
+	0, 2, 3, 6, 4, 7, 5, 8, 9, 10, 11,14,12,15,13,255,
+	16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,
+	32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,
+	48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,
+	64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,
+	80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,
+	96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,
+	112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,
+	128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,
+	144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,
+	160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,
+	176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,
+	192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,
+	208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,
+	224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,
+	240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,1
+	};
+
 #define PALETTE_OFFSET			"/System/Palettes/"
 #define SYSTEM_PALETTE_NAME		"system.pal"
 
@@ -46,9 +67,11 @@ Workstation::Workstation(QObject *parent )
 			,_fontId(0)
 			,_textColourIndex(G_BLACK)
 			,_interiorFillStyle(FIS_SOLID)
-			,_fillIndex(PT_DOTS1)
+			,_fillTypeIndex(PT_DOTS1)
 			,_fillColourIndex(G_BLACK)
+			,_drawPerimeter(true)
 			,_backgroundColourIndex(G_GREEN)
+			,_writingMode(WR_REPLACE)
 			,_textHeight(12)
 			,_textRotation(0)
 			,_textEffect(0)
@@ -58,7 +81,6 @@ Workstation::Workstation(QObject *parent )
 			,_clip(QRect(0,0,0,0))
 			,_startCap(Qt::FlatCap)
 			,_endCap(Qt::FlatCap)
-			,_writingMode(WR_REPLACE)
 			,_io(nullptr)
 			,_fm(nullptr)
 	{
@@ -78,9 +100,11 @@ Workstation::Workstation(Transport *io, QObject *parent )
 			,_fontId(0)
 			,_textColourIndex(G_BLACK)
 			,_interiorFillStyle(FIS_SOLID)
-			,_fillIndex(PT_DOTS1)
+			,_fillTypeIndex(PT_DOTS1)
 			,_fillColourIndex(G_BLACK)
+			,_drawPerimeter(true)
 			,_backgroundColourIndex(G_GREEN)
+			,_writingMode(WR_REPLACE)
 			,_textHeight(12)
 			,_textRotation(0)
 			,_textEffect(0)
@@ -90,7 +114,6 @@ Workstation::Workstation(Transport *io, QObject *parent )
 			,_clip(QRect(0,0,0,0))
 			,_startCap(Qt::FlatCap)
 			,_endCap(Qt::FlatCap)
-			,_writingMode(WR_REPLACE)
 			,_io(io)
 			,_fm(nullptr)
 	{
@@ -280,6 +303,38 @@ void Workstation::setupPenForMarker(QPen& pen)
 	}
 
 /*****************************************************************************\
+|* Set up the pen for drawing based on the local state
+\*****************************************************************************/
+void Workstation::setupPenForFill(QPen& pen)
+	{
+	FillFactory& ff = FillFactory::sharedInstance();
+
+	pen.setColor(_palette[_fillColourIndex]);
+	switch (_fillTypeIndex)
+		{
+		case FIS_HOLLOW:
+			break;
+		case FIS_SOLID:
+			pen.setBrush(_palette[_fillColourIndex]);
+			break;
+		default:
+				{
+				QImage& img = ff.patternFor(_fillTypeIndex, _interiorFillStyle);
+				if (img.colorCount() == 2)
+					{
+					if (_writingMode == WR_TRANSPARENT)
+						img.setColor(0, qRgba(0,0,0,0));
+					else
+						img.setColor(0, _palette[0].rgba());
+					img.setColor(1, _palette[_fillColourIndex].rgba());
+					}
+				pen.setBrush(img);
+				}
+			break;
+		}
+	}
+
+/*****************************************************************************\
 |* Set the text height and re-create the metrics
 \*****************************************************************************/
 void Workstation::setTextHeight(int height)
@@ -289,6 +344,33 @@ void Workstation::setTextHeight(int height)
 	if (_fm)
 		DELETE(_fm);
 	_fm = new QFontMetrics(_currentFont);
+	}
+
+/*****************************************************************************\
+|* Return the palette in VDI form
+\*****************************************************************************/
+bool Workstation::colourPalette(int16_t *rgb)
+	{
+	int idx = 0;
+	for (int i=0; i<256; i++)
+		{
+		rgb[idx++] = (_palette[i].red() * 1000) / 256;
+		rgb[idx++] = (_palette[i].green() * 1000) / 256;
+		rgb[idx++] = (_palette[i].blue() * 1000) / 256;
+		}
+	return true;
+	}
+
+/*****************************************************************************\
+|* Return the palette in QT form
+\*****************************************************************************/
+bool Workstation::colourTable(QList<QRgb>& palette)
+	{
+	palette.clear();
+	palette.reserve(257);
+	for (int i=0; i<256; i++)
+		palette.append(_palette[_devtovdi8[i]].rgb());
+	return true;
 	}
 
 

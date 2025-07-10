@@ -31,6 +31,7 @@ SOURCES += \
 	ops/v_eeos.cc \
 	ops/v_enter_cur.cc \
 	ops/v_exit_cur.cc \
+	ops/v_fillarea.cc \
 	ops/v_gtext.cc \
 	ops/v_opnwk.cc \
 	ops/v_pline.cc \
@@ -42,6 +43,7 @@ SOURCES += \
 	ops/vq_curaddress.cc \
 	ops/vs_curaddress.cc \
 	vdi/vdi.cc \
+	workstation/fillfactory.cc \
 	workstation/fontmgr.cc \
     workstation/glwidget.cc \
     workstation/physicalws.cc \
@@ -63,6 +65,7 @@ HEADERS += \
 	io/connectionmgr.h \
 	io/transport.h \
 	vdi/vdi.h \
+	workstation/fillfactory.h \
 	workstation/fontmgr.h \
     workstation/glwidget.h \
     workstation/physicalws.h \

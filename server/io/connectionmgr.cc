@@ -312,9 +312,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().v_gtext(io, cm);
 				break;
 
-		// 	case ClientMsg::V_FILLAREA:				// 9
-		// 		VDI::sharedInstance().v_fillarea(ws, &cm);
-		// 		break;
+			// 9
+			// ---------------------------------------------------------------
+			case ClientMsg::V_FILLAREA:
+				VDI::sharedInstance().v_fillarea(io, cm);
+				break;
 
 		// 	case ClientMsg::V_BAR:					// 11.1
 		// 		VDI::sharedInstance().v_bar(ws, &cm);
