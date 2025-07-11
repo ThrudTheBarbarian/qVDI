@@ -338,6 +338,12 @@ class VDI : public QObject
 						int16_t& charHeight, int16_t& cellWidth,
 						int16_t &cellHeight);
 		void vst_height(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 13: Set the text-rotation angle
+		\*********************************************************************/
+		void vst_rotation(int handle, int16_t angle);
+		void vst_rotation(Transport *io, ClientMsg &cm);
 		};
 
 #endif // VDI_H

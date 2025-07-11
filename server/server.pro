@@ -55,6 +55,7 @@ SOURCES += \
 	ops/vq_curaddress.cc \
 	ops/vs_curaddress.cc \
 	ops/vst_height.cc \
+	ops/vst_rotation.cc \
 	vdi/vdi.cc \
 	workstation/fillfactory.cc \
 	workstation/fontmgr.cc \

@@ -388,9 +388,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().vst_height(io, cm);
 				break;
 
-		// 	case ClientMsg::VST_ROTATION:			// 13
-		// 		VDI::sharedInstance().vst_rotation(ws, &cm);
-		// 		break;
+			// 13
+			// ---------------------------------------------------------------
+			case ClientMsg::VST_ROTATION:
+				VDI::sharedInstance().vst_rotation(io, cm);
+				break;
 
 		// 	case ClientMsg::VS_COLOR:				// 14
 		// 		VDI::sharedInstance().vs_color(ws, &cm);

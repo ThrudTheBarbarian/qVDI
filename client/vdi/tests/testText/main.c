@@ -47,4 +47,12 @@ int main(int argc, const char * argv[])
 	vst_height(handle, 32, &charW, &charH, &cellW, &cellH);
 	v_gtext(handle, 100, 200, "This is 32-pix text");
 
+
+	vst_height(handle, 14, &charW, &charH, &cellW, &cellH);
+	for (int i=0; i<3600; i+=225)
+		{
+		vst_rotation(handle, i);
+		v_gtext(handle, 600, 200, "... this is rotated");
+		}
+
 	}
