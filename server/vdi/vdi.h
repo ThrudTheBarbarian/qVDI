@@ -362,6 +362,12 @@ class VDI : public QObject
 		\*********************************************************************/
 		void vsl_width(int handle, int16_t width);
 		void vsl_width(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 17: Set the colour for drawing lines
+		\*********************************************************************/
+		void vsl_color(int handle, int16_t idx);
+		void vsl_color(Transport *io, ClientMsg &cm);
 		};
 
 #endif // VDI_H
