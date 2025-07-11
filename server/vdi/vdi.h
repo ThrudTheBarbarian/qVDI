@@ -304,6 +304,13 @@ class VDI : public QObject
 					  int16_t start, int16_t end);
 		void v_ellarc(Transport *io, ClientMsg &cm);
 
+		/*********************************************************************\
+		|* Opcode 11.7	Draw an elliptical pie (filled arc)
+		\*********************************************************************/
+		void v_ellpie(int socket, int16_t x, int16_t y, int16_t xr, int16_t yr,
+					  int16_t start, int16_t end);
+		void v_ellpie(Transport *io, ClientMsg &cm);
+
 	};
 
 #endif // VDI_H

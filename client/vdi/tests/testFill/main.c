@@ -47,4 +47,7 @@ int main(int argc, const char * argv[])
 
 	printf("Test circle fill");
 	v_circle(handle, 400, 75, 25);
+
+	printf("Test elliptical fill");
+	v_ellpie(handle, 450, 75, 50,25, 0, 900);
 	}

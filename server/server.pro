@@ -36,6 +36,7 @@ SOURCES += \
 	ops/v_eeos.cc \
 	ops/v_ellarc.cc \
 	ops/v_ellipse.cc \
+	ops/v_ellpie.cc \
 	ops/v_enter_cur.cc \
 	ops/v_exit_cur.cc \
 	ops/v_fillarea.cc \
