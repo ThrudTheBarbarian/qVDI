@@ -323,6 +323,13 @@ class VDI : public QObject
 		void v_rfbox(int socket, int16_t* pxy);
 		void v_rfbox(Transport *io, ClientMsg &cm);
 
-	};
+		/*********************************************************************\
+		|* Opcode 11.10	Justified text]
+		\*********************************************************************/
+		void v_justified(int socket, int16_t x, int16_t y,
+						 char *str, int16_t len,
+						 int16_t wordSpacing, int16_t charSpacing);
+		void v_justified(Transport *io, ClientMsg &cm);
+		};
 
 #endif // VDI_H

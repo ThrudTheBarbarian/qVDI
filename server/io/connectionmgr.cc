@@ -172,7 +172,7 @@ void ConnectionMgr::_incomingData(void)
 	Transport *io			= _conns[socket->socketDescriptor()];
 	Workstation *ws			= _wsList[io];
 
-	fprintf(stderr, " .. data available: %lld bytes\n", socket->bytesAvailable());
+	//fprintf(stderr, " .. data available: %lld bytes\n", socket->bytesAvailable());
 
 	ClientMsg cm;
 
@@ -181,7 +181,7 @@ void ConnectionMgr::_incomingData(void)
 	while (bytesAvailable || bufferNotEmpty)
 		{
 		io->read(cm);
-		fprintf(stderr, " .. despatch message of type: %d\n", cm.type());
+		fprintf(stderr, " .. dispatch message of type: %d\n", cm.type());
 		switch (cm.type())
 			{
 			// 1
@@ -376,9 +376,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().v_rfbox(io, cm);
 				break;
 
-		// 	case ClientMsg::V_JUSTIFIED:			// 11.10
-		// 		VDI::sharedInstance().v_justified(ws, &cm);
-		// 		break;
+			// 11.10
+			// ---------------------------------------------------------------
+			case ClientMsg::V_JUSTIFIED:
+				VDI::sharedInstance().v_justified(io, cm);
+				break;
 
 		// 	case ClientMsg::VST_HEIGHT:				// 12
 		// 		VDI::sharedInstance().vst_height(ws, &cm);

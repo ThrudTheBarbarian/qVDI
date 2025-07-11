@@ -36,4 +36,10 @@ int main(int argc, const char * argv[])
 
 	printf("Test basic text\n");
 	v_gtext(handle, 100, 100, "This is the text");
+
+	printf("Justified text\n");
+	int jwid = 150;
+	int16_t pxy[] = {100,145,100+jwid,145};
+	v_pline(handle, 2, pxy);
+	v_justified(handle, 100, 130, "This is justified", jwid, 1, 1);
 	}

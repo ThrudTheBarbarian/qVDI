@@ -41,6 +41,7 @@ SOURCES += \
 	ops/v_exit_cur.cc \
 	ops/v_fillarea.cc \
 	ops/v_gtext.cc \
+	ops/v_justified.cc \
 	ops/v_opnwk.cc \
 	ops/v_pieslice.cc \
 	ops/v_pline.cc \

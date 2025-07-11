@@ -44,6 +44,8 @@ void v_justified(int16_t handle, int16_t x, int16_t y,
 	_gemMsgAppend(&msg, &x, 1);
 	_gemMsgAppend(&msg, &y, 1);
 	_gemMsgAppend(&msg, &length, 1);
+	_gemMsgAppend(&msg, &wordSpacing, 1);
+	_gemMsgAppend(&msg, &charSpacing, 1);
 	_gemMsgAppendData(&msg, (uint8_t *)str, len+1);
 	_gemIoWrite(&msg);
 	
