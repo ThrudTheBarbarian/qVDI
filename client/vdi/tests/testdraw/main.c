@@ -54,4 +54,13 @@ int main(int argc, const char * argv[])
 		pxy_1[1] -= 10;
 		pxy_1[3] -= 10;
 		}
+
+	int16_t pxy_2[] = {450,140, 600,140};
+	for (int i=1; i<10; i++)
+		{
+		vsl_width(handle, i);
+		v_pline(handle, 2, pxy_2);
+		pxy_2[1] -= i+5;
+		pxy_2[3] -= i+5;
+		}
 	}

@@ -56,6 +56,7 @@ SOURCES += \
 	ops/vs_color.cc \
 	ops/vs_curaddress.cc \
 	ops/vsl_type.cc \
+	ops/vsl_width.cc \
 	ops/vst_height.cc \
 	ops/vst_rotation.cc \
 	vdi/vdi.cc \
