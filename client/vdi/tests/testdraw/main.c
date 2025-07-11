@@ -24,8 +24,8 @@ int main(int argc, const char * argv[])
 	for (int i=0; i<16; i++)
 		workIn[i] = -1;
 	workIn[0] = 1;
-	workIn[2] = 2;
-	
+	workIn[2] = 1;
+
 	printf("Test connection to the service\n");
 	v_opnwk(workIn, &handle, workOut);
 	printf("  : handle is %d\n\n", handle);

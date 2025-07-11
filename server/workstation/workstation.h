@@ -184,6 +184,7 @@ class Workstation : public QObject
 			{
 			if (idx < 256)
 				_palette[idx] = QColor(r,g,b,a);
+			//fprintf(stderr, "colour %3d : %02x %02x %02x\n", idx, r, g, b);
 			}
 
 		inline void setColour(uint32_t idx, QColor c)
