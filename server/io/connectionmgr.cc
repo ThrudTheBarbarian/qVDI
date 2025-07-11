@@ -382,9 +382,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().v_justified(io, cm);
 				break;
 
-		// 	case ClientMsg::VST_HEIGHT:				// 12
-		// 		VDI::sharedInstance().vst_height(ws, &cm);
-		// 		break;
+			// 12
+			// ---------------------------------------------------------------
+			case ClientMsg::VST_HEIGHT:
+				VDI::sharedInstance().vst_height(io, cm);
+				break;
 
 		// 	case ClientMsg::VST_ROTATION:			// 13
 		// 		VDI::sharedInstance().vst_rotation(ws, &cm);

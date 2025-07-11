@@ -42,4 +42,9 @@ int main(int argc, const char * argv[])
 	int16_t pxy[] = {100,145,100+jwid,145};
 	v_pline(handle, 2, pxy);
 	v_justified(handle, 100, 130, "This is justified", jwid, 1, 1);
+
+	int16_t charW, charH, cellW, cellH;
+	vst_height(handle, 32, &charW, &charH, &cellW, &cellH);
+	v_gtext(handle, 100, 200, "This is 32-pix text");
+
 	}

@@ -330,6 +330,14 @@ class VDI : public QObject
 						 char *str, int16_t len,
 						 int16_t wordSpacing, int16_t charSpacing);
 		void v_justified(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 12: Set the height of text in pixels. Return metrics
+		\*********************************************************************/
+		void vst_height(int socket, int16_t height, int16_t& charWidth,
+						int16_t& charHeight, int16_t& cellWidth,
+						int16_t &cellHeight);
+		void vst_height(Transport *io, ClientMsg &cm);
 		};
 
 #endif // VDI_H
