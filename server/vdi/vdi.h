@@ -344,6 +344,12 @@ class VDI : public QObject
 		\*********************************************************************/
 		void vst_rotation(int handle, int16_t angle);
 		void vst_rotation(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 14: Set the RGB for a colour
+		\*********************************************************************/
+		void vs_color(int handle, int16_t idx, int16_t *rgb);
+		void vs_color(Transport *io, ClientMsg &cm);
 		};
 
 #endif // VDI_H

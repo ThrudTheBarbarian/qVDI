@@ -53,6 +53,7 @@ SOURCES += \
 	ops/v_rvon.cc \
 	ops/vq_chcells.cc \
 	ops/vq_curaddress.cc \
+	ops/vs_color.cc \
 	ops/vs_curaddress.cc \
 	ops/vst_height.cc \
 	ops/vst_rotation.cc \

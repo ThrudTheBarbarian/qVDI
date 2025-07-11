@@ -49,9 +49,14 @@ int main(int argc, const char * argv[])
 
 
 	vst_height(handle, 14, &charW, &charH, &cellW, &cellH);
+	int16_t rgb[3];
 	for (int i=0; i<3600; i+=225)
 		{
 		vst_rotation(handle, i);
+		rgb[0] = i%1000;
+		rgb[1] = (i*37)%1000;
+		rgb[2] = (i*23)%1000;
+		vs_color(handle, 1, rgb);
 		v_gtext(handle, 600, 200, "... this is rotated");
 		}
 
