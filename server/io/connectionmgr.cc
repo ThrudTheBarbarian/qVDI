@@ -352,9 +352,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().v_ellipse(io, cm);
 				break;
 
-		// 	case ClientMsg::V_ELLARC:				// 11.6
-		// 		VDI::sharedInstance().v_ellarc(ws, &cm);
-		// 		break;
+			// 11.6
+			// ---------------------------------------------------------------
+			case ClientMsg::V_ELLARC:
+				VDI::sharedInstance().v_ellarc(io, cm);
+				break;
 
 		// 	case ClientMsg::V_ELLPIE:				// 11.7
 		// 		VDI::sharedInstance().v_ellpie(ws, &cm);

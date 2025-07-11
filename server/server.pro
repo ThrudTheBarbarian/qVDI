@@ -34,6 +34,7 @@ SOURCES += \
 	ops/v_dspcur.cc \
 	ops/v_eeol.cc \
 	ops/v_eeos.cc \
+	ops/v_ellarc.cc \
 	ops/v_ellipse.cc \
 	ops/v_enter_cur.cc \
 	ops/v_exit_cur.cc \

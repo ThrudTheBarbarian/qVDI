@@ -297,6 +297,13 @@ class VDI : public QObject
 		void v_ellipse(int socket, int16_t x, int16_t y, int16_t xr, int16_t yr);
 		void v_ellipse(Transport *io, ClientMsg &cm);
 
+		/*********************************************************************\
+		|* Opcode 11.6	Draw an elliptical arc
+		\*********************************************************************/
+		void v_ellarc(int socket, int16_t x, int16_t y, int16_t xr, int16_t yr,
+					  int16_t start, int16_t end);
+		void v_ellarc(Transport *io, ClientMsg &cm);
+
 	};
 
 #endif // VDI_H

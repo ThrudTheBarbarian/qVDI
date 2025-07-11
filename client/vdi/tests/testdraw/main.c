@@ -39,4 +39,7 @@ int main(int argc, const char * argv[])
 	printf("Test arc line");
 	v_arc(handle, 100, 100, 50, 900, 0);
 
+	printf("Test elliptical arc");
+	v_ellarc(handle, 200, 100, 100, 50, 900, 0);
+
 	}
