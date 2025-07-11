@@ -33,16 +33,25 @@ int main(int argc, const char * argv[])
 	v_clrwk(handle);
 
 	printf("Test basic polyline");
-	int16_t pxy[] = {50,50, 100,50, 100,100, 50,100, 100,50};
+	int16_t pxy[] = {50,90, 100,90, 100,140, 50,140, 100,90};
 	v_pline(handle, 5, pxy);
 
 	printf("Test arc line");
-	v_arc(handle, 100, 100, 50, 900, 0);
+	v_arc(handle, 100, 140, 50, 900, 0);
 
 	printf("Test elliptical arc");
-	v_ellarc(handle, 200, 100, 100, 50, 900, 0);
+	v_ellarc(handle, 200, 140, 100, 50, 900, 0);
 
 	printf("Test rounded box");
-	int16_t pxy_rb[] = {350, 50, 400, 100};
+	int16_t pxy_rb[] = {350, 90, 400, 140};
 	v_rbox(handle, pxy_rb);
+
+	int16_t pxy_1[] = {50,80, 200,80};
+	for (int i=SOLID; i<USERLINE; i++)
+		{
+		vsl_type(handle, i);
+		v_pline(handle, 2, pxy_1);
+		pxy_1[1] -= 10;
+		pxy_1[3] -= 10;
+		}
 	}

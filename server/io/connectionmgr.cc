@@ -400,9 +400,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().vs_color(io, cm);
 				break;
 
-		// 	case ClientMsg::VSL_TYPE:				// 15
-		// 		VDI::sharedInstance().vsl_type(ws, &cm);
-		// 		break;
+			// 15
+			// ---------------------------------------------------------------
+			case ClientMsg::VSL_TYPE:
+				VDI::sharedInstance().vsl_type(io, cm);
+				break;
 
 		// 	case ClientMsg::VSL_WIDTH:				// 16
 		// 		VDI::sharedInstance().vsl_width(ws, &cm);

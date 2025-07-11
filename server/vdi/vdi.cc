@@ -42,17 +42,22 @@ void VDI::update(void)
 
 void VDI::update(QRect& r)
 	{
+	int lw = _top->lineWidth();
+	r.adjust(-lw,-lw,lw,lw);
 	_top->update(r);
 	}
 
 void VDI::update(QRectF& r)
 	{
+	int lw = _top->lineWidth();
+	r.adjust(-lw,-lw,lw,lw);
 	_top->update(r);
 	}
 
 void VDI::update(int x, int y, int w, int h)
 	{
-	_top->update(x, y, w, h);
+	int lw = _top->lineWidth();
+	_top->update(x-lw, y-lw, w+lw+lw, h+lw+lw);
 	}
 
 #pragma mark - Slots

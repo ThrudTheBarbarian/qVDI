@@ -350,6 +350,12 @@ class VDI : public QObject
 		\*********************************************************************/
 		void vs_color(int handle, int16_t idx, int16_t *rgb);
 		void vs_color(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 15: Set the style for drawing lines
+		\*********************************************************************/
+		void vsl_type(int handle, int16_t type);
+		void vsl_type(Transport *io, ClientMsg &cm);
 		};
 
 #endif // VDI_H
