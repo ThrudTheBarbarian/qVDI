@@ -317,6 +317,12 @@ class VDI : public QObject
 		void v_rbox(int socket, int16_t* pxy);
 		void v_rbox(Transport *io, ClientMsg &cm);
 
+		/*********************************************************************\
+		|* Opcode 11.9	Fill a rounded rect		[type=9] [pxy=x0,y0,x1,y1]
+		\*********************************************************************/
+		void v_rfbox(int socket, int16_t* pxy);
+		void v_rfbox(Transport *io, ClientMsg &cm);
+
 	};
 
 #endif // VDI_H

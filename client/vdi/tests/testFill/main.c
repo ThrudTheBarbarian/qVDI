@@ -50,4 +50,8 @@ int main(int argc, const char * argv[])
 
 	printf("Test elliptical fill");
 	v_ellpie(handle, 450, 75, 50,25, 0, 900);
+
+	printf("Test rounded filled box");
+	int16_t pxy_rfb[] = {550, 50, 600, 100};
+	v_rfbox(handle, pxy_rfb);
 	}

@@ -370,9 +370,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().v_rbox(io, cm);
 				break;
 
-		// 	case ClientMsg::V_RFBOX:				// 11.9
-		// 		VDI::sharedInstance().v_rfbox(ws, &cm);
-		// 		break;
+			// 11.9
+			// ---------------------------------------------------------------
+			case ClientMsg::V_RFBOX:
+				VDI::sharedInstance().v_rfbox(io, cm);
+				break;
 
 		// 	case ClientMsg::V_JUSTIFIED:			// 11.10
 		// 		VDI::sharedInstance().v_justified(ws, &cm);
