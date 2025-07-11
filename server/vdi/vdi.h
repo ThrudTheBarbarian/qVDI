@@ -311,6 +311,12 @@ class VDI : public QObject
 					  int16_t start, int16_t end);
 		void v_ellpie(Transport *io, ClientMsg &cm);
 
+		/*********************************************************************\
+		|* Opcode 11.8	Draw a rounded rect
+		\*********************************************************************/
+		void v_rbox(int socket, int16_t* pxy);
+		void v_rbox(Transport *io, ClientMsg &cm);
+
 	};
 
 #endif // VDI_H

@@ -45,6 +45,7 @@ SOURCES += \
 	ops/v_pieslice.cc \
 	ops/v_pline.cc \
 	ops/v_pmarker.cc \
+	ops/v_rbox.cc \
 	ops/v_rmcur.cc \
 	ops/v_rvoff.cc \
 	ops/v_rvon.cc \

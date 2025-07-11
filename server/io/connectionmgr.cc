@@ -364,9 +364,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().v_ellpie(io, cm);
 				break;
 
-		// 	case ClientMsg::V_RBOX:					// 11.8
-		// 		VDI::sharedInstance().v_rbox(ws, &cm);
-		// 		break;
+			// 11.8
+			// ---------------------------------------------------------------
+			case ClientMsg::V_RBOX:
+				VDI::sharedInstance().v_rbox(io, cm);
+				break;
 
 		// 	case ClientMsg::V_RFBOX:				// 11.9
 		// 		VDI::sharedInstance().v_rfbox(ws, &cm);

@@ -42,4 +42,7 @@ int main(int argc, const char * argv[])
 	printf("Test elliptical arc");
 	v_ellarc(handle, 200, 100, 100, 50, 900, 0);
 
+	printf("Test rounded box");
+	int16_t pxy_rb[] = {350, 50, 400, 100};
+	v_rbox(handle, pxy_rb);
 	}
