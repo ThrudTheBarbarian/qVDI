@@ -6,44 +6,44 @@
 #include "workstation.h"
 
 /*****************************************************************************\
-|* Opcode 15: Set the style for drawing lines.
+|* Opcode 18: Set the type of marker drawn.
 |*
-|* Original signature is: vsl_type(int16_t handle, int16_t which);
+|* Original signature is: vsm_type(int16_t handle, int16_t which);
 \*****************************************************************************/
-void VDI::vsl_type(int handle, int16_t idx)
+void VDI::vsm_type(int handle, int16_t type)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
 	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(handle)
-								   : nullptr;
+						   : nullptr;
 
-	if ((idx < SOLID) || (idx > USERLINE))
-		idx = SOLID;
+	if ((type < MRKR_DOT) || (type > MRKR_CIRCLE))
+		type = MRKR_CIRCLE;
 
 	if (ws != nullptr)
 		{
-		ws->setLineType(idx);
+		ws->setMarkerType(type);
 		}
 	else
 		{
-		WARN("vsl_type() cannot find workstation for handle %d", handle);
+		WARN("vsm_type() cannot find workstation for handle %d", handle);
 		}
 	}
 
 /*****************************************************************************\
 |* And from the socket interface...
 \*****************************************************************************/
-void VDI::vsl_type(Transport *io, ClientMsg &cm)
+void VDI::vsm_type(Transport *io, ClientMsg &cm)
 	{
 	const Payload &p	= cm.payload();
 	int num				= p.size();
 	if (num == 1)
 		{
-		int16_t style		= ntohs(p[0]);
+		int16_t type	= ntohs(p[0]);
 
 		int fd = io->socket()->socketDescriptor();
-		vsl_type(fd, style);
+		vsm_type(fd, type);
 		}
 	else
-		WARN("vsl_type() expect 1 argument, got %d", num);
+		WARN("vsm_type() expect 1 argument, got %d", num);
 	}

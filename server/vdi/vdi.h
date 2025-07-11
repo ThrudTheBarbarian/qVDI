@@ -368,6 +368,18 @@ class VDI : public QObject
 		\*********************************************************************/
 		void vsl_color(int handle, int16_t idx);
 		void vsl_color(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 18: Set the type of marker drawn
+		\*********************************************************************/
+		void vsm_type(int handle, int16_t which);
+		void vsm_type(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 19: Set the height of marker in pixels
+		\*********************************************************************/
+		void vsm_height(int handle, int16_t height);
+		void vsm_height(Transport *io, ClientMsg &cm);
 		};
 
 #endif // VDI_H

@@ -50,7 +50,8 @@ void VDI::v_pmarker(int handle, int16_t num, int16_t*pxy)
 		ws->setWritingMode(painter);
 
 		idx			= 0;
-		int delta	= (ws->markerSize() - 1)/2;
+		int size	= ws->markerSize();
+		int delta	= (size - 1)/2;
 
 		for (int i=0; i<num; i++)
 			{
@@ -95,7 +96,7 @@ void VDI::v_pmarker(int handle, int16_t num, int16_t*pxy)
 					break;
 
 				default:
-					painter.drawEllipse(x, y, delta, delta);
+					painter.drawEllipse(x-delta, y-delta, size, size);
 					break;
 				}
 			}

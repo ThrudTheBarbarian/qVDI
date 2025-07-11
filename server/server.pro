@@ -58,6 +58,8 @@ SOURCES += \
 	ops/vsl_color.cc \
 	ops/vsl_type.cc \
 	ops/vsl_width.cc \
+	ops/vsm_height.cc \
+	ops/vsm_type.cc \
 	ops/vst_height.cc \
 	ops/vst_rotation.cc \
 	vdi/vdi.cc \

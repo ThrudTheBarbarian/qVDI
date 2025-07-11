@@ -38,4 +38,16 @@ int main(int argc, const char * argv[])
 	int16_t pxy[] = {50,50, 100,50, 100,100, 50,100, 200,50};
 	v_pmarker(handle, 5, pxy);
 
+	for (int i=1; i<10; i+=2)
+		pxy[i] += 20;
+
+	vsm_type(handle, MRKR_CIRCLE);
+	v_pmarker(handle, 5, pxy);
+
+	for (int i=0; i<10; i++)
+		{
+		int16_t px[2] = {50 + i*50, 150};
+		vsm_height(handle, 5+4*i);
+		v_pmarker(handle, 1, px);
+		}
 	}

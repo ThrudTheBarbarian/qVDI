@@ -27,7 +27,7 @@ void VDI::vsl_width(int handle, int16_t width)
 		}
 	else
 		{
-		WARN("v_rvon() cannot find workstation for handle %d", handle);
+		WARN("vsl_width() cannot find workstation for handle %d", handle);
 		}
 	}
 

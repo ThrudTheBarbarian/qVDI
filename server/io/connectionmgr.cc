@@ -418,13 +418,17 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().vsl_color(io, cm);
 				break;
 
-		// 	case ClientMsg::VSM_TYPE:				// 18
-		// 		VDI::sharedInstance().vsm_type(ws, &cm);
-		// 		break;
+			// 18
+			// ---------------------------------------------------------------
+			case ClientMsg::VSM_TYPE:
+				VDI::sharedInstance().vsm_type(io, cm);
+				break;
 
-		// 	case ClientMsg::VSM_HEIGHT:				// 19
-		// 		VDI::sharedInstance().vsm_height(ws, &cm);
-		// 		break;
+			// 19
+			// ---------------------------------------------------------------
+			case ClientMsg::VSM_HEIGHT:
+				VDI::sharedInstance().vsm_height(io, cm);
+				break;
 
 		// 	case ClientMsg::VSM_COLOR:				// 20
 		// 		VDI::sharedInstance().vsm_color(ws, &cm);

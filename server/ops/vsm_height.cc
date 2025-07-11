@@ -6,44 +6,46 @@
 #include "workstation.h"
 
 /*****************************************************************************\
-|* Opcode 15: Set the style for drawing lines.
+|* Opcode 19: Set the height of marker in pixels.
 |*
-|* Original signature is: vsl_type(int16_t handle, int16_t which);
+|* Original signature is: vsm_height(int16_t handle, int16_t height);
 \*****************************************************************************/
-void VDI::vsl_type(int handle, int16_t idx)
+void VDI::vsm_height(int handle, int16_t height)
 	{
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
 	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(handle)
-								   : nullptr;
+						   : nullptr;
 
-	if ((idx < SOLID) || (idx > USERLINE))
-		idx = SOLID;
+	height	= (height < 1) ? 1
+			: (height > 255) ? 255
+			: ((height &1) == 0) ? height + 1
+			: height;
 
 	if (ws != nullptr)
 		{
-		ws->setLineType(idx);
+		ws->setMarkerSize(height);
 		}
 	else
 		{
-		WARN("vsl_type() cannot find workstation for handle %d", handle);
+		WARN("vsm_height() cannot find workstation for handle %d", handle);
 		}
 	}
 
 /*****************************************************************************\
 |* And from the socket interface...
 \*****************************************************************************/
-void VDI::vsl_type(Transport *io, ClientMsg &cm)
+void VDI::vsm_height(Transport *io, ClientMsg &cm)
 	{
 	const Payload &p	= cm.payload();
 	int num				= p.size();
 	if (num == 1)
 		{
-		int16_t style		= ntohs(p[0]);
+		int16_t height	= ntohs(p[0]);
 
 		int fd = io->socket()->socketDescriptor();
-		vsl_type(fd, style);
+		vsm_height(fd, height);
 		}
 	else
-		WARN("vsl_type() expect 1 argument, got %d", num);
+		WARN("vsm_height() expect 1 argument, got %d", num);
 	}
