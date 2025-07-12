@@ -67,7 +67,17 @@ int main(int argc, const char * argv[])
 	for (int i=1; i<PT_PATTERN_MAX; i++)
 		{
 		vsf_style(handle, i);
+		vsf_color(handle, i);
 		int16_t box[] = {5+i*30, 110, 25+i*30, 135};
+		v_rfbox(handle, box);
+		}
+
+	vsf_interior(handle, FIS_HATCH);
+	for (int i=1; i<PT_HATCH_MAX; i++)
+		{
+		vsf_style(handle, i);
+		vsf_color(handle, i+PT_PATTERN_MAX);
+		int16_t box[] = {5+i*30, 150, 25+i*30, 175};
 		v_rfbox(handle, box);
 		}
 
