@@ -398,6 +398,12 @@ class VDI : public QObject
 		\*********************************************************************/
 		void vst_color(int handle, int16_t idx);
 		void vst_color(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 23: Set the fill-pattern style
+		\*********************************************************************/
+		void vsf_interior(int handle, int16_t idx);
+		void vsf_interior(Transport *io, ClientMsg &cm);
 		};
 
 #endif // VDI_H

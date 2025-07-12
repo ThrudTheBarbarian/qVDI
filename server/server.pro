@@ -55,6 +55,7 @@ SOURCES += \
 	ops/vq_curaddress.cc \
 	ops/vs_color.cc \
 	ops/vs_curaddress.cc \
+	ops/vsf_interior.cc \
 	ops/vsl_color.cc \
 	ops/vsl_type.cc \
 	ops/vsl_width.cc \
