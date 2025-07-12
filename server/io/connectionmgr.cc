@@ -442,9 +442,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().vst_font(io, cm);
 				break;
 
-		// 	case ClientMsg::VST_COLOR:				// 22
-		// 		VDI::sharedInstance().vst_color(ws, &cm);
-		// 		break;
+			// 22
+			// ---------------------------------------------------------------
+			case ClientMsg::VST_COLOR:
+				VDI::sharedInstance().vst_color(io, cm);
+				break;
 
 		// 	case ClientMsg::VSF_INTERIOR:			// 23
 		// 		VDI::sharedInstance().vsf_interior(ws, &cm);

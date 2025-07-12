@@ -65,6 +65,7 @@ int main(int argc, const char * argv[])
 	vst_rotation(handle, 0);
 	for (int i=-1; i<6; i++)
 		{
+		vst_color(handle, i+3);
 		vst_font(handle, i);
 		v_gtext(handle, 300, 40 + 20*i, "Test a font face");
 		}

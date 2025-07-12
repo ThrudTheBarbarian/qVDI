@@ -392,6 +392,12 @@ class VDI : public QObject
 		\*********************************************************************/
 		int16_t vst_font(int handle, int16_t idx);
 		void vst_font(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 22: Set the colour for drawing text
+		\*********************************************************************/
+		void vst_color(int handle, int16_t idx);
+		void vst_color(Transport *io, ClientMsg &cm);
 		};
 
 #endif // VDI_H
