@@ -61,12 +61,12 @@ class Workstation : public QObject
 	// current text colour index
 	GETSET(int16_t, textColourIndex, TextColourIndex);
 
-	// Default fill interior style
+	// Default fill interior style (none, hatch, pattern, user, etc.)
 	GETSET(int16_t, interiorFillStyle, InteriorFillStyle);
 
 	// Default fill-type index (which hatch or pattern to use, if interiorStyle
 	// says we fill in one of those two methods)
-	GETSET(int16_t, fillTypeIndex, FillIndex);
+	GETSET(int16_t, fillTypeIndex, FillTypeIndex);
 
 	// current fill colour index
 	GETSET(int16_t, fillColourIndex, FillColourIndex);

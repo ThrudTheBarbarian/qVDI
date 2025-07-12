@@ -36,28 +36,39 @@ int main(int argc, const char * argv[])
 
 	printf("Test basic fill");
 	int16_t pxy[] = {50,50, 100,50, 100,100, 50,100, 50,50};
-	vsf_interior(handle, 0);
+	vsf_interior(handle, FIS_HOLLOW);
 	v_fillarea(handle, 5, pxy);
 
 	printf("Test rectangle fill");
 	int16_t pxy_v_bar[] = {150, 50, 250, 100};
-	vsf_interior(handle, 1);
+	vsf_interior(handle, FIS_SOLID);
 	v_bar(handle, pxy_v_bar);
 
 	printf("Test pieslice fill");
-	vsf_interior(handle, 2);
+	vsf_interior(handle, FIS_PATTERN);
+	vsf_style(handle, PT_SHELLS);
 	v_pieslice(handle, 300, 100, 50, 0, 900);
 
 	printf("Test circle fill");
-	vsf_interior(handle, 3);
+	vsf_interior(handle, FIS_HATCH);
+	vsf_style(handle, PT_DIAG1);
 	v_circle(handle, 400, 75, 25);
 
 	printf("Test elliptical fill");
-	vsf_interior(handle, 0);
+	vsf_interior(handle, FIS_HOLLOW);
 	v_ellpie(handle, 450, 75, 50,25, 0, 900);
 
 	printf("Test rounded filled box");
 	int16_t pxy_rfb[] = {550, 50, 600, 100};
-	vsf_interior(handle, 1);
+	vsf_interior(handle, FIS_SOLID);
 	v_rfbox(handle, pxy_rfb);
+
+	vsf_interior(handle, FIS_PATTERN);
+	for (int i=1; i<PT_PATTERN_MAX; i++)
+		{
+		vsf_style(handle, i);
+		int16_t box[] = {5+i*30, 110, 25+i*30, 135};
+		v_rfbox(handle, box);
+		}
+
 	}

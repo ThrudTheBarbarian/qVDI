@@ -285,6 +285,7 @@ typedef struct
 #define PT_CHECKER		22	/**< chess-board type pattern */
 #define PT_DIAMONDS		23	/**< 45-degree chess-board pattern */
 #define PT_CHEVRON		24	/**< horizontal <<< pattern */
+#define PT_PATTERN_MAX	PT_CHEVRON+1
 
 /*****************************************************************************\
 |* Pattern indexes : These are valid for fill-type == hatch
@@ -301,7 +302,7 @@ typedef struct
 #define PT_VERTICAL2	10	/**< vertical lines, spread out */
 #define PT_HORIZONTAL2	11	/**< horizontal lines, spread out */
 #define PT_SQUARE2		12	/**< horiz and vertical lines */
-
+#define PT_HATCH_MAX	PT_SQUARE2+1
 
 /*****************************************************************************\
 |* Co0ordinate types 

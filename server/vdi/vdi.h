@@ -400,10 +400,16 @@ class VDI : public QObject
 		void vst_color(Transport *io, ClientMsg &cm);
 
 		/*********************************************************************\
-		|* Opcode 23: Set the fill-pattern style
+		|* Opcode 23: Set fill-type (none, solid, pattern, hash, user)
 		\*********************************************************************/
 		void vsf_interior(int handle, int16_t idx);
 		void vsf_interior(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 24: Set the fill-pattern index if using pattern/hash fill
+		\*********************************************************************/
+		void vsf_style(int handle, int16_t idx);
+		void vsf_style(Transport *io, ClientMsg &cm);
 		};
 
 #endif // VDI_H

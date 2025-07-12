@@ -154,7 +154,7 @@ void VDI::v_fillarea(int handle, FillType type, int16_t num, int16_t*pxy)
 		/*********************************************************************\
 		|* If the fill-mode is hollow, we don't fill
 		\*********************************************************************/
-		if (ws->fillTypeIndex() != FIS_HOLLOW)
+		if (ws->interiorFillStyle() != FIS_HOLLOW)
 			{
 			painter.fillPath(path, pen.brush());
 			}

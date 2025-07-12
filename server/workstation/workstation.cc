@@ -315,7 +315,7 @@ void Workstation::setupPenForFill(QPen& pen)
 	FillFactory& ff = FillFactory::sharedInstance();
 
 	pen.setColor(_palette[_fillColourIndex]);
-	switch (_fillTypeIndex)
+	switch (_interiorFillStyle)
 		{
 		case FIS_HOLLOW:
 			break;
@@ -324,7 +324,7 @@ void Workstation::setupPenForFill(QPen& pen)
 			break;
 		default:
 				{
-				QImage& img = ff.patternFor(_fillTypeIndex, _interiorFillStyle);
+				QImage& img = ff.patternFor(_interiorFillStyle, _fillTypeIndex);
 				if (img.colorCount() == 2)
 					{
 					if (_writingMode == WR_TRANSPARENT)

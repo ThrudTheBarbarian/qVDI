@@ -149,7 +149,7 @@ void VDI::v_opnwk(ConnectionMgr *cm, Transport *io, ClientMsg &msg)
 	/*************************************************************************\
 	|* workIn[8]:  Style to use for filling (vsf_style)
 	\*************************************************************************/
-	ws->setFillIndex(CHECK_RANGE(workIn[8], PT_DOTS1, PT_CHEVRON));
+	ws->setFillTypeIndex(CHECK_RANGE(workIn[8], PT_DOTS1, PT_CHEVRON));
 
 	/*************************************************************************\
 	|* workIn[9]:  Default fill colour
