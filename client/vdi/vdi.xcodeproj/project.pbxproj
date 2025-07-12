@@ -352,7 +352,7 @@
 		F4E1F56D2E164283000DBDEB /* testline */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = testline; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4E1F57B2E176867000DBDEB /* testmarker */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = testmarker; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4EE5B5E2E1EF7A0000013D2 /* testText */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = testText; sourceTree = BUILT_PRODUCTS_DIR; };
-		F4EE5B6C2E1F7F6C000013D2 /* testDraw */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = testDraw; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4EE5B6C2E1F7F6C000013D2 /* testFill */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = testFill; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -371,9 +371,9 @@
 			path = testvt;
 			sourceTree = "<group>";
 		};
-		F4E1F56E2E164283000DBDEB /* testdraw */ = {
+		F4E1F56E2E164283000DBDEB /* testline */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = testdraw;
+			path = testline;
 			sourceTree = "<group>";
 		};
 		F4E1F57C2E176867000DBDEB /* testmarker */ = {
@@ -473,7 +473,7 @@
 				F4E1F56D2E164283000DBDEB /* testline */,
 				F4E1F57B2E176867000DBDEB /* testmarker */,
 				F4EE5B5E2E1EF7A0000013D2 /* testText */,
-				F4EE5B6C2E1F7F6C000013D2 /* testDraw */,
+				F4EE5B6C2E1F7F6C000013D2 /* testFill */,
 				F48310392E22CD150051397E /* testQuery */,
 			);
 			name = Products;
@@ -638,7 +638,7 @@
 				F4EE5B6D2E1F7F6C000013D2 /* testFill */,
 				F4EE5B5F2E1EF7A0000013D2 /* testText */,
 				F4E1F57C2E176867000DBDEB /* testmarker */,
-				F4E1F56E2E164283000DBDEB /* testdraw */,
+				F4E1F56E2E164283000DBDEB /* testline */,
 				F43E0C7C2E10F41F001830BF /* testvt */,
 			);
 			path = tests;
@@ -751,7 +751,7 @@
 				F4E1F5752E1642D7000DBDEB /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				F4E1F56E2E164283000DBDEB /* testdraw */,
+				F4E1F56E2E164283000DBDEB /* testline */,
 			);
 			name = testline;
 			packageProductDependencies = (
@@ -806,9 +806,9 @@
 			productReference = F4EE5B5E2E1EF7A0000013D2 /* testText */;
 			productType = "com.apple.product-type.tool";
 		};
-		F4EE5B6B2E1F7F6C000013D2 /* testDraw */ = {
+		F4EE5B6B2E1F7F6C000013D2 /* testFill */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F4EE5B702E1F7F6C000013D2 /* Build configuration list for PBXNativeTarget "testDraw" */;
+			buildConfigurationList = F4EE5B702E1F7F6C000013D2 /* Build configuration list for PBXNativeTarget "testFill" */;
 			buildPhases = (
 				F4EE5B682E1F7F6C000013D2 /* Sources */,
 				F4EE5B692E1F7F6C000013D2 /* Frameworks */,
@@ -822,11 +822,11 @@
 			fileSystemSynchronizedGroups = (
 				F4EE5B6D2E1F7F6C000013D2 /* testFill */,
 			);
-			name = testDraw;
+			name = testFill;
 			packageProductDependencies = (
 			);
 			productName = testFill;
-			productReference = F4EE5B6C2E1F7F6C000013D2 /* testDraw */;
+			productReference = F4EE5B6C2E1F7F6C000013D2 /* testFill */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -878,7 +878,7 @@
 				F4E1F56C2E164283000DBDEB /* testline */,
 				F4E1F57A2E176867000DBDEB /* testmarker */,
 				F4EE5B5D2E1EF7A0000013D2 /* testText */,
-				F4EE5B6B2E1F7F6C000013D2 /* testDraw */,
+				F4EE5B6B2E1F7F6C000013D2 /* testFill */,
 				F483102F2E22CD150051397E /* testQuery */,
 			);
 		};
@@ -1447,7 +1447,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F4EE5B702E1F7F6C000013D2 /* Build configuration list for PBXNativeTarget "testDraw" */ = {
+		F4EE5B702E1F7F6C000013D2 /* Build configuration list for PBXNativeTarget "testFill" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F4EE5B712E1F7F6C000013D2 /* Debug */,

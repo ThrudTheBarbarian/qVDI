@@ -81,4 +81,17 @@ int main(int argc, const char * argv[])
 		v_rfbox(handle, box);
 		}
 
+	for (int i=WR_REPLACE; i<= WR_REV_TRANS; i++)
+		{
+		vsf_interior(handle, FIS_SOLID);
+		vsf_color(handle, G_BLACK);
+		int16_t box[] = {5+i*30, 180, 25+i*30, 205};
+		v_rfbox(handle, box);
+
+		vswr_mode(handle, i);
+		vsf_color(handle, G_RED);
+		vsf_interior(handle, FIS_PATTERN);
+		vsf_style(handle, PT_BALLS);
+		v_rfbox(handle, box);
+		}
 	}

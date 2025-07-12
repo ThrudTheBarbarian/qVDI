@@ -69,6 +69,7 @@ SOURCES += \
 	ops/vst_font.cc \
 	ops/vst_height.cc \
 	ops/vst_rotation.cc \
+	ops/vswr_mode.cc \
 	vdi/vdi.cc \
 	workstation/fillfactory.cc \
 	workstation/fontmgr.cc \

@@ -472,9 +472,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().vq_color(io, cm);
 				break;
 
-		// 	case ClientMsg::VSWR_MODE:				// 32
-		// 		VDI::sharedInstance().vswr_mode(ws, &cm);
-		// 		break;
+			// 32
+			// ---------------------------------------------------------------
+			case ClientMsg::VSWR_MODE:
+				VDI::sharedInstance().vswr_mode(io, cm);
+				break;
 
 		// 	case ClientMsg::VSIN_MODE:				// 33
 		// 		VDI::sharedInstance().vsin_mode(ws, &cm);

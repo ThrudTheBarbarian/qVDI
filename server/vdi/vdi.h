@@ -422,6 +422,12 @@ class VDI : public QObject
 		\*********************************************************************/
 		void vq_color(int handle, int16_t idx, int16_t* rgb);
 		void vq_color(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 32: Set the writing mode.
+		\*********************************************************************/
+		void vswr_mode(int handle, int16_t mode);
+		void vswr_mode(Transport *io, ClientMsg &cm);
 		};
 
 #endif // VDI_H
