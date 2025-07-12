@@ -24,9 +24,11 @@ void VDI::v_pmarker(int handle, int16_t num, int16_t*pxy)
 		{
 		QPen pen;
 		ws->setupPenForMarker(pen);
-		int lw = ws->markerSize();
+		QPainter painter(screen->bg());
+		painter.setPen(pen);
 
 		// Determine the area to mark as dirty
+		int lw = ws->markerSize();
 		QList<QPoint> pts;
 		int idx = 0;
 		for (int i=0; i<num; i++)
@@ -39,7 +41,6 @@ void VDI::v_pmarker(int handle, int16_t num, int16_t*pxy)
 			pts << p;
 			idx += 2;
 			}
-		QPainter painter(screen->bg());
 
 		if (ws->enableClip())
 			painter.setClipRect(ws->clip());

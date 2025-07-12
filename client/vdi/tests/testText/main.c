@@ -47,7 +47,6 @@ int main(int argc, const char * argv[])
 	vst_height(handle, 32, &charW, &charH, &cellW, &cellH);
 	v_gtext(handle, 100, 200, "This is 32-pix text");
 
-
 	vst_height(handle, 14, &charW, &charH, &cellW, &cellH);
 	int16_t rgb[3];
 	for (int i=0; i<3600; i+=225)
@@ -60,4 +59,13 @@ int main(int argc, const char * argv[])
 		v_gtext(handle, 600, 200, "... this is rotated");
 		}
 
+	int16_t black[3] = {0,0,0};
+	vst_height(handle, 18, &charW, &charH, &cellW, &cellH);
+	vs_color(handle, 1, black);
+	vst_rotation(handle, 0);
+	for (int i=-1; i<6; i++)
+		{
+		vst_font(handle, i);
+		v_gtext(handle, 300, 40 + 20*i, "Test a font face");
+		}
 	}

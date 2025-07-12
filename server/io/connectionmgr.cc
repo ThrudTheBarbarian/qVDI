@@ -430,13 +430,17 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().vsm_height(io, cm);
 				break;
 
-		// 	case ClientMsg::VSM_COLOR:				// 20
-		// 		VDI::sharedInstance().vsm_color(ws, &cm);
-		// 		break;
+			// 20
+			// ---------------------------------------------------------------
+			case ClientMsg::VSM_COLOR:
+				VDI::sharedInstance().vsm_color(io, cm);
+				break;
 
-		// 	case ClientMsg::VST_FONT:				// 21
-		// 		VDI::sharedInstance().vst_font(ws, &cm);
-		// 		break;
+			// 21
+			// ---------------------------------------------------------------
+			case ClientMsg::VST_FONT:
+				VDI::sharedInstance().vst_font(io, cm);
+				break;
 
 		// 	case ClientMsg::VST_COLOR:				// 22
 		// 		VDI::sharedInstance().vst_color(ws, &cm);

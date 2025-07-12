@@ -48,6 +48,7 @@ int main(int argc, const char * argv[])
 		{
 		int16_t px[2] = {50 + i*50, 150};
 		vsm_height(handle, 5+4*i);
+		vsm_color(handle, i);
 		v_pmarker(handle, 1, px);
 		}
 	}

@@ -380,6 +380,18 @@ class VDI : public QObject
 		\*********************************************************************/
 		void vsm_height(int handle, int16_t height);
 		void vsm_height(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 20: Set the colour for drawing markers
+		\*********************************************************************/
+		void vsm_color(int handle, int16_t height);
+		void vsm_color(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 21: Set the font to use
+		\*********************************************************************/
+		int16_t vst_font(int handle, int16_t idx);
+		void vst_font(Transport *io, ClientMsg &cm);
 		};
 
 #endif // VDI_H

@@ -33,6 +33,9 @@ void FontMgr::initialise(void)
 	_systemFont.setPointSize(14);
 	_fontsById[-1]			= _systemFont;
 	_fontsByName["system"]	= _systemFont;
+
+	for (QString font : fontList())
+		load(font);
 	}
 
 /*****************************************************************************\
