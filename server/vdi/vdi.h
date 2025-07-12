@@ -416,6 +416,12 @@ class VDI : public QObject
 		\*********************************************************************/
 		void vsf_color(int handle, int16_t idx);
 		void vsf_color(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 26: Query the RGB values of a colour index.
+		\*********************************************************************/
+		void vq_color(int handle, int16_t idx, int16_t* rgb);
+		void vq_color(Transport *io, ClientMsg &cm);
 		};
 
 #endif // VDI_H

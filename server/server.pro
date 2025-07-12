@@ -52,6 +52,7 @@ SOURCES += \
 	ops/v_rvoff.cc \
 	ops/v_rvon.cc \
 	ops/vq_chcells.cc \
+	ops/vq_color.cc \
 	ops/vq_curaddress.cc \
 	ops/vs_color.cc \
 	ops/vs_curaddress.cc \
