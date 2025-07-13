@@ -434,6 +434,12 @@ class VDI : public QObject
 		\*********************************************************************/
 		void vsin_mode(int handle, int16_t device, int16_t mode);
 		void vsin_mode(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 35: Get the current line-drawing style.
+		\*********************************************************************/
+		void vql_attributes(int handle, int16_t* settings);
+		void vql_attributes(Transport *io, ClientMsg &cm);
 		};
 
 #endif // VDI_H

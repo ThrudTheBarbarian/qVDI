@@ -41,4 +41,13 @@ int main(int argc, const char * argv[])
 
 	vsin_mode(handle, INP_LOCATOR, INPUT_SAMPLE);
 	printf("set mouse input mode to 'sample'\n");
+
+	int16_t lineSettings[4];
+	vql_attributes(handle, lineSettings);
+	printf("line settings are: %04x : %04x : %04x : %04x\n",
+			lineSettings[0],
+			lineSettings[1],
+			lineSettings[2],
+			lineSettings[3]
+			);
 	}

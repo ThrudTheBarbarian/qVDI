@@ -484,9 +484,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().vsin_mode(io, cm);
 				break;
 
-		// 	case ClientMsg::VQL_ATTRIBUTES:			// 35
-		// 		VDI::sharedInstance().vql_attributes(ws, &cm);
-		// 		break;
+			// 35
+			// ---------------------------------------------------------------
+			case ClientMsg::VQL_ATTRIBUTES:
+				VDI::sharedInstance().vql_attributes(io, cm);
+				break;
 
 		// 	case ClientMsg::VQM_ATTRIBUTES:			// 36
 		// 		VDI::sharedInstance().vqm_attributes(ws, &cm);
