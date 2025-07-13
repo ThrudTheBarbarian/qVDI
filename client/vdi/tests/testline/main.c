@@ -64,4 +64,13 @@ int main(int argc, const char * argv[])
 		pxy_2[1] -= i+5;
 		pxy_2[3] -= i+5;
 		}
+
+	for (int i=0; i<50; i++)
+		{
+		int16_t rgb[3];
+		rgb[0] = i*10 + 200;
+		rgb[1] = 1000 - i*20;
+		rgb[2] = i*10 + 250;
+		vs_pixrgb(handle, 5, 5+i, rgb);
+		}
 	}
