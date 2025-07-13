@@ -59,6 +59,7 @@ SOURCES += \
 	ops/vsf_color.cc \
 	ops/vsf_interior.cc \
 	ops/vsf_style.cc \
+	ops/vsin_mode.cc \
 	ops/vsl_color.cc \
 	ops/vsl_type.cc \
 	ops/vsl_width.cc \

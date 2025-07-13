@@ -38,5 +38,7 @@ int main(int argc, const char * argv[])
 	int16_t rgb[3];
 	vq_color(handle, 3, 1, rgb);
 	printf("RGB = {%02x, %02x, %02x}\n", rgb[0], rgb[1], rgb[2]);
-	
+
+	vsin_mode(handle, INP_LOCATOR, INPUT_SAMPLE);
+	printf("set mouse input mode to 'sample'\n");
 	}

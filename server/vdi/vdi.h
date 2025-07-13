@@ -428,6 +428,12 @@ class VDI : public QObject
 		\*********************************************************************/
 		void vswr_mode(int handle, int16_t mode);
 		void vswr_mode(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 33: Set the input mode.
+		\*********************************************************************/
+		void vsin_mode(int handle, int16_t device, int16_t mode);
+		void vsin_mode(Transport *io, ClientMsg &cm);
 		};
 
 #endif // VDI_H

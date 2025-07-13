@@ -478,9 +478,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().vswr_mode(io, cm);
 				break;
 
-		// 	case ClientMsg::VSIN_MODE:				// 33
-		// 		VDI::sharedInstance().vsin_mode(ws, &cm);
-		// 		break;
+			// 33
+			// ---------------------------------------------------------------
+			case ClientMsg::VSIN_MODE:
+				VDI::sharedInstance().vsin_mode(io, cm);
+				break;
 
 		// 	case ClientMsg::VQL_ATTRIBUTES:			// 35
 		// 		VDI::sharedInstance().vql_attributes(ws, &cm);

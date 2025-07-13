@@ -84,6 +84,8 @@ Workstation::Workstation(QObject *parent )
 			,_endCap(Qt::FlatCap)
 			,_io(nullptr)
 			,_fm(nullptr)
+			,_inputModes(0)
+
 	{
 	_initialise();
 	}
@@ -118,6 +120,7 @@ Workstation::Workstation(Transport *io, QObject *parent )
 			,_endCap(Qt::FlatCap)
 			,_io(io)
 			,_fm(nullptr)
+			,_inputModes(0)
 	{
 	_initialise();
 	}
@@ -150,6 +153,34 @@ bool Workstation::open(int16_t *workIn, int16_t *handle, int16_t *workOut)
 QImage * Workstation::backingImage(void)
 	{
 	return nullptr;
+	}
+
+/*****************************************************************************\
+|* Set up whether to sample or request information from the various devices
+\*****************************************************************************/
+void Workstation::setInputMode(int device, int mode)
+	{
+	if ((device >= INP_LOCATOR) && (device <= INP_STRING))
+		{
+		if (mode == INPUT_REQUEST)
+			_inputModes |= (1<<device);
+		else if (mode == INPUT_SAMPLE)
+			_inputModes &= ~(1<<device);
+		}
+	}
+
+/*****************************************************************************\
+|* Return whether to sample or request information from the various devices
+\*****************************************************************************/
+int16_t Workstation::inputMode(int device)
+	{
+	int mode = -1;
+	if ((device >= INP_LOCATOR) && (device <= INP_STRING))
+		{
+		int mask = 1 << device;
+		mode = ((_inputModes & mask) != 0) ? INPUT_REQUEST : INPUT_SAMPLE;
+		}
+	return mode;
 	}
 
 /*****************************************************************************\

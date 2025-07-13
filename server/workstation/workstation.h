@@ -131,6 +131,7 @@ class Workstation : public QObject
 	\*************************************************************************/
 	protected:
 		QColor _palette[256];			// First 256 colours
+		int _inputModes;				// Bitfields of input modes per device
 
 	/*************************************************************************\
 	|* constructor
@@ -228,6 +229,12 @@ class Workstation : public QObject
 		|* Set up the writing mode
 		\*********************************************************************/
 		void setWritingMode(QPainter& painter);
+
+		/*********************************************************************\
+		|* Set/Get the input mode for devices
+		\*********************************************************************/
+		void setInputMode(int device, int mode);
+		int16_t inputMode(int device);
 		};
 
 #endif // WORKSTATION_H
