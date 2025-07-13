@@ -452,6 +452,12 @@ class VDI : public QObject
 		\*********************************************************************/
 		void vqf_attributes(int handle, int16_t* settings);
 		void vqf_attributes(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 38: Get the current text style.
+		\*********************************************************************/
+		void vqt_attributes(int handle, int16_t* settings);
+		void vqt_attributes(Transport *io, ClientMsg &cm);
 		};
 
 #endif // VDI_H
