@@ -440,6 +440,12 @@ class VDI : public QObject
 		\*********************************************************************/
 		void vql_attributes(int handle, int16_t* settings);
 		void vql_attributes(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 36: Get the current marker-drawing style.
+		\*********************************************************************/
+		void vqm_attributes(int handle, int16_t* settings);
+		void vqm_attributes(Transport *io, ClientMsg &cm);
 		};
 
 #endif // VDI_H

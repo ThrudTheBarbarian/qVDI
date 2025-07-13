@@ -42,12 +42,19 @@ int main(int argc, const char * argv[])
 	vsin_mode(handle, INP_LOCATOR, INPUT_SAMPLE);
 	printf("set mouse input mode to 'sample'\n");
 
-	int16_t lineSettings[4];
-	vql_attributes(handle, lineSettings);
+	int16_t settings[4];
+	vql_attributes(handle, settings);
 	printf("line settings are: %04x : %04x : %04x : %04x\n",
-			lineSettings[0],
-			lineSettings[1],
-			lineSettings[2],
-			lineSettings[3]
+			settings[0],
+			settings[1],
+			settings[2],
+			settings[3]
+			);
+	vqm_attributes(handle, settings);
+	printf("Marker settings are: %04x : %04x : %04x : %04x\n",
+			settings[0],
+			settings[1],
+			settings[2],
+			settings[3]
 			);
 	}
