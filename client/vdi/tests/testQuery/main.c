@@ -50,8 +50,17 @@ int main(int argc, const char * argv[])
 			settings[2],
 			settings[3]
 			);
+
 	vqm_attributes(handle, settings);
 	printf("Marker settings are: %04x : %04x : %04x : %04x\n",
+			settings[0],
+			settings[1],
+			settings[2],
+			settings[3]
+			);
+
+	vqf_attributes(handle, settings);
+	printf("Fill settings are: %04x : %04x : %04x : %04x\n",
 			settings[0],
 			settings[1],
 			settings[2],

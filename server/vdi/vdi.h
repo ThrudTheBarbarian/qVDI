@@ -446,6 +446,12 @@ class VDI : public QObject
 		\*********************************************************************/
 		void vqm_attributes(int handle, int16_t* settings);
 		void vqm_attributes(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 37: Get the current fill style.
+		\*********************************************************************/
+		void vqf_attributes(int handle, int16_t* settings);
+		void vqf_attributes(Transport *io, ClientMsg &cm);
 		};
 
 #endif // VDI_H
