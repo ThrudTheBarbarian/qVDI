@@ -35,15 +35,27 @@ int main(int argc, const char * argv[])
 	v_clrwk(handle);
 
 	printf("Test basic text\n");
-	v_gtext(handle, 100, 100, "This is the text");
+	v_gtext(handle, 100, 100, "This is basic text");
 
-	printf("Justified text\n");
-	int jwid = 150;
-	int16_t pxy[] = {100,145,100+jwid,145};
+	printf("Full-Justified text\n");
+	int jwid = 180;
+	int16_t pxy[] = {5,38,5+jwid,38};
 	v_pline(handle, 2, pxy);
-	v_justified(handle, 100, 130, "This is justified", jwid, 1, 1);
 
+
+	int16_t hOut, vOut;
 	int16_t charW, charH, cellW, cellH;
+	vst_height(handle, 14, &charW, &charH, &cellW, &cellH);
+
+	v_justified(handle, 5, 44, "Full-out justified text", jwid, 1, 1);
+
+	vst_color(handle, 1);
+	vst_alignment(handle, TA_LEFT, TA_BASE, &hOut, &vOut);
+	v_justified(handle, 5, 20, "Left justified", jwid, 0, 0);
+
+	vst_alignment(handle, TA_RIGHT, TA_BASE, &hOut, &vOut);
+	v_justified(handle, 5, 14, "Right justified", jwid, 0, 0);
+
 	vst_height(handle, 32, &charW, &charH, &cellW, &cellH);
 	v_gtext(handle, 100, 200, "This is 32-pix text");
 
@@ -56,7 +68,7 @@ int main(int argc, const char * argv[])
 		rgb[1] = (i*37)%1000;
 		rgb[2] = (i*23)%1000;
 		vs_color(handle, 1, rgb);
-		v_gtext(handle, 600, 200, "... this is rotated");
+		v_gtext(handle, 600, 150, "... this is rotated");
 		}
 
 	int16_t black[3] = {0,0,0};
@@ -69,4 +81,7 @@ int main(int argc, const char * argv[])
 		vst_font(handle, i);
 		v_gtext(handle, 300, 40 + 20*i, "Test a font face");
 		}
+
+
+
 	}

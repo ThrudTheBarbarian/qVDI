@@ -458,6 +458,13 @@ class VDI : public QObject
 		\*********************************************************************/
 		void vqt_attributes(int handle, int16_t* settings);
 		void vqt_attributes(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* 39: Request the text alignment and get the actual set values.
+		\*********************************************************************/
+		void vst_alignment(int handle, int16_t  hIn,  int16_t vIn,
+						   int16_t& hOut, int16_t& vOut);
+		void vst_alignment(Transport *io, ClientMsg &cm);
 		};
 
 #endif // VDI_H

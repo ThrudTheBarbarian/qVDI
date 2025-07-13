@@ -508,9 +508,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().vqt_attributes(io, cm);
 				break;
 
-		// 	case ClientMsg::VST_ALIGNMENT:			// 39
-		// 		VDI::sharedInstance().vst_alignment(ws, &cm);
-		// 		break;
+			// 38
+			// ---------------------------------------------------------------
+			case ClientMsg::VST_ALIGNMENT:
+				VDI::sharedInstance().vst_alignment(io, cm);
+				break;
 
 		// 	case ClientMsg::VS_PIXRGB	:			// 59
 		// 		VDI::sharedInstance().vs_pixrgb(ws, &cm);

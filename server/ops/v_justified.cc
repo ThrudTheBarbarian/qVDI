@@ -18,15 +18,18 @@ void VDI::v_justified(int handle, int16_t x, int16_t y,
 	Screen *screen			= Screen::sharedInstance();
 	ConnectionMgr *cmgr		= screen ? screen->cmgr() : nullptr;
 	Workstation *ws			= cmgr ? cmgr->findWorkstationForHandle(handle)
-						   : nullptr;
+							: nullptr;
+	bool fullJustification	= (wordSpacing > 0) || (charSpacing > 0);
 
 	if (ws != nullptr)
 		{
 		// v_gtext will justify
 		int halign = ws->textHAlign();
-		ws->setTextHAlign(TA_FULL);
+		if (fullJustification)
+			ws->setTextHAlign(TA_FULL);
 		v_gtext(handle, x, y, xPixels, str);
-		ws->setTextHAlign(halign);
+		if (fullJustification)
+			ws->setTextHAlign(halign);
 		}
 	else
 		{

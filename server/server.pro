@@ -70,6 +70,7 @@ SOURCES += \
 	ops/vsm_color.cc \
 	ops/vsm_height.cc \
 	ops/vsm_type.cc \
+	ops/vst_alignment.cc \
 	ops/vst_color.cc \
 	ops/vst_font.cc \
 	ops/vst_height.cc \
