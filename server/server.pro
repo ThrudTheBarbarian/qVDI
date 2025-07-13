@@ -54,6 +54,7 @@ SOURCES += \
 	ops/vq_chcells.cc \
 	ops/vq_color.cc \
 	ops/vq_curaddress.cc \
+	ops/vq_pixrgb.cc \
 	ops/vqf_attributes.cc \
 	ops/vql_attributes.cc \
 	ops/vqm_attributes.cc \

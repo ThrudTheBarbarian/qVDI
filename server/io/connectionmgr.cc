@@ -520,9 +520,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().vs_pixrgb(io, cm);
 				break;
 
-		// 	case ClientMsg::VQ_PIXRGB	:			// 60
-		// 		VDI::sharedInstance().vq_pixrgb(ws, &cm);
-		// 		break;
+			// 60
+			// ---------------------------------------------------------------
+			case ClientMsg::VQ_PIXRGB:
+				VDI::sharedInstance().vq_pixrgb(io, cm);
+				break;
 
 		// 	case ClientMsg::V_OPNVWK:				// 100
 		// 		VDI::sharedInstance().v_opnvwk(ws, &cm);

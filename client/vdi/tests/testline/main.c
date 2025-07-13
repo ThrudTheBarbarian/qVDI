@@ -32,17 +32,17 @@ int main(int argc, const char * argv[])
 
 	v_clrwk(handle);
 
-	printf("Test basic polyline");
+	printf("Test basic polyline\n");
 	int16_t pxy[] = {50,90, 100,90, 100,140, 50,140, 100,90};
 	v_pline(handle, 5, pxy);
 
-	printf("Test arc line");
+	printf("Test arc line\n");
 	v_arc(handle, 100, 140, 50, 900, 0);
 
-	printf("Test elliptical arc");
+	printf("Test elliptical arc\n");
 	v_ellarc(handle, 200, 140, 100, 50, 900, 0);
 
-	printf("Test rounded box");
+	printf("Test rounded box\n");
 	int16_t pxy_rb[] = {350, 90, 400, 140};
 	v_rbox(handle, pxy_rb);
 
@@ -65,12 +65,15 @@ int main(int argc, const char * argv[])
 		pxy_2[3] -= i+5;
 		}
 
+	int16_t rgb[3];
 	for (int i=0; i<50; i++)
 		{
-		int16_t rgb[3];
 		rgb[0] = i*10 + 200;
 		rgb[1] = 1000 - i*20;
 		rgb[2] = i*10 + 250;
 		vs_pixrgb(handle, 5, 5+i, rgb);
 		}
+
+	vq_pixrgb(handle, 5, 15, rgb);
+	printf("rgb @ (5,15) = %d,%d,%d   cf: 300,800,350\n", rgb[0], rgb[1], rgb[2]);
 	}

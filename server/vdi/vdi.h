@@ -467,10 +467,16 @@ class VDI : public QObject
 		void vst_alignment(Transport *io, ClientMsg &cm);
 
 		/*********************************************************************\
-		|* Opcode 59	Set a pixel's RGB.
+		|* Opcode 59	Set a pixel's RGB. Range of r,g,b = 0..1000
 		\*********************************************************************/
 		void vs_pixrgb(int handle, int16_t x, int16_t y, int16_t *rgb);
 		void vs_pixrgb(Transport *io, ClientMsg &cm);
+
+		/*********************************************************************\
+		|* Opcode 60	Get a pixel's RGB. Range of r,g,b = 0..1000
+		\*********************************************************************/
+		void vq_pixrgb(int handle, int16_t x, int16_t y, int16_t *rgb);
+		void vq_pixrgb(Transport *io, ClientMsg &cm);
 		};
 
 #endif // VDI_H
