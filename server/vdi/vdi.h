@@ -497,6 +497,12 @@ class VDI : public QObject
 		void v_contourfill(Transport *io, ClientMsg &msg);
 
 		/*********************************************************************\
+		|* Opcode 104   : Set whether to draw a perimeter around a fill
+		\*********************************************************************/
+		void vsf_perimeter(int handle, int16_t enable);
+		void vsf_perimeter(Transport *io, ClientMsg &msg);
+
+		/*********************************************************************\
 		|* Opcode 105   : Get a pixel. This is compatible with the old GEM
 		|*                interface but only works to 16-bit colour resolution
 		|*				  Use the new vq_pixrgb (opcode 60) to get 24-bit RGB

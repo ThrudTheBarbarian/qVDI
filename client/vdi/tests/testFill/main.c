@@ -63,6 +63,12 @@ int main(int argc, const char * argv[])
 	vsf_interior(handle, FIS_SOLID);
 	v_rfbox(handle, pxy_rfb);
 
+	printf("Test rounded filled box without perimeter\n");
+	int16_t pxy_rfb2[] = {650, 50, 700, 100};
+	vsf_interior(handle, FIS_SOLID);
+	vsf_perimeter(handle, 0);
+	v_rfbox(handle, pxy_rfb2);
+
 	printf("Show patterns\n");
 	vsf_interior(handle, FIS_PATTERN);
 	for (int i=1; i<PT_PATTERN_MAX; i++)

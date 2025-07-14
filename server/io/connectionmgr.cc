@@ -544,15 +544,17 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().v_contourfill(io, cm);
 				break;
 
+			// 104
+			// ---------------------------------------------------------------
+			case ClientMsg::VSF_PERIMETER:
+				VDI::sharedInstance().vsf_perimeter(io, cm);
+				break;
+
 			// 105
 			// ---------------------------------------------------------------
 			case ClientMsg::V_GET_PIXEL:
 				VDI::sharedInstance().v_get_pixel(io, cm);
 				break;
-
-		// 	case ClientMsg::VSF_PERIMETER:			// 105
-		// 		VDI::sharedInstance().vsf_perimeter(ws, &cm);
-		// 		break;
 
 		// 	case ClientMsg::VST_EFFECTS:			// 106
 		// 		VDI::sharedInstance().vst_effects(ws, &cm);

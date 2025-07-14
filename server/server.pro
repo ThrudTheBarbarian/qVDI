@@ -68,6 +68,7 @@ SOURCES += \
 	ops/vs_pixrgb.cc \
 	ops/vsf_color.cc \
 	ops/vsf_interior.cc \
+	ops/vsf_perimeter.cc \
 	ops/vsf_style.cc \
 	ops/vsin_mode.cc \
 	ops/vsl_color.cc \
