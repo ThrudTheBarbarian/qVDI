@@ -517,6 +517,14 @@ class VDI : public QObject
 		void vst_effects(int handle, int16_t effects);
 		void vst_effects(Transport *io, ClientMsg &msg);
 
+		/*********************************************************************\
+		|* Opcode 107   : Set the height of text in points
+		\*********************************************************************/
+		void vst_point(int handle, int16_t height, int16_t& charWidth,
+					   int16_t& charHeight, int16_t& cellWidth,
+					   int16_t &cellHeight);
+		void vst_point(Transport *io, ClientMsg &msg);
+
 		};
 
 #endif // VDI_H

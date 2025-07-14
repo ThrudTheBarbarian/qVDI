@@ -562,9 +562,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().vst_effects(io, cm);
 				break;
 
-		// 	case ClientMsg::VST_POINT:				// 107
-		// 		VDI::sharedInstance().vst_point(ws, &cm);
-		// 		break;
+			// 107
+			// ---------------------------------------------------------------
+			case ClientMsg::VST_POINT:
+				VDI::sharedInstance().vst_point(io, cm);
+				break;
 
 		// 	case ClientMsg::VSL_ENDS:				// 108
 		// 		VDI::sharedInstance().vsl_ends(ws, &cm);

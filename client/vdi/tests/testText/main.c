@@ -96,4 +96,8 @@ int main(int argc, const char * argv[])
 	vst_effects(handle, TXT_OUTLINE);
 	v_gtext(handle, 5, 245, "Outline text");
 
+	vst_effects(handle, TXT_NORMAL);
+	vst_font(handle, -1);
+	vst_point(handle, 36, &charW, &charH, &cellW, &cellH);
+	v_gtext(handle, 180, 250, "1/2\" high text");
 	}

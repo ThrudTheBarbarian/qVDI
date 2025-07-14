@@ -82,6 +82,7 @@ SOURCES += \
 	ops/vst_effects.cc \
 	ops/vst_font.cc \
 	ops/vst_height.cc \
+	ops/vst_point.cc \
 	ops/vst_rotation.cc \
 	ops/vswr_mode.cc \
 	vdi/vdi.cc \
