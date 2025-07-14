@@ -79,6 +79,7 @@ SOURCES += \
 	ops/vsm_type.cc \
 	ops/vst_alignment.cc \
 	ops/vst_color.cc \
+	ops/vst_effects.cc \
 	ops/vst_font.cc \
 	ops/vst_height.cc \
 	ops/vst_rotation.cc \

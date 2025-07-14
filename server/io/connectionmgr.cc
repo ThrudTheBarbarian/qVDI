@@ -556,9 +556,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().v_get_pixel(io, cm);
 				break;
 
-		// 	case ClientMsg::VST_EFFECTS:			// 106
-		// 		VDI::sharedInstance().vst_effects(ws, &cm);
-		// 		break;
+			// 106
+			// ---------------------------------------------------------------
+			case ClientMsg::VST_EFFECTS:
+				VDI::sharedInstance().vst_effects(io, cm);
+				break;
 
 		// 	case ClientMsg::VST_POINT:				// 107
 		// 		VDI::sharedInstance().vst_point(ws, &cm);
@@ -627,6 +629,9 @@ void ConnectionMgr::_incomingData(void)
 		// 	case ClientMsg::VQ_COLOURS:				// 2026
 		// 		VDI::sharedInstance().vq_colours(ws, &cm);
 		// 		break;
+
+
+
 
 
 		// 	case ClientMsg::AES_APPL_INIT:			// 6007

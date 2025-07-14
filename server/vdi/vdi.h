@@ -511,6 +511,12 @@ class VDI : public QObject
 						 int16_t& pixel, int16_t& idx);
 		void v_get_pixel(Transport *io, ClientMsg &msg);
 
+		/*********************************************************************\
+		|* Opcode 106   : Set the effects used for drawing text
+		\*********************************************************************/
+		void vst_effects(int handle, int16_t effects);
+		void vst_effects(Transport *io, ClientMsg &msg);
+
 		};
 
 #endif // VDI_H

@@ -57,7 +57,7 @@ int main(int argc, const char * argv[])
 	v_justified(handle, 5, 14, "Right justified", jwid, 0, 0);
 
 	vst_height(handle, 32, &charW, &charH, &cellW, &cellH);
-	v_gtext(handle, 100, 200, "This is 32-pix text");
+	v_gtext(handle, 180, 200, "32-pix text");
 
 	vst_height(handle, 14, &charW, &charH, &cellW, &cellH);
 	int16_t rgb[3];
@@ -82,6 +82,18 @@ int main(int argc, const char * argv[])
 		v_gtext(handle, 300, 40 + 20*i, "Test a font face");
 		}
 
+	vst_height(handle, 24, &charW, &charH, &cellW, &cellH);
+	vst_color(handle, G_BLACK);
+	vst_effects(handle, TXT_BOLD);
+	v_gtext(handle, 5, 170, "Bold text");
 
+	vst_effects(handle, TXT_ITALIC);
+	v_gtext(handle, 5, 195, "Italic text");
+
+	vst_effects(handle, TXT_UNDERLINE);
+	v_gtext(handle, 5, 220, "Underline text");
+
+	vst_effects(handle, TXT_OUTLINE);
+	v_gtext(handle, 5, 245, "Outline text");
 
 	}
