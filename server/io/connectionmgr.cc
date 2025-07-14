@@ -532,9 +532,11 @@ void ConnectionMgr::_incomingData(void)
 				VDI::sharedInstance().v_opnvwk(this, io, cm);
 				break;
 
-		// 	case ClientMsg::VQ_EXTND:				// 102
-		// 		VDI::sharedInstance().vq_extnd(ws, &cm);
-		// 		break;
+			// 102
+			// ---------------------------------------------------------------
+			case ClientMsg::VQ_EXTND:
+				VDI::sharedInstance().vq_extnd(io, cm);
+				break;
 
 		// 	case ClientMsg::V_CONTOURFILL:			// 103
 		// 		VDI::sharedInstance().v_contourfill(ws, &cm);

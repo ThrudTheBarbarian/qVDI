@@ -81,4 +81,17 @@ int main(int argc, const char * argv[])
 			settings[8],
 			settings[9]
 			);
+
+	int16_t vqe[57];
+	vq_extnd(handle, 0, vqe);
+	printf("vq_extnd(0) = ");
+	for (int i=0; i<57; i++)
+		{
+		if (i%8 == 0)
+			printf("\n %4d : ", (uint16_t)i);
+		printf("0x%04x ", (uint16_t)vqe[i]);
+		}
+	printf("\n");
+
+
 	}

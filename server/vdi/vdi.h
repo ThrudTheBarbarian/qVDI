@@ -484,6 +484,12 @@ class VDI : public QObject
 		\*********************************************************************/
 		void v_opnvwk(ConnectionMgr *cm, Transport *io, ClientMsg &msg);
 
+		/*********************************************************************\
+		|* Opcode 102   : Query for workstation information
+		\*********************************************************************/
+		void vq_extnd(int handle, int16_t  extend, int16_t* data);
+		void vq_extnd(Transport *io, ClientMsg &msg);
+
 		};
 
 #endif // VDI_H
