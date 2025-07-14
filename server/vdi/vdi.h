@@ -496,6 +496,15 @@ class VDI : public QObject
 		void v_contourfill(int handle, int16_t x, int16_t y, int16_t colour);
 		void v_contourfill(Transport *io, ClientMsg &msg);
 
+		/*********************************************************************\
+		|* Opcode 105   : Get a pixel. This is compatible with the old GEM
+		|*                interface but only works to 16-bit colour resolution
+		|*				  Use the new vq_pixrgb (opcode 60) to get 24-bit RGB
+		\*********************************************************************/
+		void v_get_pixel(int handle, int16_t x, int16_t y,
+						 int16_t& pixel, int16_t& idx);
+		void v_get_pixel(Transport *io, ClientMsg &msg);
+
 		};
 
 #endif // VDI_H

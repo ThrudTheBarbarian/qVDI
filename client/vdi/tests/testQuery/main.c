@@ -93,5 +93,10 @@ int main(int argc, const char * argv[])
 		}
 	printf("\n");
 
-
+	int16_t pix, idx;
+	v_get_pixel(handle, 50, 50, &pix, &idx);
+	printf("RGB @ 50,50 = %02x:%02x:%02x\n",
+			(pix >> 11) & 0x1f,
+			(pix >> 5) & 0x3F,
+			(pix & 0x1f));
 	}

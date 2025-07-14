@@ -25,7 +25,7 @@ void _filluntil(int x, int y, int w, int h,
 #define STACK_SIZE 16777216
 
 #define PUSH(a,b,c,d)						\
-do {									\
+do {										\
 		stack[SP++] = a;					\
 		stack[SP++]	= b;					\
 		stack[SP++] = c;					\
@@ -42,8 +42,8 @@ do {									\
 
 #define COPY_RGB(x, y)						\
 	do	{									\
-			dst[y][x] = src[y][x];				\
-			visited[y][x] = 1;					\
+			dst[y][x] = src[y][x];			\
+			visited[y][x] = 1;				\
 		} while (0)
 
 #define DST(x,y)	dst[y][x]
