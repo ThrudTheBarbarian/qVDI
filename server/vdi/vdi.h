@@ -490,6 +490,12 @@ class VDI : public QObject
 		void vq_extnd(int handle, int16_t  extend, int16_t* data);
 		void vq_extnd(Transport *io, ClientMsg &msg);
 
+		/*********************************************************************\
+		|* Opcode 103   : Flood fill an area
+		\*********************************************************************/
+		void v_contourfill(int handle, int16_t x, int16_t y, int16_t colour);
+		void v_contourfill(Transport *io, ClientMsg &msg);
+
 		};
 
 #endif // VDI_H

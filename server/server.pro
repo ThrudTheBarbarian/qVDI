@@ -26,6 +26,7 @@ SOURCES += \
 	ops/v_bar.cc \
 	ops/v_circle.cc \
 	ops/v_clrwk.cc \
+	ops/v_contourfill.cc \
 	ops/v_curdown.cc \
 	ops/v_curleft.cc \
 	ops/v_curright.cc \
